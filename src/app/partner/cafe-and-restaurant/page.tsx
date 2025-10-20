@@ -1,0 +1,153 @@
+"use client";
+import Partner from "@/components/ui/media-teks";
+import {
+  Bike,
+  Coffee,
+  Droplets,
+  Leaf,
+  Sparkles,
+  Star,
+  Wind,
+} from "lucide-react";
+
+export default function CafeAndRestaurant() {
+  const promos = [
+    {
+      image: "/cafe/miyago.jpg",
+      title: "Miyago",
+      description:
+        "Nikmati suasana hangat di Miyago. Datang bersepeda dengan Re:Flow dan dapatkan potongan harga 10% sebagai bentuk dukungan terhadap gaya hidup hijau.",
+      features: [
+        { icon: <Bike className="w-6 h-6" />, text: "Akses dengan Re:Flow" },
+        {
+          icon: <Star className="w-6 h-6" />,
+          text: "Diskon 10% untuk pengguna Re:Flow",
+        },
+      ],
+      darkMode: true,
+    },
+    {
+      image: "/cafe/eclair.jpg",
+      title: "Éclair Café",
+      description:
+        "Rasakan aroma kopi dan manisnya pastry di Éclair Café yang penuh kehangatan. Pengguna Re:Flow menikmati diskon 10% sebagai bentuk apresiasi.",
+      features: [
+        { icon: <Leaf className="w-6 h-6" />, text: "Kafe berkonsep hijau" },
+        {
+          icon: <Coffee className="w-6 h-6" />,
+          text: "Diskon 10% untuk pesepeda Re:Flow",
+        },
+      ],
+      reverse: true,
+      darkMode: true,
+    },
+    {
+      image: "/cafe/tuwa-kawa.jpg",
+      title: "Tuwa Kawa",
+      description:
+        "Nikmati kopi lokal Lombok dalam suasana alami di Tuwa Kawa. Pengguna Re:Flow berhak atas potongan 10% sambil menikmati cita rasa Nusantara.",
+      features: [
+        {
+          icon: <Coffee className="w-6 h-6" />,
+          text: "Kopi lokal khas Lombok",
+        },
+        {
+          icon: <Bike className="w-6 h-6" />,
+          text: "Diskon 10% bagi pengguna Re:Flow",
+        },
+      ],
+      darkMode: true,
+    },
+    {
+      image: "/cafe/its-milk.jpg",
+      title: "IT’s Milk",
+      description:
+        "Segarkan hari dengan susu murni dari IT’s Milk! Datang bersepeda menggunakan Re:Flow dan nikmati potongan harga 10% untuk setiap pembelian.",
+      features: [
+        { icon: <Droplets className="w-6 h-6" />, text: "Susu segar alami" },
+        {
+          icon: <Star className="w-6 h-6" />,
+          text: "Diskon 10% untuk pelanggan Re:Flow",
+        },
+      ],
+      reverse: true,
+      darkMode: true,
+    },
+    {
+      image: "/cafe/uttara.jpg",
+      title: "UTTARA",
+      description:
+        "Rasakan ketenangan di UTTARA Café. Datang bersepeda dengan Re:Flow dan nikmati es teh gratis sebagai bentuk penghargaan untuk transportasi ramah lingkungan.",
+      features: [
+        {
+          icon: <Sparkles className="w-6 h-6" />,
+          text: "Es teh gratis untuk pengguna Re:Flow",
+        },
+        {
+          icon: <Leaf className="w-6 h-6" />,
+          text: "Nuansa kafe yang menenangkan",
+        },
+      ],
+      darkMode: true,
+    },
+  ];
+
+  return (
+    <section>
+      {/* Hero Section */}
+      <div className="relative min-h-screen bg-gradient-to-b from-gray-950 via-gray-900 to-black text-gray-100 flex flex-col items-center justify-center px-6 py-24 text-center">
+        <div className="absolute inset-0 overflow-hidden opacity-20 z-0">
+          <Leaf className="absolute top-20 left-10 w-16 h-16 text-sky-400 animate-bounce-slow" />
+          <Wind className="absolute top-40 right-20 w-20 h-20 text-sky-400 animate-spin-slow" />
+          <Droplets className="absolute bottom-24 left-1/4 w-14 h-14 text-sky-400 animate-float" />
+          <Bike className="absolute bottom-16 right-16 w-20 h-20 text-sky-400 animate-float-delayed" />
+          <Sparkles className="absolute top-10 right-1/3 w-12 h-12 text-sky-400 animate-pulse-slow" />
+        </div>
+
+        <div className="relative z-10 max-w-4xl">
+          <img
+            src="/logo/reflow-logo-white.png"
+            alt="Logo Re:Flow"
+            className="block mx-auto w-48 sm:w-56 md:w-40"
+          />
+
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-white py-8 text-center">
+            Cafe and Restaurant
+          </h1>
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            Re:Flow berkolaborasi dengan berbagai cafe dan restoran di Lombok
+            untuk menghadirkan pengalaman kuliner berkelanjutan yang mendukung
+            gaya hidup hijau.
+          </p>
+          <button
+            onClick={() => {
+              const element = document.getElementById("promo-section");
+              if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+            className="mt-10 px-8 py-3 bg-sky-500 hover:bg-sky-400 text-white font-semibold rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+          >
+            Pelajari Lebih Lanjut
+          </button>
+        </div>
+      </div>
+
+      <div
+        className="relative max-h-[500px] min-h-[700px] bg-no-repeat bg-cover bg-center"
+        style={{ backgroundImage: 'url("/ride-gridwiz.JPG")' }}
+      >
+        <div className="absolute inset-0 bg-black/20"></div>
+      </div>
+
+      <div id="promo-section" className="bg-black py-32">
+        <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-white mb-16 text-center">
+          Partnership
+        </h1>
+        {promos.map((promo, index) => (
+          <Partner key={index} {...promo} />
+        ))}
+      </div>
+    </section>
+  );
+}
