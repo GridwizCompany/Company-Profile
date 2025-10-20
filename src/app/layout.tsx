@@ -8,9 +8,9 @@ export const metadata: Metadata = {
   title: "Gridwiz Company Profile",
   description: "Website profil perusahaan Gridwiz Energy & Mobility",
   icons: {
-    icon: "/gridwiz-logo.png",
-    shortcut: "/gridwiz-logo.png",
-    apple: "/gridwiz-logo.png",
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
   },
 };
 
