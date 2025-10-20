@@ -1,5 +1,5 @@
 // components/Footer.tsx
-import { FaInstagram, FaYoutube, FaFacebook, FaTwitter } from "react-icons/fa";
+import { FaInstagram, FaYoutube, FaFacebook, FaTwitter, FaTiktok } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -32,15 +32,11 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="/kontak" className="hover:text-white transition">
+              <a href="mailto:gridwizenergyandmobility@gmail.com" className="hover:text-white transition">
                 Kontak
               </a>
             </li>
-            <li>
-              <a href="/faq" className="hover:text-white transition">
-                FAQ
-              </a>
-            </li>
+
           </ul>
         </div>
 
@@ -48,32 +44,32 @@ export default function Footer() {
           <h3 className="text-lg font-semibold text-white mb-3">Ikuti Kami</h3>
           <div className="flex justify-center md:justify-start gap-4 text-2xl">
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/reflow.gridwizenm/"
               target="_blank"
               className="hover:text-pink-500 transition"
             >
               <FaInstagram />
             </a>
             <a
-              href="https://youtube.com"
+              href="https://www.youtube.com/@GridwizEnergyAndMobility"
               target="_blank"
               className="hover:text-red-500 transition"
             >
               <FaYoutube />
             </a>
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/gridwizenm/"
               target="_blank"
               className="hover:text-blue-500 transition"
             >
               <FaFacebook />
             </a>
-            <a
-              href="https://twitter.com"
+             <a
+              href="https://www.tiktok.com/@relfow.gridwizenm"
               target="_blank"
-              className="hover:text-sky-400 transition"
+              className="hover:text-red-500 transition"
             >
-              <FaTwitter />
+              <FaTiktok />
             </a>
           </div>
         </div>

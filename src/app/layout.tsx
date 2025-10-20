@@ -4,8 +4,8 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
 export const metadata = {
-  title: "Company Profile - BookingGridWiz",
-  description: "Website profil perusahaan BookingGridWiz",
+  title: "Gridwiz Company Profile ",
+  description: "Website profil perusahaan Gridwiz Energy & Mobility",
 };
 
 export default function RootLayout({
