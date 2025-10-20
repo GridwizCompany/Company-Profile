@@ -1,11 +1,17 @@
 // app/layout.tsx
 import "./globals.css";
+import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
-export const metadata = {
-  title: "Gridwiz Company Profile ",
+export const metadata: Metadata = {
+  title: "Gridwiz Company Profile",
   description: "Website profil perusahaan Gridwiz Energy & Mobility",
+  icons: {
+    icon: "/gridwiz-logo.png",
+    shortcut: "/gridwiz-logo.png",
+    apple: "/gridwiz-logo.png",
+  },
 };
 
 export default function RootLayout({
