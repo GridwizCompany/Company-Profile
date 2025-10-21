@@ -38,7 +38,7 @@ export default function Promo() {
               alt="Gridwiz Illustration 1 - Pelajar"
               width={300}
               height={300}
-              className="rounded-lg object-contain w-64 h-64 md:w-80 md:h-80 shadow-2xl shadow-blue-500/30" // Ukuran dan Shadow diperbagus
+              className="rounded-lg object-contain w-64 h-64 md:w-80 md:h-80 shadow-2xl shadow-blue-500/30"
             />
           </div>
           <div className="max-w-xl">
@@ -67,7 +67,7 @@ export default function Promo() {
               alt="Gridwiz Illustration 2 - Publik"
               width={300}
               height={300}
-              className="rounded-lg object-contain w-64 h-64 md:w-80 md:h-80 shadow-2xl shadow-yellow-500/30" // Ukuran dan Shadow diperbagus
+              className="rounded-lg object-contain w-64 h-64 md:w-80 md:h-80 shadow-2xl shadow-yellow-500/30"
             />
           </div>
           <div className="max-w-xl">
@@ -107,13 +107,11 @@ export default function Promo() {
         </div>
       </div>
 
-      {/* Pricing Section */}
       <div className="w-full min-h-screen flex flex-col md:flex-row bg-white">
-        {/* Kolom kanan - Harga Publik */}
         <div
           className="flex-1 relative flex items-center justify-center bg-black py-16 px-6"
           style={{
-            clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)", // efek miring bisa ditambah
+            clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
           }}
         >
           <div className="min-w-max md:min-w-md text-center text-white">
@@ -152,11 +150,10 @@ export default function Promo() {
             </div>
           </div>
         </div>
-        {/* Kolom kiri - Harga Pelajar */}
         <div
           className="flex-1 relative flex items-center justify-center bg-gray-50 py-16 px-6"
           style={{
-            clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)", // efek miring bisa ditambah
+            clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
           }}
         >
           <div className="max-w-md md:min-w-md text-center">

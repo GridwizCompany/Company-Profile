@@ -1,36 +1,10 @@
-const extractDriveId = (input: string) => {
-  const trimmed = input.trim();
-  const directPattern = /^[a-zA-Z0-9_-]+$/;
-  if (directPattern.test(trimmed)) {
-    return trimmed;
-  }
+"use client";
+import { useState } from "react";
+import { driveImageUrl } from "../../../utils/driveutils";
 
-  const bySlash = trimmed.match(/\/d\/([a-zA-Z0-9_-]+)/);
-  if (bySlash?.[1]) {
-    return bySlash[1];
-  }
-
-  const byQuery = trimmed.match(/[?&]id=([a-zA-Z0-9_-]+)/);
-  if (byQuery?.[1]) {
-    return byQuery[1];
-  }
-
-  const fallback = trimmed.split("/").filter(Boolean).pop();
-  if (fallback) {
-    return fallback.split("?")[0];
-  }
-
-  return trimmed;
-};
-
-const driveImageUrl = (source: string) => {
-  const id = extractDriveId(source);
-  return `https://lh3.googleusercontent.com/d/${id}=w1600-h900-no`;
-};
-
-type GalleryItem = {
+interface GalleryItem {
   imageSource: string;
-};
+}
 
 const galleryItems: GalleryItem[] = [
   {
@@ -50,137 +24,212 @@ const galleryItems: GalleryItem[] = [
       "https://drive.google.com/file/d/1GS66G-8L0UhvD83qHgTn_xlgsti2bMWB/view?usp=sharing",
   },
   {
-    imageSource: "https://drive.google.com/file/d/1y3A9c0EcoG0xVmBHn4XenGeK_mP8OAbW/view?usp=sharing",
+    imageSource:
+      "https://drive.google.com/file/d/1y3A9c0EcoG0xVmBHn4XenGeK_mP8OAbW/view?usp=sharing",
   },
   {
-    imageSource: "https://drive.google.com/file/d/1L0ZA4skcdqQ70d43Dor0UbiL0Nd2stsG/view?usp=sharing",
+    imageSource:
+      "https://drive.google.com/file/d/1L0ZA4skcdqQ70d43Dor0UbiL0Nd2stsG/view?usp=sharing",
   },
 ];
 
 export default function CarFreeDay() {
+  const [currentIndex, setCurrentIndex] = useState(0);
 
+  const nextSlide = () => {
+    setCurrentIndex((prev) =>
+      prev === galleryItems.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) =>
+      prev === 0 ? galleryItems.length - 1 : prev - 1
+    );
+  };
   return (
-    <section>
+    <section className="bg-white">
+      {/* Hero Section */}
       <div
-        className="relative min-h-screen bg-no-repeat bg-cover bg-center"
+        className="relative min-h-screen bg-cover bg-center flex items-center justify-center"
         style={{ backgroundImage: 'url("/cfd.jpg")' }}
       >
-        {/* Overlay gelap */}
-        <div className="absolute inset-0 bg-black/60"></div>
-
-        {/* Konten utama */}
-        <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-white px-4 text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-8">
-            <span className="text-orange-500">Car</span>{" "}
-            <span className="text-amber-500">Free Day</span>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
+        <div className="relative z-10 text-center text-white px-6 max-w-3xl">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4">
+            <span className="text-sky-400">Car</span>{" "}
+            <span className="text-blue-500">Free Day</span>
           </h1>
-
-          <p className="text-lg sm:text-2xl md:text-5xl font-extrabold text-gray-100 mb-8 max-w-xl">
-            X
-          </p>
-
+          <p className="text-3xl md:text-5xl font-bold my-6 md:my-12">X</p>
           <img
             src="/logo/reflow-logo-white.png"
             alt="reflow-logo"
-            className="w-32 sm:w-48 md:w-64 h-auto"
+            className="mx-auto w-32 sm:w-48 md:w-56 h-auto"
           />
         </div>
       </div>
 
-      <div className="content bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
-          <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr] items-start">
-            <div className="space-y-6 text-gray-700">
-              <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900">
-                Car Free Day Bersama Re:flow
-              </h2>
-              <p className="text-base sm:text-lg leading-relaxed">
-                Gridwiz Energy &amp; Mobility hadir di Car Free Day untuk mengajak
-                masyarakat hidup lebih sehat, aktif, dan ramah lingkungan. Rasakan
-                langsung pengalaman berkendara dengan sepeda listrik Re:Flow —
-                solusi mobilitas bebas emisi untuk masa depan Indonesia yang lebih
-                hijau.
-              </p>
-              <div className="rounded-3xl bg-gradient-to-br from-orange-500 via-amber-500 to-rose-500 text-white p-8 shadow-xl">
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 space-y-16 mt-12">
+        {/* Section 1: Deskripsi dan Tujuan */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          {/* Kiri */}
+          <div className="flex flex-col h-full space-y-8 text-gray-700">
+            <h2 className="text-3xl sm:text-4xl font-bold">
+              Car Free Day Bersama Re:Flow
+            </h2>
+
+            <p className="text-base md:text-lg leading-relaxed">
+              Gridwiz Energy &amp; Mobility hadir di Car Free Day untuk mengajak
+              masyarakat hidup lebih sehat, aktif, dan ramah lingkungan. Rasakan
+              langsung pengalaman berkendara dengan sepeda listrik Re:Flow —
+              solusi mobilitas bebas emisi untuk masa depan Indonesia yang lebih
+              hijau.
+            </p>
+
+            {/* Div ini akan mengisi ruang tersisa */}
+            <div className="flex-1 flex items-center rounded-3xl bg-gradient-to-br from-sky-400 via-blue-500 to-indigo-600 text-white p-8 md:p-9 md:mt-8">
+              <div>
                 <p className="text-lg sm:text-xl italic leading-relaxed">
                   “Sebagai bagian dari komitmen terhadap mobilitas berkelanjutan
-                  dan ramah lingkungan, Gridwiz E&amp;M turut meramaikan acara Car
-                  Free Day (CFD) di Lombok.”
+                  dan ramah lingkungan, Gridwiz E&amp;M turut meramaikan acara
+                  Car Free Day (CFD) di Lombok.”
                 </p>
                 <p className="mt-4 text-sm uppercase tracking-wide text-white/80">
                   Gridwiz Energy &amp; Mobility
                 </p>
               </div>
             </div>
-            <div className="grid gap-6">
-              <div className="rounded-3xl border border-orange-100 bg-orange-50/60 p-8 shadow-lg shadow-orange-100">
-                <h3 className="text-xl font-semibold text-orange-600">
-                  Tujuan Kegiatan
-                </h3>
-                <p className="mt-3 text-sm sm:text-base text-orange-900/90 leading-relaxed">
-                  Re:Flow CFD menghadirkan ruang sehat yang bebas polusi sekaligus
-                  meningkatkan kesadaran akan mobilitas rendah emisi. Kegiatan ini
-                  mengajak komunitas dan institusi pendidikan untuk merasakan gaya
-                  hidup aktif, sehat, dan modern melalui teknologi sepeda listrik
-                  Re:Flow.
+          </div>
+
+          {/* Kanan */}
+          <div className="space-y-8">
+            <div className="rounded-3xl border border-gray-200 bg-white p-8">
+              <h3 className="text-3xl font-bold text-gray-900">
+                Tujuan Kegiatan
+              </h3>
+              <p className="mt-3 text-base md:text-lg leading-relaxed">
+                Re:Flow CFD menghadirkan ruang sehat yang bebas polusi sekaligus
+                meningkatkan kesadaran akan mobilitas rendah emisi. Kegiatan ini
+                mengajak komunitas dan institusi pendidikan untuk merasakan gaya
+                hidup aktif, sehat, dan modern melalui teknologi sepeda listrik
+                Re:Flow.
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-6">
+              <div className="rounded-2xl border border-gray-200 bg-white p-6 ">
+                <h4 className="text-2xl font-bold text-gray-900">
+                  Test Ride Gratis
+                </h4>
+                <p className="mt-3 text-base md:text-lg leading-relaxed">
+                  Pengunjung dapat mencoba langsung sepeda listrik Re:Flow di
+                  area khusus yang steril dari kendaraan bermotor dan dibimbing
+                  oleh tim Gridwiz.
                 </p>
               </div>
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
-                  <h4 className="text-lg font-semibold text-gray-900">
-                    Test Ride Gratis
-                  </h4>
-                  <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-                    Pengunjung dapat mencoba langsung sepeda listrik Re:Flow di
-                    area khusus yang steril dari kendaraan bermotor dan dibimbing
-                    oleh tim dari Gridwiz.
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
-                  <h4 className="text-lg font-semibold text-gray-900">
-                    Booth Interaktif
-                  </h4>
-                  <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-                    Eksplorasi demo Battery Charging Station, simulasi VR, hingga
-                    zona foto tematik yang menghadirkan pengalaman ramah lingkungan
-                    nan futuristik.
-                  </p>
-                </div>
+
+              <div className="rounded-2xl border border-gray-200 bg-white p-6 ">
+                <h4 className="text-2xl font-bold text-gray-900">
+                  Booth Interaktif
+                </h4>
+                <p className="mt-3 text-base md:text-lg leading-relaxed">
+                  Eksplorasi demo Battery Charging Station, simulasi VR, hingga
+                  zona foto tematik yang menghadirkan pengalaman ramah
+                  lingkungan nan futuristik.
+                </p>
               </div>
             </div>
           </div>
-          <div className="rounded-3xl border border-gray-200 bg-gray-50 p-10 shadow-lg">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <h3 className="text-2xl font-semibold text-gray-900">
-                  Gallery Car Free Day Re:Flow
-                </h3>
-                <p className="mt-2 text-sm text-gray-600">
-                  Jelajahi momen terbaik Car Free Day bersama Gridwiz Energy &amp;
-                  Mobility lewat dokumentasi eksklusif Re:Flow.
-                </p>
-              </div>
-              <div className="inline-flex items-center gap-2 rounded-full bg-gray-900 px-4 py-2 text-sm font-semibold text-white shadow-md">
-                Dokumentasi Re:Flow
-              </div>
+        </div>
+
+        {/* Section 2: Gallery */}
+        <div className="rounded-3xl border border-gray-200  p-8 space-y-8 mb-16">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+            <div>
+              <h3 className="text-3xl font-bold text-gray-900">
+                Gallery Car Free Day Re:Flow
+              </h3>
+              <p className="mt-2 text-gray-600 max-w-md text-lg">
+                Jelajahi momen terbaik Car Free Day bersama Gridwiz Energy &amp;
+                Mobility lewat dokumentasi eksklusif Re:Flow.
+              </p>
             </div>
-            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {galleryItems.map((item, index) => (
-                <div
-                  key={index}
-                  className="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
-                >
-                  <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
+            <div className="inline-flex items-center justify-center rounded-sm bg-blue-600 px-5 py-2 text-sm font-semibold text-white shadow-md">
+              Dokumentasi Re:Flow
+            </div>
+          </div>
+
+          {/* Galeri: Mobile → Carousel, Desktop → Grid */}
+          <div className="block sm:hidden relative">
+            <div className="overflow-hidden relative">
+              <div
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{
+                  transform: `translateX(-${currentIndex * 100}%)`,
+                }}
+              >
+                {galleryItems.map((item, index) => (
+                  <div
+                    key={index}
+                    className="min-w-full flex-shrink-0 md:rounded-3xl overflow-hidden bg-gray-100"
+                  >
                     <img
                       src={driveImageUrl(item.imageSource)}
-                      alt=""
+                      alt={`Gallery ${index + 1}`}
                       referrerPolicy="no-referrer"
-                      className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                      className="w-full h-64 object-cover"
                     />
                   </div>
-                </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Tombol Navigasi */}
+            <button
+              onClick={prevSlide}
+              className="absolute top-1/2 left-4 -translate-y-1/2 bg-black/40 text-white rounded-full w-8 h-8 flex items-center justify-center"
+            >
+              ‹
+            </button>
+            <button
+              onClick={nextSlide}
+              className="absolute top-1/2 right-4 -translate-y-1/2 bg-black/40 text-white rounded-full w-8 h-8 flex items-center justify-center"
+            >
+              ›
+            </button>
+
+            {/* Dots */}
+            <div className="flex justify-center mt-4 space-x-2">
+              {galleryItems.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentIndex(i)}
+                  className={`w-3 h-3 rounded-full transition-all ${
+                    i === currentIndex ? "bg-blue-600 w-5" : "bg-gray-300"
+                  }`}
+                />
               ))}
             </div>
+          </div>
+
+          {/* Desktop grid view */}
+          <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {galleryItems.map((item, index) => (
+              <div
+                key={index}
+                className="rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
+                  <img
+                    src={driveImageUrl(item.imageSource)}
+                    alt={`Gallery ${index + 1}`}
+                    referrerPolicy="no-referrer"
+                    className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                  />
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

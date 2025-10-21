@@ -153,7 +153,6 @@ export default function HomePage() {
           ))}
         </div>
 
-        {/* Optional CTA Button */}
         <div className="mt-16">
           <a
             href="/layanan"
@@ -164,7 +163,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* <div className="flex justify-center py-5 sm:px-8 md:px-72 md:py-32 bg-white">
+      <div className="flex justify-center py-5 sm:px-8 md:px-72 md:py-32 bg-white">
         <div className="relative w-full pb-[56.25%] h-0 overflow-hidden shadow-lg">
           <iframe
             className="absolute top-0 left-0 w-full h-full"
@@ -173,7 +172,7 @@ export default function HomePage() {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           ></iframe>
         </div>
-      </div> */}
+      </div>
     </section>
   );
 }
