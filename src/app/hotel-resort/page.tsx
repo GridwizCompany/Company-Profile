@@ -1,4 +1,5 @@
 import OverviewSection from "@/components/OverviewHome";
+import Partner from "@/components/ui/media-teks";
 import Image from "next/image";
 import { driveImageUrl } from "utils/driveutils";
 
@@ -13,6 +14,7 @@ export default function HotelResort() {
     imagePosition: "left" | "right";
     rating?: string; // misal "4.5/5"
     location?: string; // teks untuk button lokasi
+    maps?: string;
   }[] = [
     {
       title: "Wisata Pura Batu Bolong",
@@ -21,7 +23,8 @@ export default function HotelResort() {
       image: "/hotel/batu-bolong.jpg",
       imagePosition: "left",
       rating: "4.5/5",
-      location: "Lokasi Pura Batu Bolong",
+      location: "maps.app.goo.gl/KeKyVgs4fmina7bt5",
+      maps: "Lokasi Pura Batu Bolong",
     },
     {
       title: "Alberto Cafe",
@@ -30,7 +33,8 @@ export default function HotelResort() {
       image: "/hotel/Alberto.jpg",
       imagePosition: "right",
       rating: "4.3/5",
-      location: "Lokasi Alberto Cafe",
+      location: "maps.app.goo.gl/FVpaNhBDBsCb4rcu6",
+      maps: "Lokasi Alberto Cafe",
     },
     {
       title: "MENTEZ",
@@ -39,7 +43,8 @@ export default function HotelResort() {
       image: "/hotel/mentez.jpg",
       imagePosition: "left",
       rating: "4.7/5",
-      location: "Lokasi MENTEZ",
+      location: "maps.app.goo.gl/BD8XyZGoxcfhSpXG7",
+      maps: "Lokasi Pura MENTEZ",
     },
     {
       title: "Pantai Kerandangan",
@@ -48,7 +53,8 @@ export default function HotelResort() {
       image: "/hotel/Pantai-Kerandangan.jpg",
       imagePosition: "right",
       rating: "4.8/5",
-      location: "Lokasi Pantai Kerandangan",
+      location: "maps.app.goo.gl/uD8ZKwdo5chuzBPw5",
+      maps: "Lokasi Pantai Kerandangan",
     },
     {
       title: "Beach Club Lombok by Bale Solah",
@@ -57,7 +63,8 @@ export default function HotelResort() {
       image: "/hotel/beach-club-lombok.jpg",
       imagePosition: "left",
       rating: "4.4/5",
-      location: "Lokasi Beach Club Lombok by Bale Solah",
+      location: "maps.app.goo.gl/DPznhDPa7KXxMAxt7",
+      maps: "Lokasi Beach Club Lombok by Bale Solah",
     },
     {
       title: "Pantai Tanjung Bias",
@@ -66,7 +73,8 @@ export default function HotelResort() {
       image: "/hotel/pantai-tanjung-bias.jpg",
       imagePosition: "right",
       rating: "4.5/5",
-      location: "Lokasi Pantai Tanjung Bias",
+      location: "maps.app.goo.gl/vUQfHwMUphj6wywt9",
+      maps: "Lokasi Pantai Tanjung Bias",
     },
     {
       title: "Pantai Kecinan",
@@ -75,7 +83,8 @@ export default function HotelResort() {
       image: "/hotel/pantai-kecinan.jpg",
       imagePosition: "left",
       rating: "4.5/5",
-      location: "Lokasi Pantai Kecinan",
+      location: "maps.app.goo.gl/pAxoWsfbmDkpxN9W9",
+      maps: "Lokasi Pantai Kecinan",
     },
   ];
 
@@ -103,7 +112,9 @@ export default function HotelResort() {
       </div>
 
       <div className="bg-gray-200">
-        <OverviewSection sections={overviewData} />
+        {overviewData.map((promo, index) => (
+          <Partner key={index} {...promo} />
+        ))}
       </div>
     </section>
   );

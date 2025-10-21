@@ -13,8 +13,9 @@ interface PartnerProps {
   reverse?: boolean;
   features?: Feature[];
   darkMode?: boolean;
-  rating?: string; // opsional, misal "4.5/5"
-  location?: string; // opsional, misal "Lokasi Pura Batu Bolong"
+  rating?: string;
+  location?: string;
+  maps?: String;
 }
 
 export default function Partner({
@@ -26,10 +27,11 @@ export default function Partner({
   darkMode = false,
   rating,
   location,
+  maps,
 }: PartnerProps) {
   const textColor = darkMode ? "text-gray-300" : "text-gray-700";
   const subTextColor = darkMode ? "text-gray-300" : "text-gray-700";
-  const titleColor = darkMode ? "text-white" : "text-sky-500";
+  const titleColor = darkMode ? "text-white" : "text-black";
   const iconColor = darkMode ? "text-sky-400" : "text-sky-500";
   const bgColor = darkMode ? "bg-black" : "bg-gray-200";
 
@@ -79,7 +81,6 @@ export default function Partner({
             {description}
           </p>
 
-          {/* Rating dan Location */}
           <div className="flex flex-wrap gap-4 mb-6">
             {rating && (
               <div className="flex items-center gap-2 text-yellow-400 font-semibold">
@@ -87,22 +88,22 @@ export default function Partner({
                 <span className={`${textColor}`}>{rating}</span>
               </div>
             )}
+          </div>
+
+          <div>
             {location && (
               <a
-                href={`https://www.google.com/maps/search/${encodeURIComponent(
-                  location
-                )}`}
+                href={`https://${location}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-md transition"
+                className="flex w-fit items-center gap-2 px-4 py-2 bg-sky-700 hover:bg-sky-600 text-white rounded-md transition"
               >
                 <FaMapMarkerAlt />
-                <span>{location}</span>
+                <span>{maps}</span>
               </a>
             )}
           </div>
 
-          {/* Fitur tambahan jika ada */}
           {features.length > 0 && (
             <div
               className={`grid grid-cols-2 gap-6 ${textColor} ${

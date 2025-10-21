@@ -27,7 +27,7 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="/panduan" className="hover:text-white transition">
+              <a href="/layanan" className="hover:text-white transition">
                 Layanan
               </a>
             </li>

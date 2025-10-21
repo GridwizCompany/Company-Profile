@@ -2,7 +2,9 @@
 
 Gridwiz Company Profile is a modern marketing site for Gridwiz Energy & Mobility—an Indonesian clean-tech company delivering sustainable electric mobility and smart energy solutions. Built with Next.js App Router and Tailwind CSS, the site blends bold storytelling with polished UI components to showcase products, events, partnerships, and services.
 
+<<<<<<< HEAD
 ![Gridwiz Hero Preview](public\sepeda-gridwiz.jpg)
+=======
 
 ---
 
