@@ -2,7 +2,7 @@
 
 Gridwiz Company Profile is a modern marketing site for Gridwiz Energy & Mobility—an Indonesian clean-tech company delivering sustainable electric mobility and smart energy solutions. Built with Next.js App Router and Tailwind CSS, the site blends bold storytelling with polished UI components to showcase products, events, partnerships, and services.
 
-![Gridwiz Hero Preview](public/background-gridwiz.jpg)
+![Gridwiz Hero Preview](public/rektor-gridwiz.JPG)
 
 ---
 
@@ -18,14 +18,14 @@ Gridwiz Company Profile is a modern marketing site for Gridwiz Energy & Mobility
 
 ## 🧱 Tech Stack
 
-| Layer      | Tools |
-| ---------- | ----- |
-| Framework  | [Next.js 15 (App Router)](https://nextjs.org/) |
-| Language   | TypeScript 5 |
+| Layer      | Tools                                                          |
+| ---------- | -------------------------------------------------------------- |
+| Framework  | [Next.js 15 (App Router)](https://nextjs.org/)                 |
+| Language   | TypeScript 5                                                   |
 | Styling    | Tailwind CSS 4, tailwind-merge, clsx, class-variance-authority |
-| UI Toolkit | shadcn/ui, Lucide React, React Icons |
-| Media      | Swiper 12, react-slick, slick-carousel |
-| Quality    | ESLint 9 with Next.js config |
+| UI Toolkit | shadcn/ui, Lucide React, React Icons                           |
+| Media      | Swiper 12, react-slick, slick-carousel                         |
+| Quality    | ESLint 9 with Next.js config                                   |
 
 ---
 
