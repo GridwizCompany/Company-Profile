@@ -24,7 +24,7 @@ const navItems = [
     ],
   },
   //   { name: "Berita", path: "/berita" },
-  { name: "Layanan", path: "/layanan" },
+  { name: "Layanan", path: "/panduan" },
   { name: "Tentang Kami", path: "/tentang" },
 ];
 

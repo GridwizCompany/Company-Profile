@@ -1,4 +1,5 @@
 "use client";
+import { FaStar, FaMapMarkerAlt } from "react-icons/fa";
 
 type Feature = {
   icon: React.ReactNode;
@@ -12,6 +13,8 @@ interface PartnerProps {
   reverse?: boolean;
   features?: Feature[];
   darkMode?: boolean;
+  rating?: string; // opsional, misal "4.5/5"
+  location?: string; // opsional, misal "Lokasi Pura Batu Bolong"
 }
 
 export default function Partner({
@@ -21,12 +24,16 @@ export default function Partner({
   reverse = false,
   features = [],
   darkMode = false,
+  rating,
+  location,
 }: PartnerProps) {
   const textColor = darkMode ? "text-gray-300" : "text-gray-700";
   const subTextColor = darkMode ? "text-gray-300" : "text-gray-700";
   const titleColor = darkMode ? "text-white" : "text-sky-500";
   const iconColor = darkMode ? "text-sky-400" : "text-sky-500";
   const bgColor = darkMode ? "bg-black" : "bg-gray-200";
+
+  const isExternal = image.startsWith("http");
 
   return (
     <div
@@ -39,11 +46,19 @@ export default function Partner({
       >
         {/* Gambar */}
         <div className="flex-1 flex justify-center">
-          <img
-            src={image}
-            alt={title}
-            className="w-full max-w-md object-contain rounded-lg"
-          />
+          {isExternal ? (
+            <img
+              src={image}
+              alt={title}
+              className="w-full max-w-md object-contain rounded-lg"
+            />
+          ) : (
+            <img
+              src={image}
+              alt={title}
+              className="w-full max-w-md object-contain rounded-lg"
+            />
+          )}
         </div>
 
         {/* Konten */}
@@ -64,22 +79,47 @@ export default function Partner({
             {description}
           </p>
 
-          {/* Fitur */}
-          <div
-            className={`grid grid-cols-2 gap-6 ${textColor} ${
-              reverse ? "md:justify-items-start" : ""
-            }`}
-          >
-            {features.map((item, index) => (
-              <div
-                key={index}
-                className={` flex items-center gap-3 hover:text-sky-500 transition-colors duration-200`}
-              >
-                <span className={`${iconColor}`}>{item.icon}</span>
-                <span>{item.text}</span>
+          {/* Rating dan Location */}
+          <div className="flex flex-wrap gap-4 mb-6">
+            {rating && (
+              <div className="flex items-center gap-2 text-yellow-400 font-semibold">
+                <FaStar />
+                <span className={`${textColor}`}>{rating}</span>
               </div>
-            ))}
+            )}
+            {location && (
+              <a
+                href={`https://www.google.com/maps/search/${encodeURIComponent(
+                  location
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-md transition"
+              >
+                <FaMapMarkerAlt />
+                <span>{location}</span>
+              </a>
+            )}
           </div>
+
+          {/* Fitur tambahan jika ada */}
+          {features.length > 0 && (
+            <div
+              className={`grid grid-cols-2 gap-6 ${textColor} ${
+                reverse ? "md:justify-items-start" : ""
+              }`}
+            >
+              {features.map((item, index) => (
+                <div
+                  key={index}
+                  className={`flex items-center gap-3 hover:text-sky-500 transition-colors duration-200`}
+                >
+                  <span className={`${iconColor}`}>{item.icon}</span>
+                  <span>{item.text}</span>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

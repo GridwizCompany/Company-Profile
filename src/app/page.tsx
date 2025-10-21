@@ -155,7 +155,7 @@ export default function HomePage() {
 
         <div className="mt-16">
           <a
-            href="/layanan"
+            href="/panduan"
             className="px-8 py-4 bg-blue-500 text-white font-semibold rounded-md shadow-lg hover:bg-blue-600 transition-colors duration-300"
           >
             Pelajari Lebih Lanjut

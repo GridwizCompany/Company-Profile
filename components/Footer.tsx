@@ -1,10 +1,10 @@
 // components/Footer.tsx
-import { FaInstagram, FaYoutube, FaFacebook, FaTwitter, FaTiktok } from "react-icons/fa";
+import { FaInstagram, FaYoutube, FaFacebook, FaTiktok } from "react-icons/fa";
 
 export default function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-300 py-20">
-      <div className="max-w-6xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+      <div className="max-w-6xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
         {/* Brand / Logo Section */}
         <div>
           <h2 className="text-2xl font-bold text-white mb-3">
@@ -27,16 +27,30 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="/layanan" className="hover:text-white transition">
+              <a href="/panduan" className="hover:text-white transition">
                 Layanan
               </a>
             </li>
             <li>
-              <a href="mailto:gridwizenergyandmobility@gmail.com" className="hover:text-white transition">
+              <a
+                href="mailto:gridwizenergyandmobility@gmail.com"
+                className="hover:text-white transition"
+              >
                 Kontak
               </a>
             </li>
-
+          </ul>
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold text-white mb-3">
+            Hotel & Resort Senggigi
+          </h3>
+          <ul className="space-y-2">
+            <li>
+              <a href="/hotel-resort" className="hover:text-white transition">
+                Top Destination
+              </a>
+            </li>
           </ul>
         </div>
 
@@ -64,7 +78,7 @@ export default function Footer() {
             >
               <FaFacebook />
             </a>
-             <a
+            <a
               href="https://www.tiktok.com/@relfow.gridwizenm"
               target="_blank"
               className="hover:text-red-500 transition"
