@@ -83,6 +83,8 @@ export default function AboutUs() {
             <img
               src={driveImageUrl(structure)}
               alt="Gambar dari Google Drive"
+              referrerPolicy="no-referrer"
+              className="w-full h-auto"
               style={{ objectFit: "cover" }}
             />
           </div>

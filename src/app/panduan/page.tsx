@@ -86,20 +86,20 @@ export default function Layanan() {
   const statistik = [
     {
       icon: <FaUser className="text-3xl md:text-4xl text-blue-500" />,
-      title: "9.900+ Pengguna",
+      title: "11.100+ Pengguna",
       description:
-        "Total perjalanan tercatat 13.660 kali, dengan pengguna aktif 9.900+ orang.",
+        "Total perjalanan tercatat 18.660 kali, dengan pengguna aktif 11.100+ orang.",
     },
     {
       icon: <FaClock className="text-3xl md:text-4xl text-blue-500" />,
-      title: "20,71 Menit",
+      title: "24,71 Menit",
       description: "Rata-rata durasi penggunaan sepeda listrik per perjalanan.",
     },
     {
       icon: <FaTicketAlt className="text-3xl md:text-4xl text-blue-500" />,
-      title: "12.204 Kupon",
+      title: "401.923 Kupon",
       description:
-        "Sebanyak 12.204 kupon digunakan oleh pengguna selama periode ini.",
+        "Sebanyak 401.923 kupon digunakan oleh pengguna selama periode ini.",
     },
   ];
 
@@ -126,10 +126,10 @@ export default function Layanan() {
               Ketercapaian Re:Flow
             </h2>
             <h3 className="text-xl md:text-2xl text-gray-300 mb-2">
-              Januari - Juni 2025
+              Februari - Oktober 2025
             </h3>
             <p className="text-gray-300 text-lg md:text-xl leading-relaxed">
-              Dalam 6 bulan terakhir, sepeda listrik kami terus menunjukkan
+              Dalam 9 bulan terakhir, sepeda listrik kami terus menunjukkan
               perkembangan positif. Masyarakat semakin antusias memanfaatkan
               moda transportasi ramah lingkungan.
             </p>
@@ -143,7 +143,7 @@ export default function Layanan() {
             </h3>
             <p className="text-gray-300 text-lg md:text-xl leading-relaxed">
               Aktivitas pengguna mengurangi emisi karbon di NTB. Total jarak
-              tempuh 120.000 km setara pengurangan 18.000 kg CO2, mendukung
+              tempuh 70.000 km setara pengurangan 62.000 kg CO2, mendukung
               target zero emission NTB 2050.
             </p>
           </div>
