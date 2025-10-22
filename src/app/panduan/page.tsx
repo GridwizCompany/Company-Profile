@@ -106,7 +106,7 @@ export default function Layanan() {
   return (
     <section className="bg-black text-white py-32 md:pt-48">
       <div className="max-w-7xl mx-auto px-4 md:px-8 flex flex-col items-center">
-        <h1 className="text-3xl md:text-5xl font-bold text-center">
+        <h1 className="text-3xl md:text-5xl font-extrabold text-center">
           Re:Flow oleh Gridwiz E&M
         </h1>
         <p className="mt-4 text-center max-w-xl text-gray-300 text-lg md:text-xl">
@@ -119,8 +119,92 @@ export default function Layanan() {
           <img src="ceo.JPG" alt="CEO" className="w-full h-full object-cover" />
         </div>
 
+        <div className="max-w-screen-xl mx-auto py-16 flex flex-col md:flex-row items-center justify-between gap-10">
+          {/* Kiri: Judul dan deskripsi */}
+          <div className="flex-1 text-center md:text-left">
+            <h1 className="text-2xl md:text-4xl font-bold  mb-6">
+              Bersepeda Lebih Mudah, Hidup Lebih Hijau Bersama{" "}
+              <span className="text-sky-600">Re:Flow</span>
+            </h1>
+            <p className=" text-lg leading-relaxed mb-8 text-justify">
+              Re:flow adalah layanan penyewaan sepeda listrik terintegrasi
+              aplikasi digital, memungkinkan pengguna memesan, menyewa, dan
+              membayar secara mudah. Dirancang untuk menghadirkan mobilitas yang
+              praktis, efisien, dan ramah lingkungan.
+            </p>
+
+            {/* Tombol unduh */}
+            <div className="flex items-center justify-center md:justify-start flex-wrap">
+              <a
+                href="https://apps.apple.com/gb/app/re-flow/id6741798337"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="/appstore-badge.svg"
+                  alt="App Store"
+                  className="h-11 sm:h-14 w-auto hover:scale-105 transition-transform"
+                />
+              </a>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.gridwiz.ride&hl=en_IN"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="/playstore-badge.svg"
+                  alt="Play Store"
+                  className="h-17 sm:h-21 w-auto hover:scale-105 transition-transform"
+                />
+              </a>
+            </div>
+          </div>
+
+          {/* Kanan: Konten tambahan */}
+          <div className="flex-1 grid grid-rows-3 gap-6 text-center md:text-left">
+            <div className="bg-white/10 rounded-2xl p-6 shadow-md hover:shadow-lg hover:bg-white/15 transition">
+              <h3 className="text-lg md:text-xl font-bold text-sky-400 mb-2">
+                Hemat
+              </h3>
+              <p className="text-gray-200 text-base md:text-lg leading-relaxed text-justify">
+                Nikmati transportasi dengan biaya lebih rendah dibanding
+                kendaraan konvensional.
+              </p>
+            </div>
+
+            <div className="bg-white/10 rounded-2xl p-6 shadow-md hover:shadow-lg hover:bg-white/15 transition">
+              <h3 className="text-lg md:text-xl font-bold text-green-400 mb-2">
+                Ramah Lingkungan
+              </h3>
+              <p className="text-gray-200 text-base md:text-lg leading-relaxed text-justify">
+                Menggunakan energi listrik tanpa emisi karbon, mendukung udara
+                yang lebih bersih dan sehat.
+              </p>
+            </div>
+
+            <div className="bg-white/10 rounded-2xl p-6 shadow-md hover:shadow-lg hover:bg-white/15 transition">
+              <h3 className="text-lg md:text-xl font-bold text-yellow-400 mb-2">
+                Cepat & Praktis
+              </h3>
+              <p className="text-gray-200 text-base md:text-lg leading-relaxed text-justify">
+                Sewa sepeda cukup lewat aplikasi Re:Flow, tanpa antre, tanpa
+                ribet, langsung siap digunakan.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Image Kedua */}
+        <div className="w-full h-60 md:h-[500px] overflow-hidden rounded-xl">
+          <img
+            src="riding-bike.JPG"
+            alt="Riding Bike"
+            className="w-full h-full object-cover"
+          />
+        </div>
+
         {/* Ketercapaian & Kontribusi */}
-        <div className="flex flex-col lg:flex-row gap-8 mt-12 md:mt-24 w-full">
+        <div className="flex flex-col lg:flex-row gap-8 w-full mt-12 md:mt-24">
           <div className="flex-1">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
               Ketercapaian Re:Flow
@@ -128,7 +212,7 @@ export default function Layanan() {
             <h3 className="text-xl md:text-2xl text-gray-300 mb-2">
               Februari - Oktober 2025
             </h3>
-            <p className="text-gray-300 text-lg md:text-xl leading-relaxed">
+            <p className="text-gray-300 text-lg md:text-xl leading-relaxed text-justify">
               Dalam 9 bulan terakhir, sepeda listrik kami terus menunjukkan
               perkembangan positif. Masyarakat semakin antusias memanfaatkan
               moda transportasi ramah lingkungan.
@@ -141,21 +225,12 @@ export default function Layanan() {
             <h3 className="text-xl md:text-2xl text-gray-300 mb-2">
               NTB Zero Emission 2050
             </h3>
-            <p className="text-gray-300 text-lg md:text-xl leading-relaxed">
+            <p className="text-gray-300 text-lg md:text-xl leading-relaxed text-justify">
               Aktivitas pengguna mengurangi emisi karbon di NTB. Total jarak
               tempuh 70.000 km setara pengurangan 62.000 kg CO2, mendukung
               target zero emission NTB 2050.
             </p>
           </div>
-        </div>
-
-        {/* Image Kedua */}
-        <div className="w-full h-60 md:h-[500px] mt-12 md:mt-24 overflow-hidden rounded-xl">
-          <img
-            src="riding-bike.JPG"
-            alt="Riding Bike"
-            className="w-full h-full object-cover"
-          />
         </div>
 
         {/* Statistik */}

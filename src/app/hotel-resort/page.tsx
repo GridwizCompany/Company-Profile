@@ -1,9 +1,26 @@
-import OverviewSection from "@/components/OverviewHome";
+"use client";
 import Partner from "@/components/ui/media-teks";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { driveImageUrl } from "utils/driveutils";
 
 export default function HotelResort() {
+  const [showPopup, setShowPopup] = useState(false);
+  const [showCloseButton, setShowCloseButton] = useState(false);
+  const [allowPlay, setAllowPlay] = useState(false);
+
+  const videoId = "RrFkEv5ysIM";
+
+  useEffect(() => {
+    setShowPopup(true);
+
+    const timer = setTimeout(() => {
+      setShowCloseButton(true);
+    }, 10000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const hotelImage =
     "https://drive.google.com/file/d/1-426yT5xHU4GGKjt3yV91bOHzO2p9slb/view?usp=sharing";
 
@@ -12,8 +29,8 @@ export default function HotelResort() {
     description: string;
     image: string;
     imagePosition: "left" | "right";
-    rating?: string; // misal "4.5/5"
-    location?: string; // teks untuk button lokasi
+    rating?: string;
+    location?: string;
     maps?: string;
   }[] = [
     {
@@ -90,7 +107,51 @@ export default function HotelResort() {
 
   return (
     <section>
-      <div className="relative w-screen min-h-screen overflow-hidden">
+      {/* Popup Video */}
+      {showPopup && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+          <div className="relative w-[90%] max-w-sm bg-black rounded-2xl overflow-hidden shadow-2xl aspect-[9/16]">
+            {/* Tombol Close muncul setelah 10 detik */}
+            {showCloseButton && (
+              <button
+                onClick={() => setShowPopup(false)}
+                className="absolute top-2 right-2 bg-white/20 hover:bg-white/40 text-white rounded-full p-2 transition"
+              >
+                ✕
+              </button>
+            )}
+
+            {/* Tombol tap untuk memulai dengan suara */}
+            {!allowPlay && (
+              <button
+                onClick={() => setAllowPlay(true)}
+                className="absolute inset-0 flex items-center justify-center bg-black/50 text-white text-lg font-semibold"
+              >
+                🔊 Tap to Play with Sound
+              </button>
+            )}
+
+            {/* Video YouTube */}
+            {allowPlay ? (
+              <iframe
+                src={`https://www.youtube.com/embed/${videoId}?autoplay=1&controls=0&disablekb=1&modestbranding=1&rel=0`}
+                title="YouTube Shorts player"
+                allow="autoplay; encrypted-media"
+                className="w-full h-full rounded-2xl"
+              ></iframe>
+            ) : (
+              <iframe
+                src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&disablekb=1&modestbranding=1&rel=0`}
+                title="YouTube Shorts preview"
+                allow="autoplay; encrypted-media"
+                className="w-full h-full rounded-2xl"
+              ></iframe>
+            )}
+          </div>
+        </div>
+      )}
+
+      <div className="relative max-w-screen min-h-screen overflow-hidden">
         {/* Background fullscreen */}
         <Image
           src={driveImageUrl(hotelImage)}
@@ -104,10 +165,16 @@ export default function HotelResort() {
         <div className="absolute inset-0 bg-black/60"></div>
 
         {/* Hero Text */}
-        <div className="absolute inset-0 flex items-center justify-center md:items-end md:justify-start md:pb-24 md:pl-24 px-4">
-          <h1 className="text-white text-xl sm:text-2xl md:text-5xl font-bold text-center md:text-left max-w-3xl drop-shadow-lg">
-            Kunjungi Wisata Terbaik Di Sekitar Senggigi Bersama Re:Flow
-          </h1>
+        <div className="absolute inset-0 flex items-center justify-center md:items-end md:justify-start px-4 md:pb-24 md:pl-24">
+          <div className="text-center md:text-left max-w-3xl text-white drop-shadow-lg space-y-4">
+            <h1 className="text-xl sm:text-2xl md:text-5xl font-bold">
+              Kunjungi Wisata Terbaik Di Sekitar Senggigi Bersama Re:Flow
+            </h1>
+            <p className="text-base sm:text-lg md:text-xl leading-relaxed">
+              Kini Re:Flow hadir di area perhotelan untuk meningkatkan keseruan
+              berlibur dan memudahkan eksplorasi area sekitar hotel.
+            </p>
+          </div>
         </div>
       </div>
 
