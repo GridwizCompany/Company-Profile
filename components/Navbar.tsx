@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
+import Image from "next/image";
+import { driveImageUrl } from "utils/driveutils";
 
 const navItems = [
   { name: "Beranda", path: "/" },
@@ -23,8 +25,7 @@ const navItems = [
       { name: "Cafe & restaurant", path: "/partner/cafe-and-restaurant" },
     ],
   },
-  //   { name: "Berita", path: "/berita" },
-  { name: "Layanan", path: "/panduan" },
+  { name: "Berita", path: "/berita" },
   { name: "Tentang Kami", path: "/tentang" },
 ];
 
@@ -47,17 +48,20 @@ export default function Navbar() {
           : "bg-gradient-to-b from-black/50 to-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto py-3 px-6 flex items-center justify-between">
-        {/* Logo */}
+      <div className="max-w-7xl mx-auto py-4 md:py-1 px-6 flex justify-between">
         <Link href="/" className="flex items-center space-x-3 group">
-          <img
-            src="/gridwiz-logo.png"
+          <Image
+            src={driveImageUrl(
+              "https://drive.google.com/file/d/1zrDrnyPM12FLkibH_fN0CpPMgTQfetQU/view?usp=sharing"
+            )}
             alt="Logo Gridwiz"
-            className="w-24 h-auto transition-transform duration-300 group-hover:scale-105"
+            width={80}
+            height={80}
+            className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-contain transition-transform duration-300 group-hover:scale-105"
+            priority
           />
         </Link>
 
-        {/* Tombol hamburger (Mobile) */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className={`md:hidden focus:outline-none transition-colors duration-300 ${
@@ -90,7 +94,6 @@ export default function Navbar() {
           </svg>
         </button>
 
-        {/* Menu utama */}
         <ul
           className={`absolute md:static left-0 w-full md:w-auto bg-black/90 md:bg-transparent 
             flex flex-col md:flex-row items-start md:items-center 
@@ -107,7 +110,6 @@ export default function Navbar() {
 
             return (
               <li key={item.name} className="relative w-full md:w-auto group">
-                {/* Parent menu tidak bisa diklik jika punya submenu */}
                 {hasSubmenu ? (
                   <div
                     className={`flex items-center gap-1 px-2 py-2 cursor-default transition-all duration-300 ${
@@ -138,7 +140,6 @@ export default function Navbar() {
                   </Link>
                 )}
 
-                {/* Submenu */}
                 {hasSubmenu && item.submenu && (
                   <ul
                     className={`md:absolute md:left-0 md:top-full md:bg-white md:shadow-lg md:rounded-lg 

@@ -1,4 +1,6 @@
-import OverviewSection from "@/components/OverviewHome";
+import OverviewSection from "@/components/ui/OverviewHome";
+import { driveImageUrl } from "utils/driveutils";
+import Image from "next/image";
 
 export default function HomePage() {
   const overviewData: {
@@ -11,7 +13,8 @@ export default function HomePage() {
       title: "Hemat Waktu dan Ramah Lingkungan",
       description:
         "Sepeda listrik Gridwiz (Re:Flow) memungkinkan Anda bergerak bebas dan cepat, melewati kepadatan lalu lintas dengan mudah. Fitur bantuan listrik yang cerdas memastikan Anda tiba di tujuan tepat waktu tanpa kelelahan, sambil tetap hemat energi. Dengan Gridwiz, perjalanan sehari-hari menjadi lebih efisien, nyaman, dan ramah lingkungan.",
-      image: "/launching-gridwiz-2.JPG",
+      image:
+        "https://drive.google.com/file/d/1qtaNSU8uTP0GCuz7sEdNUrxwTrvh8G9m/view?usp=sharing",
       imagePosition: "left",
     },
     {
@@ -19,14 +22,16 @@ export default function HomePage() {
         "Setiap perjalanan Anda berkontribusi pada lingkungan yang lebih sehat",
       description:
         "Setiap perjalanan menggunakan E-Bike Gridwiz adalah langkah nyata dalam mendukung keberlanjutan. Dengan solusi zero-emission, Anda tidak hanya bergerak dengan nyaman, tapi juga membantu mengurangi polusi udara dan jejak karbon. Gridwiz berkomitmen menciptakan udara yang lebih bersih untuk generasi sekarang dan masa depan.",
-      image: "/ride-gridwiz.JPG",
+      image:
+        "https://drive.google.com/file/d/1XaijjMqpBeqD8-NdY3LkM60oyvkC_ITD/view?usp=sharing",
       imagePosition: "right",
     },
     {
       title: "Sewa Praktis dan Aksesibilitas Tinggi",
       description:
         "Nikmati kebebasan untuk menyewa sepeda kapan pun Anda butuhkan melalui aplikasi kami yang intuitif. Proses scan barcode cepat, ditambah ketersediaan layanan di berbagai titik kolaborasi seperti kampus, kafe, dan area publik, menjadikan Gridwiz pilihan mobilitas paling praktis dan mudah diakses di kota Anda.",
-      image: "/launching-gridwiz.JPG",
+      image:
+        "https://drive.google.com/file/d/1W_XVVN9kmY9SdMIitlZNIifCAa0ly-4K/view?usp=sharing",
       imagePosition: "left",
     },
   ];
@@ -39,12 +44,17 @@ export default function HomePage() {
              items-center md:items-start 
              text-center md:text-left 
              px-6 sm:px-12 md:px-24 sm:pb-28 md:pb-32 md:min-h-screen"
-        style={{
-          backgroundImage: "url('/bike-gridwiz.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
       >
+        <Image
+          src={driveImageUrl(
+            "https://drive.google.com/file/d/13XrNgIfH4lg68_p4I9k8AacqDqpn7bIs/view?usp=sharing"
+          )}
+          alt="Contoh Gambar"
+          fill
+          className="object-cover"
+          priority
+        />
+
         <div className="relative z-10 max-w-3xl">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-blue-200 mb-6 leading-tight">
             Gridwiz Energy & Mobility
@@ -92,10 +102,17 @@ export default function HomePage() {
   px-6 sm:px-12 md:px-24 
     
   bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url("/sepeda-gridwiz.png")`,
-        }}
       >
+        <Image
+          src={driveImageUrl(
+            "https://drive.google.com/file/d/1JmW1s8NURtG8xbGo8Jiib1eaHo3JYqTR/view?usp=sharing"
+          )}
+          alt="Contoh Gambar"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 max-w-2xl">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Jelajahi Mobilitas Hijau Bersama Gridwiz
@@ -115,17 +132,17 @@ export default function HomePage() {
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-16 max-w-6xl mx-auto px-6">
           {[
             {
-              icon: "earth.png",
+              icon: "https://drive.google.com/file/d/1M3ujtN2wAYVMfEpaYWkWmaw42OsojBWR/view?usp=sharing",
               title: "Ramah Lingkungan",
               desc: "Berkontribusi dalam pengurangan emisi karbon dan mendukung transportasi berkelanjutan yang sejalan dengan visi hijau Anda.",
             },
             {
-              icon: "network.png",
+              icon: "https://drive.google.com/file/d/1ZRRlpOiaeAzRtN1j8mpzkw7Y_51jsIRv/view?usp=sharing",
               title: "Layanan Luas & Kolaboratif",
               desc: "Jaringan Gridwiz terus berkembang melalui kemitraan strategis dengan universitas, kafe, hotel, dan area publik utama.",
             },
             {
-              icon: "iot.png",
+              icon: "https://drive.google.com/file/d/1f74vv7kgkCtv9jaQfdSYcvHHHFVYTmp8/view?usp=sharing",
               title: "Akses Mudah via Aplikasi",
               desc: "Cukup unduh aplikasi, pindai barcode sepeda, dan mulai perjalanan dengan sistem kunci otomatis yang pintar.",
             },
@@ -136,10 +153,13 @@ export default function HomePage() {
             >
               <div className="flex justify-center mb-6">
                 <div className="p-5 rounded-full bg-white/10 group-hover:bg-white/30 transition-all duration-500">
-                  <img
-                    src={item.icon}
+                  <Image
+                    src={driveImageUrl(item.icon)}
                     alt={item.title}
-                    className="w-24 h-24 object-contain transition-transform duration-500 group-hover:scale-110"
+                    width={96}
+                    height={96}
+                    className="object-contain transition-transform duration-500 group-hover:scale-110"
+                    priority
                   />
                 </div>
               </div>

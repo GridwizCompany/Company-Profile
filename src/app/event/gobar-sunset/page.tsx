@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { driveImageUrl } from "../../../utils/driveutils";
+import Image from "next/image";
 
 type GalleryItem = {
   imageSource: string;
@@ -44,11 +45,15 @@ export default function GobarSunset() {
   };
   return (
     <section>
-      {/* Hero Section */}
-      <div
-        className="relative min-h-screen bg-no-repeat bg-cover bg-center"
-        style={{ backgroundImage: 'url("/gobar-sunset.jpg")' }}
-      >
+      <div className="relative min-h-screen bg-no-repeat bg-cover bg-center">
+        <Image
+          src={driveImageUrl(
+            "https://drive.google.com/file/d/1vcCmTJ14LuzXp6uVbfEZ_gQ-Zv86LMZN/view?usp=sharing"
+          )}
+          alt={"Gobar Sunset"}
+          fill
+          className="mx-auto w-32 sm:w-48 md:w-56 h-auto"
+        />
         <div className="absolute inset-0 bg-black/60"></div>
 
         <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-white px-6 sm:px-12 md:px-24 text-center">

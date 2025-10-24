@@ -1,5 +1,7 @@
 "use client";
 import { FaStar, FaMapMarkerAlt } from "react-icons/fa";
+import Image from "next/image";
+import { driveImageUrl } from "utils/driveutils";
 
 type Feature = {
   icon: React.ReactNode;
@@ -35,46 +37,35 @@ export default function Partner({
   const iconColor = darkMode ? "text-sky-400" : "text-sky-500";
   const bgColor = darkMode ? "bg-black" : "bg-gray-200";
 
-  const isExternal = image.startsWith("http");
-
   return (
     <div
-      className={`${bgColor} py-12 px-6 md:px-16 transition-colors duration-300`}
+      className={`${bgColor}  md:py-12 px-6 md:px-16 transition-colors duration-300`}
     >
       <div
         className={`max-w-6xl mx-auto flex flex-col md:flex-row ${
           reverse ? "md:flex-row-reverse" : ""
-        } items-center gap-12`}
+        } items-center gap-8 md:gap-12`}
       >
-        {/* Gambar */}
-        <div className="flex-1 flex justify-center">
-          {isExternal ? (
-            <img
-              src={image}
-              alt={title}
-              className="w-full max-w-md object-contain rounded-lg"
-            />
-          ) : (
-            <img
-              src={image}
-              alt={title}
-              className="w-full max-w-md object-contain rounded-lg"
-            />
-          )}
+        <div className="relative w-full max-w-md h-[350px] flex justify-center mt-16 md:mt-0 ">
+          <Image
+            src={driveImageUrl(image)}
+            alt={title}
+            fill
+            className="object-contain"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            priority
+          />
         </div>
 
-        {/* Konten */}
         <div
           className={`flex-1 ${
             reverse ? "md:text-left md:pl-12" : "md:text-left md:pr-12"
           }`}
         >
-          {/* Judul */}
           <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${titleColor}`}>
             {title}
           </h2>
 
-          {/* Deskripsi */}
           <p
             className={`text-base sm:text-lg md:text-xl leading-relaxed mb-6 ${subTextColor} text-justify`}
           >

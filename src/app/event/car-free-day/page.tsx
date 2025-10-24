@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { driveImageUrl } from "../../../utils/driveutils";
+import Image from "next/image";
 
 interface GalleryItem {
   imageSource: string;
@@ -49,31 +50,40 @@ export default function CarFreeDay() {
   };
   return (
     <section className="bg-white">
-      {/* Hero Section */}
-      <div
-        className="relative min-h-screen bg-cover bg-center flex items-center justify-center"
-        style={{ backgroundImage: 'url("/cfd.jpg")' }}
-      >
+      <div className="relative min-h-screen bg-cover bg-center flex items-center justify-center">
+        <Image
+          src={driveImageUrl(
+            "https://drive.google.com/file/d/1YtzSR1DpphkfsXcY3_vZTYuGFuKajK_D/view?usp=sharing"
+          )}
+          alt="Contoh Gambar"
+          fill
+          className="object-cover"
+          priority
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
-        <div className="relative z-10 text-center text-white px-6 max-w-3xl">
+        <div className="relative z-10 text-center text-white px-6 max-w-3xl mx-auto flex flex-col items-center justify-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4">
             <span className="text-sky-400">Car</span>{" "}
             <span className="text-blue-500">Free Day</span>
           </h1>
-          <p className="text-3xl md:text-5xl font-bold my-6 md:my-12">X</p>
-          <img
-            src="/logo/reflow-logo-white.png"
-            alt="reflow-logo"
-            className="mx-auto w-32 sm:w-48 md:w-56 h-auto"
+
+          <p className="text-3xl md:text-5xl font-extrabold my-6 md:my-12">X</p>
+
+          <Image
+            src={driveImageUrl(
+              "https://drive.google.com/file/d/1Ozc3JZk7sL8lLJAk2CDQ7ZN57Oor4EcJ/view?usp=sharing"
+            )}
+            alt="Logo Gridwiz"
+            width={200}
+            height={200}
+            className="object-contain drop-shadow-lg"
+            priority
           />
         </div>
       </div>
 
-      {/* Main Content */}
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 space-y-16 mt-12">
-        {/* Section 1: Deskripsi dan Tujuan */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-          {/* Kiri */}
           <div className="flex flex-col h-full space-y-8 text-gray-700">
             <h2 className="text-3xl sm:text-4xl font-bold">
               Car Free Day Bersama Re:Flow
@@ -87,7 +97,6 @@ export default function CarFreeDay() {
               hijau.
             </p>
 
-            {/* Div ini akan mengisi ruang tersisa */}
             <div className="flex-1 flex items-center rounded-3xl bg-gradient-to-br from-sky-400 via-blue-500 to-indigo-600 text-white p-8 md:p-9 md:mt-8">
               <div>
                 <p className="text-lg sm:text-xl italic leading-relaxed">
@@ -143,7 +152,6 @@ export default function CarFreeDay() {
           </div>
         </div>
 
-        {/* Section 2: Gallery */}
         <div className="rounded-3xl border border-gray-200  p-8 space-y-8 mb-16">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
             <div>
@@ -160,7 +168,6 @@ export default function CarFreeDay() {
             </div>
           </div>
 
-          {/* Galeri: Mobile → Carousel, Desktop → Grid */}
           <div className="block sm:hidden relative">
             <div className="overflow-hidden relative">
               <div
@@ -185,7 +192,6 @@ export default function CarFreeDay() {
               </div>
             </div>
 
-            {/* Tombol Navigasi */}
             <button
               onClick={prevSlide}
               className="absolute top-1/2 left-4 -translate-y-1/2 bg-black/40 text-white rounded-full w-8 h-8 flex items-center justify-center"
@@ -213,7 +219,6 @@ export default function CarFreeDay() {
             </div>
           </div>
 
-          {/* Desktop grid view */}
           <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {galleryItems.map((item, index) => (
               <div
