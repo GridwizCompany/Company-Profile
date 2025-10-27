@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Gridwiz logo">
+  <defs>
+    <linearGradient id="bg" x1="12%" x2="88%" y1="88%" y2="12%">
+      <stop offset="0" stop-color="#0a1f35" />
+      <stop offset="1" stop-color="#1ab0ff" />
+    </linearGradient>
+    <linearGradient id="bolt" x1="32%" x2="68%" y1="20%" y2="80%">
+      <stop offset="0" stop-color="#f0ff9d" />
+      <stop offset="1" stop-color="#f6c948" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#bg)" />
+  <path
+    d="M34 8L18 36h12l-4 20 20-32H34z"
+    fill="url(#bolt)"
+    stroke="#ffffff"
+    stroke-width="3"
+    stroke-linejoin="round"
+  />
+</svg>

@@ -153,14 +153,16 @@ export default function HomePage() {
             >
               <div className="flex justify-center mb-6">
                 <div className="p-5 rounded-full bg-white/10 group-hover:bg-white/30 transition-all duration-500">
-                  <Image
-                    src={driveImageUrl(item.icon)}
-                    alt={item.title}
-                    width={96}
-                    height={96}
-                    className="object-contain transition-transform duration-500 group-hover:scale-110"
-                    priority
-                  />
+                  <div className="relative h-24 w-24">
+                    <Image
+                      src={driveImageUrl(item.icon)}
+                      alt={item.title}
+                      fill
+                      className="object-contain transition-transform duration-500 group-hover:scale-110"
+                      sizes="96px"
+                      priority
+                    />
+                  </div>
                 </div>
               </div>
               <h4 className="text-xl sm:text-2xl font-bold mb-3 text-gray-900 group-hover:text-blue-500 transition-colors duration-500">
