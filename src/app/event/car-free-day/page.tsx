@@ -50,17 +50,20 @@ export default function CarFreeDay() {
   };
   return (
     <section className="bg-white">
-      <div className="relative min-h-screen bg-cover bg-center flex items-center justify-center">
-        <Image
-          src={driveImageUrl(
-            "https://drive.google.com/file/d/1YtzSR1DpphkfsXcY3_vZTYuGFuKajK_D/view?usp=sharing"
-          )}
-          alt="Contoh Gambar"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
+      <div className="relative min-h-screen bg-black flex flex-col items-center justify-center overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src={
+              "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Event/cfd.jpg"
+            }
+            alt="Background"
+            className="w-full h-full object-cover opacity-60"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
+        </div>
+
+        <div className="absolute inset-0 bg-black/10"></div>
+
         <div className="relative z-10 text-center text-white px-6 max-w-3xl mx-auto flex flex-col items-center justify-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4">
             <span className="text-sky-400">Car</span>{" "}
@@ -69,15 +72,12 @@ export default function CarFreeDay() {
 
           <p className="text-3xl md:text-5xl font-extrabold my-6 md:my-12">X</p>
 
-          <Image
-            src={driveImageUrl(
-              "https://drive.google.com/file/d/1Ozc3JZk7sL8lLJAk2CDQ7ZN57Oor4EcJ/view?usp=sharing"
-            )}
+          <img
+            src={
+              "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Logo/reflow-logo-white.png"
+            }
             alt="Logo Gridwiz"
-            width={200}
-            height={200}
-            className="object-contain drop-shadow-lg"
-            priority
+            className="object-contain drop-shadow-lg w-32 sm:w-40 md:w-48"
           />
         </div>
       </div>
@@ -111,7 +111,6 @@ export default function CarFreeDay() {
             </div>
           </div>
 
-          {/* Kanan */}
           <div className="space-y-8">
             <div className="rounded-3xl border border-gray-200 bg-white p-8">
               <h3 className="text-3xl font-bold text-gray-900">

@@ -37,7 +37,6 @@ export default function OverviewSection({
 
   return (
     <section className="py-24 px-6 sm:px-12 md:px-24">
-      {/* 💻 DESKTOP VIEW */}
       {!isMobile ? (
         <div className="space-y-24 max-w-7xl mx-auto">
           {sections.map((item, idx) => (
@@ -47,14 +46,13 @@ export default function OverviewSection({
                 item.imagePosition === "right" ? "md:flex-row-reverse" : ""
               }`}
             >
-              {/* Gambar */}
               <div
                 className={`relative w-full h-[300px] md:h-[400px] ${
                   item.imagePosition === "right" ? "order-2" : "order-1"
                 }`}
               >
                 <Image
-                  src={driveImageUrl(item.image)}
+                  src={item.image}
                   alt={item.title}
                   fill
                   className="rounded-2xl shadow-lg object-cover"
@@ -62,7 +60,6 @@ export default function OverviewSection({
                 />
               </div>
 
-              {/* Konten teks */}
               <div
                 className={`${
                   item.imagePosition === "right" ? "order-1" : "order-2"
@@ -79,7 +76,6 @@ export default function OverviewSection({
           ))}
         </div>
       ) : (
-        // 📱 MOBILE VIEW (carousel)
         <div className="relative overflow-hidden max-w-md mx-auto">
           <div
             className="flex transition-transform duration-500"
@@ -89,7 +85,7 @@ export default function OverviewSection({
               <div key={idx} className="min-w-full px-4">
                 <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
                   <img
-                    src={driveImageUrl(item.image)} // ✅ pakai driveImageUrl juga di mobile
+                    src={driveImageUrl(item.image)}
                     alt={item.title}
                     className="w-full h-56 object-cover"
                   />
@@ -103,8 +99,6 @@ export default function OverviewSection({
               </div>
             ))}
           </div>
-
-          {/* Dots indikator */}
           <div className="flex justify-center space-x-2 mt-6">
             {sections.map((_, idx) => (
               <button
@@ -117,7 +111,6 @@ export default function OverviewSection({
             ))}
           </div>
 
-          {/* Tombol navigasi */}
           <button
             onClick={handlePrev}
             className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 shadow hover:bg-white transition"

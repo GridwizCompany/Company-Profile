@@ -114,13 +114,15 @@ export default function Layanan() {
           lingkungan, dan efisien.
         </p>
 
-        {/* Hero Image */}
         <div className="w-full h-60 md:h-[500px] mt-8 md:mt-32 overflow-hidden rounded-xl">
-          <img src="ceo.JPG" alt="CEO" className="w-full h-full object-cover" />
+          <img
+            src="https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Guide/ceo.JPG"
+            alt="CEO"
+            className="w-full h-full object-cover"
+          />
         </div>
 
         <div className="max-w-screen-xl mx-auto py-16 flex flex-col md:flex-row items-center justify-between gap-10">
-          {/* Kiri: Judul dan deskripsi */}
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-2xl md:text-4xl font-bold  mb-6">
               Bersepeda Lebih Mudah, Hidup Lebih Hijau Bersama{" "}
@@ -133,7 +135,6 @@ export default function Layanan() {
               praktis, efisien, dan ramah lingkungan.
             </p>
 
-            {/* Tombol unduh */}
             <div className="flex items-center justify-center md:justify-start flex-wrap">
               <a
                 href="https://apps.apple.com/gb/app/re-flow/id6741798337"
@@ -160,7 +161,6 @@ export default function Layanan() {
             </div>
           </div>
 
-          {/* Kanan: Konten tambahan */}
           <div className="flex-1 grid grid-rows-3 gap-6 text-center md:text-left">
             <div className="bg-white/10 rounded-2xl p-6 shadow-md hover:shadow-lg hover:bg-white/15 transition">
               <h3 className="text-lg md:text-xl font-bold text-sky-400 mb-2">
@@ -194,16 +194,14 @@ export default function Layanan() {
           </div>
         </div>
 
-        {/* Image Kedua */}
         <div className="w-full h-60 md:h-[500px] overflow-hidden rounded-xl">
           <img
-            src="riding-bike.JPG"
+            src="https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Guide/bike-guide.JPG"
             alt="Riding Bike"
             className="w-full h-full object-cover"
           />
         </div>
 
-        {/* Ketercapaian & Kontribusi */}
         <div className="flex flex-col lg:flex-row gap-8 w-full mt-12 md:mt-24">
           <div className="flex-1">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
@@ -233,9 +231,7 @@ export default function Layanan() {
           </div>
         </div>
 
-        {/* Statistik */}
         <div className="w-full mt-12 md:mt-24">
-          {/* Mobile Carousel */}
           <div className="md:hidden">
             <div
               ref={statistikRef}
@@ -271,7 +267,6 @@ export default function Layanan() {
             </div>
           </div>
 
-          {/* Desktop Grid */}
           <div className="hidden md:flex flex-row justify-around gap-6 mt-6 w-full text-center">
             {statistik.map((stat, idx) => (
               <div
@@ -288,12 +283,11 @@ export default function Layanan() {
           </div>
         </div>
 
-        {/* Cara Menggunakan Sepeda */}
         <div className="w-full mt-12 md:mt-24 py-8 md:py-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 max-w-7xl mx-auto px-4 md:px-8">
             <div className="flex-1 w-full h-auto lg:h-[760px] rounded-xl overflow-hidden order-1 lg:order-2 mb-6 lg:mb-0">
               <img
-                src="/how-to-use.JPG"
+                src="https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Guide/how-to-use.JPG"
                 alt="Cara Menggunakan"
                 className="w-full h-full object-cover rounded-xl"
               />
@@ -308,7 +302,6 @@ export default function Layanan() {
                 listrik Re:Flow dengan aman dan nyaman.
               </p>
 
-              {/* Langkah Desktop */}
               <div className="hidden md:grid grid-cols-1 gap-6">
                 {langkah.map((l) => (
                   <div
@@ -328,7 +321,6 @@ export default function Layanan() {
                 ))}
               </div>
 
-              {/* Langkah Mobile Carousel */}
               <div className="md:hidden">
                 <div
                   ref={containerRef}

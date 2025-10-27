@@ -4,27 +4,23 @@ import { driveImageUrl } from "utils/driveutils";
 export default function Promo() {
   return (
     <section className="bg-black text-white">
-      <div className="relative min-h-screen bg-no-repeat bg-cover bg-center py-20 px-20">
-        <Image
-          src={driveImageUrl(
-            "https://drive.google.com/file/d/1OD3mxFqQoYj_Iaznc8DfjNDekEgf1hGj/view?usp=sharing"
-          )}
-          alt="Contoh Gambar"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black"></div>
+      <div
+        className="relative min-h-screen bg-no-repeat bg-cover bg-center py-20 px-20"
+        style={{
+          backgroundImage:
+            "url('https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Promo/lombok-bike-trip.jpg')",
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black" />
       </div>
 
       <div className="flex flex-col gap-32 px-6 md:px-24 py-30">
+        {/* Tarif Pelajar */}
         <div className="flex flex-col md:flex-row justify-center items-center text-center md:text-left gap-16 lg:gap-32">
           <div className="flex-shrink-0 relative w-[250px] h-[220px] md:w-[450px] md:h-[400px] overflow-visible flex justify-center">
             <Image
-              src={driveImageUrl(
-                "https://drive.google.com/file/d/16DfcQMlwpox9dy2uJD-hXZ3hW5_7v68O/view?usp=sharing"
-              )}
-              alt="Contoh Gambar"
+              src="https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Promo/student.png"
+              alt="Tarif Pelajar"
               fill
               className="object-cover rounded-lg"
               priority
@@ -50,13 +46,13 @@ export default function Promo() {
             </p>
           </div>
         </div>
+
+        {/* Tarif Publik */}
         <div className="flex flex-col md:flex-row-reverse justify-center items-center text-center md:text-left gap-16 lg:gap-32">
           <div className="flex-shrink-0 relative w-[250px] h-[220px] md:w-[450px] md:h-[400px] overflow-visible flex justify-center">
             <Image
-              src={driveImageUrl(
-                "https://drive.google.com/file/d/1med5LLzjbixsc2yIociM6hX_ApIQsmMp/view?usp=sharing"
-              )}
-              alt="Contoh Gambar"
+              src="https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Promo/public.png"
+              alt="Tarif Publik"
               fill
               className="object-cover rounded-lg"
               priority
@@ -87,9 +83,9 @@ export default function Promo() {
 
       <div className="relative w-full h-[600px] bg-cover bg-center flex items-center px-6 md:px-12">
         <Image
-          src={driveImageUrl(
-            "https://drive.google.com/file/d/1suc-MLOB9BQjNEII-43NjXhemxZWpRd5/view?usp=sharing"
-          )}
+          src={
+            "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Promo/riding-gridwiz.png"
+          }
           alt="Contoh Gambar"
           fill
           className="object-cover"

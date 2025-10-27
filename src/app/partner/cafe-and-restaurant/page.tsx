@@ -16,7 +16,7 @@ export default function CafeAndRestaurant() {
   const promos = [
     {
       image:
-        "https://drive.google.com/file/d/17bSA6IvwrBa1B4Uj4lyN-h9Dw14KHVTx/view?usp=sharing",
+        "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Cafe%20&%20Restaurant/miyago.jpg",
       title: "Miyago",
       description:
         "Nikmati suasana hangat di Miyago. Datang bersepeda dengan Re:Flow dan dapatkan potongan harga 10% sebagai bentuk dukungan terhadap gaya hidup hijau.",
@@ -31,7 +31,7 @@ export default function CafeAndRestaurant() {
     },
     {
       image:
-        "https://drive.google.com/file/d/1JisHjCdcoVpS0V-7IWdiwu-tR72jfOsR/view?usp=sharing",
+        "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Cafe%20&%20Restaurant/eclair.jpg",
       title: "Éclair Café",
       description:
         "Rasakan aroma kopi dan manisnya pastry di Éclair Café yang penuh kehangatan. Pengguna Re:Flow menikmati diskon 10% sebagai bentuk apresiasi.",
@@ -47,7 +47,7 @@ export default function CafeAndRestaurant() {
     },
     {
       image:
-        "https://drive.google.com/file/d/171CmSp2hzXnHnMFI--EDXSc9eEsx81A8/view?usp=sharing",
+        "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Cafe%20&%20Restaurant/tuwa-kawa.jpg",
       title: "Tuwa Kawa",
       description:
         "Nikmati kopi lokal Lombok dalam suasana alami di Tuwa Kawa. Pengguna Re:Flow berhak atas potongan 10% sambil menikmati cita rasa Nusantara.",
@@ -65,7 +65,7 @@ export default function CafeAndRestaurant() {
     },
     {
       image:
-        "https://drive.google.com/file/d/1ldpZhgy3dPcbE_xZ1c8_zpJvvBN4mXNk/view?usp=sharing",
+        "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Cafe%20&%20Restaurant/its-milk.jpg",
       title: "IT’s Milk",
       description:
         "Segarkan hari dengan susu murni dari IT’s Milk! Datang bersepeda menggunakan Re:Flow dan nikmati potongan harga 10% untuk setiap pembelian.",
@@ -81,7 +81,7 @@ export default function CafeAndRestaurant() {
     },
     {
       image:
-        "https://drive.google.com/file/d/1jQqYlqco2a05wEltJF80u17dbpbLyzCO/view?usp=sharing",
+        "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Cafe%20&%20Restaurant/uttara.jpg",
       title: "UTTARA",
       description:
         "Rasakan ketenangan di UTTARA Café. Datang bersepeda dengan Re:Flow dan nikmati es teh gratis sebagai bentuk penghargaan untuk transportasi ramah lingkungan.",
@@ -113,9 +113,9 @@ export default function CafeAndRestaurant() {
         <div className="relative w-full h-[600px] flex flex-col items-center justify-center text-center px-6 md:px-12 overflow-hidden">
           <div className="absolute top-10 left-1/2 -translate-x-1/2 z-20">
             <Image
-              src={driveImageUrl(
-                "https://drive.google.com/file/d/1Ozc3JZk7sL8lLJAk2CDQ7ZN57Oor4EcJ/view?usp=sharing"
-              )}
+              src={
+                "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Logo/reflow-logo-white.png"
+              }
               alt="Logo Gridwiz"
               width={140}
               height={140}
@@ -150,9 +150,9 @@ export default function CafeAndRestaurant() {
 
       <div className="relative max-h-[500px] min-h-[700px] bg-no-repeat bg-cover bg-center">
         <Image
-          src={driveImageUrl(
-            "https://drive.google.com/file/d/1b-r9yJtFSls8WxkkVFDu7cHFx8tojTnm/view?usp=sharing"
-          )}
+          src={
+            "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Cafe%20&%20Restaurant/ride-gridwiz.JPG"
+          }
           alt={"title"}
           fill
           className="object-cover object-center w-full h-full"

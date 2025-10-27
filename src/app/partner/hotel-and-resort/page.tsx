@@ -18,7 +18,7 @@ export default function HotelAndResort() {
   const promos = [
     {
       image:
-        "https://drive.google.com/file/d/1Fh8peVGrb_V15pAewdVWrgJjD8m7Y65k/view?usp=sharing",
+        "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Hotel%20&%20Resort/aruna.png",
       title: "Aruna Hotel",
       description:
         "Aruna Hotel memadukan pesona alam Lombok dengan kenyamanan modern. Terletak di tepi pantai, Aruna berkomitmen pada prinsip pariwisata berkelanjutan melalui efisiensi energi, pengurangan plastik sekali pakai, dan dukungan terhadap produk lokal. Setiap tamu diajak menikmati pengalaman menginap yang tidak hanya nyaman, tetapi juga penuh kepedulian terhadap bumi.",
@@ -43,7 +43,7 @@ export default function HotelAndResort() {
     },
     {
       image:
-        "https://drive.google.com/file/d/1mDxzbG101jjGg2dMU2GS90F4-2yvPWqS/view?usp=sharing",
+        "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Hotel%20&%20Resort/holiday.png",
       title: "Holiday Resort Lombok",
       description:
         "Holiday Resort Lombok menghadirkan keseimbangan antara kemewahan dan keasrian alam. Dengan lokasi di Senggigi yang dikelilingi pohon kelapa dan suara ombak, resort ini menggunakan bahan bangunan alami serta sistem pengolahan air berkelanjutan. Pengunjung dapat menikmati suasana tropis yang menenangkan tanpa meninggalkan tanggung jawab terhadap lingkungan.",
@@ -69,7 +69,7 @@ export default function HotelAndResort() {
     },
     {
       image:
-        "https://drive.google.com/file/d/1t1ZpMI7ob6szg74NnlBmiCzeEBbGl4bx/view?usp=sharing",
+        "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Hotel%20&%20Resort/merumata.png",
       title: "Merumata Hotel",
       description:
         "Merumata Hotel menawarkan pengalaman menginap eksklusif dengan standar ramah lingkungan tinggi. Setiap detail — mulai dari pencahayaan hemat energi, bahan interior berkelanjutan, hingga kuliner berbasis bahan organik — dirancang untuk menciptakan keseimbangan antara kemewahan dan keberlanjutan. Di sini, elegansi bertemu dengan kepedulian terhadap bumi.",
@@ -108,9 +108,9 @@ export default function HotelAndResort() {
         <div className="relative w-full h-[600px] flex flex-col items-center justify-center text-center px-6 md:px-12 overflow-hidden">
           <div className="absolute top-10 left-1/2 -translate-x-1/2 z-20">
             <Image
-              src={driveImageUrl(
-                "https://drive.google.com/file/d/11P5UtOPu6v3Fh_Zcjd2RB4S6hnshdfVl/view?usp=sharing"
-              )}
+              src={
+                "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Logo/reflow-logo-black.png"
+              }
               alt="Logo Gridwiz"
               width={140}
               height={140}
@@ -144,9 +144,9 @@ export default function HotelAndResort() {
       </div>
       <div className="relative max-h-[500px] min-h-[700px] bg-no-repeat bg-cover bg-center">
         <Image
-          src={driveImageUrl(
-            "https://drive.google.com/file/d/1M-rnxWZgRen5SpwvakNfBLqxk-3BlAKt/view?usp=sharing"
-          )}
+          src={
+            "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Hotel%20&%20Resort/launching-gridwiz.JPG"
+          }
           alt={"title"}
           fill
           className="object-cover object-center w-full h-full"

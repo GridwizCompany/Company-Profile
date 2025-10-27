@@ -48,7 +48,7 @@ export default function Partner({
       >
         <div className="relative w-full max-w-md h-[350px] flex justify-center mt-16 md:mt-0 ">
           <Image
-            src={driveImageUrl(image)}
+            src={image}
             alt={title}
             fill
             className="object-contain"

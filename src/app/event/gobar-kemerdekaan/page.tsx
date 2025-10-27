@@ -46,16 +46,19 @@ export default function GobarKemerdekaan() {
 
   return (
     <section>
-      {/* Hero Section */}
       <div className="relative min-h-screen bg-no-repeat bg-cover bg-center">
-        <Image
-          src={driveImageUrl(
-            "https://drive.google.com/file/d/1yKTr2INI_RGpoqN2pwHvTHvp5BYBFjUN/view?usp=sharing"
-          )}
-          alt={"Gobar Sunset"}
-          fill
-        />
-        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="absolute inset-0">
+          <img
+            src={
+              "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Event/gobar-kemerdekaan.JPG"
+            }
+            alt="Background"
+            className="w-full h-full object-cover opacity-60"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
+        </div>
+
+        <div className="absolute inset-0 bg-black/50"></div>
 
         <div className="relative z-10 flex flex-col items-start justify-end min-h-screen text-white px-6 sm:px-12 md:px-16 lg:px-24 py-12 sm:py-16 gap-4">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 leading-tight">
@@ -71,10 +74,8 @@ export default function GobarKemerdekaan() {
         </div>
       </div>
 
-      {/* Konten Utama */}
       <div className="content bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
-          {/* Bagian 1 */}
           <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr] items-start">
             <div className="space-y-6 text-gray-700">
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
@@ -127,7 +128,6 @@ export default function GobarKemerdekaan() {
             </div>
           </div>
 
-          {/* Nilai Kegiatan */}
           <div className="rounded-3xl border-2 border-gray-200 bg-gradient-to-br from-white via-red-50 to-white p-10">
             <div className="grid gap-6 md:grid-cols-3">
               <div className="space-y-3">
@@ -160,7 +160,6 @@ export default function GobarKemerdekaan() {
             </div>
           </div>
 
-          {/* Galeri dengan carousel + dots */}
           <div className="rounded-3xl border border-gray-200 bg-white p-10 space-y-8">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
               <div>
@@ -177,7 +176,6 @@ export default function GobarKemerdekaan() {
               </div>
             </div>
 
-            {/* Carousel Mobile + Grid Desktop */}
             <div
               className="flex overflow-x-auto gap-6 snap-x snap-mandatory scroll-smooth scrollbar-hide sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:overflow-visible"
               onScroll={handleScroll}
@@ -199,7 +197,6 @@ export default function GobarKemerdekaan() {
               ))}
             </div>
 
-            {/* Dots Navigation */}
             <div className="flex justify-center mt-4 sm:hidden">
               {galleryItems.map((_, index) => (
                 <button

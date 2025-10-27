@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { driveImageUrl } from "utils/driveutils";
 import Image from "next/image";
 
 interface BeritaCardProps {
@@ -25,7 +24,7 @@ export default function BeritaCard({
       className="bg-gray-900 rounded-xl overflow-hidden shadow-md hover:scale-[1.02] transition-transform w-full max-w-md"
     >
       <Image
-        src={driveImageUrl(image)}
+        src={image}
         alt={title}
         height={200}
         width={200}

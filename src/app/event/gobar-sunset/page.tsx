@@ -46,15 +46,17 @@ export default function GobarSunset() {
   return (
     <section>
       <div className="relative min-h-screen bg-no-repeat bg-cover bg-center">
-        <Image
-          src={driveImageUrl(
-            "https://drive.google.com/file/d/1vcCmTJ14LuzXp6uVbfEZ_gQ-Zv86LMZN/view?usp=sharing"
-          )}
-          alt={"Gobar Sunset"}
-          fill
-          className="mx-auto w-32 sm:w-48 md:w-56 h-auto"
-        />
-        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="absolute inset-0">
+          <img
+            src={
+              "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Event/gobar-sunset.jpg"
+            }
+            alt="Background"
+            className="w-full h-full object-cover opacity-60"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
+        </div>
+        <div className="absolute inset-0 bg-black/50"></div>
 
         <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-white px-6 sm:px-12 md:px-24 text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 text-amber-500">
@@ -73,12 +75,9 @@ export default function GobarSunset() {
         </div>
       </div>
 
-      {/* Main Content */}
       <div className="content bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
-          {/* Deskripsi dan Agenda */}
           <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr] items-start">
-            {/* Kiri */}
             <div className="flex flex-col h-full space-y-6 text-gray-700">
               <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900">
                 Gowes Senja Bareng Re:Flow
@@ -109,7 +108,6 @@ export default function GobarSunset() {
               </div>
             </div>
 
-            {/* Kanan */}
             <div className="grid gap-6">
               <div className="rounded-3xl border border-orange-100 bg-orange-50/60 p-8">
                 <h3 className="text-2xl font-semibold text-orange-600">
@@ -156,7 +154,6 @@ export default function GobarSunset() {
             </div>
           </div>
 
-          {/* Section: 3 Kolom Informasi */}
           <div className="rounded-3xl border border-gray-200 bg-gray-50 p-10">
             <div className="grid gap-6 md:grid-cols-3">
               {[
@@ -185,7 +182,6 @@ export default function GobarSunset() {
             </div>
           </div>
 
-          {/* Galeri dengan carousel + dots */}
           <div className="rounded-3xl border border-gray-200 bg-white p-10 space-y-8">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
               <div>
@@ -202,7 +198,6 @@ export default function GobarSunset() {
               </div>
             </div>
 
-            {/* Carousel Mobile + Grid Desktop */}
             <div
               className="flex overflow-x-auto gap-6 snap-x snap-mandatory scroll-smooth scrollbar-hide sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:overflow-visible"
               onScroll={handleScroll}
@@ -224,7 +219,6 @@ export default function GobarSunset() {
               ))}
             </div>
 
-            {/* Dots Navigation */}
             <div className="flex justify-center mt-4 sm:hidden">
               {galleryItems.map((_, index) => (
                 <button

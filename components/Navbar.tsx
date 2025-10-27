@@ -51,9 +51,9 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto py-4 md:py-1 px-6 flex justify-between">
         <Link href="/" className="flex items-center space-x-3 group">
           <Image
-            src={driveImageUrl(
-              "https://drive.google.com/file/d/1zrDrnyPM12FLkibH_fN0CpPMgTQfetQU/view?usp=sharing"
-            )}
+            src={
+              "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Logo/gridwiz-logo.png"
+            }
             alt="Logo Gridwiz"
             width={80}
             height={80}

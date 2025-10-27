@@ -14,7 +14,7 @@ export default function HomePage() {
       description:
         "Sepeda listrik Gridwiz (Re:Flow) memungkinkan Anda bergerak bebas dan cepat, melewati kepadatan lalu lintas dengan mudah. Fitur bantuan listrik yang cerdas memastikan Anda tiba di tujuan tepat waktu tanpa kelelahan, sambil tetap hemat energi. Dengan Gridwiz, perjalanan sehari-hari menjadi lebih efisien, nyaman, dan ramah lingkungan.",
       image:
-        "https://drive.google.com/file/d/1qtaNSU8uTP0GCuz7sEdNUrxwTrvh8G9m/view?usp=sharing",
+        "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Dashboard/launching-gridwiz.JPG",
       imagePosition: "left",
     },
     {
@@ -23,7 +23,7 @@ export default function HomePage() {
       description:
         "Setiap perjalanan menggunakan E-Bike Gridwiz adalah langkah nyata dalam mendukung keberlanjutan. Dengan solusi zero-emission, Anda tidak hanya bergerak dengan nyaman, tapi juga membantu mengurangi polusi udara dan jejak karbon. Gridwiz berkomitmen menciptakan udara yang lebih bersih untuk generasi sekarang dan masa depan.",
       image:
-        "https://drive.google.com/file/d/1XaijjMqpBeqD8-NdY3LkM60oyvkC_ITD/view?usp=sharing",
+        "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Dashboard/launching-gridwiz-2.JPG",
       imagePosition: "right",
     },
     {
@@ -31,7 +31,7 @@ export default function HomePage() {
       description:
         "Nikmati kebebasan untuk menyewa sepeda kapan pun Anda butuhkan melalui aplikasi kami yang intuitif. Proses scan barcode cepat, ditambah ketersediaan layanan di berbagai titik kolaborasi seperti kampus, kafe, dan area publik, menjadikan Gridwiz pilihan mobilitas paling praktis dan mudah diakses di kota Anda.",
       image:
-        "https://drive.google.com/file/d/1W_XVVN9kmY9SdMIitlZNIifCAa0ly-4K/view?usp=sharing",
+        "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Dashboard/launching-gridwiz-3.JPG",
       imagePosition: "left",
     },
   ];
@@ -46,9 +46,9 @@ export default function HomePage() {
              px-6 sm:px-12 md:px-24 sm:pb-28 md:pb-32 md:min-h-screen"
       >
         <Image
-          src={driveImageUrl(
-            "https://drive.google.com/file/d/13XrNgIfH4lg68_p4I9k8AacqDqpn7bIs/view?usp=sharing"
-          )}
+          src={
+            "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Dashboard/bike-gridwiz.jpg"
+          }
           alt="Contoh Gambar"
           fill
           className="object-cover"
@@ -96,23 +96,18 @@ export default function HomePage() {
 
       <div
         className="relative min-h-[400px] md:min-h-[800px] flex flex-col 
-  justify-center md:justify-center 
-  items-center md:items-start 
-  text-center md:text-left 
-  px-6 sm:px-12 md:px-24 
-    
-  bg-cover bg-center bg-no-repeat"
+    justify-center md:justify-center 
+    items-center md:items-start 
+    text-center md:text-left 
+    px-6 sm:px-12 md:px-24 
+    bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage:
+            "url('https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Dashboard/sepeda-gridwiz.jpg')",
+        }}
       >
-        <Image
-          src={driveImageUrl(
-            "https://drive.google.com/file/d/1JmW1s8NURtG8xbGo8Jiib1eaHo3JYqTR/view?usp=sharing"
-          )}
-          alt="Contoh Gambar"
-          fill
-          className="object-cover"
-          priority
-        />
         <div className="absolute inset-0 bg-black/50"></div>
+
         <div className="relative z-10 max-w-2xl">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Jelajahi Mobilitas Hijau Bersama Gridwiz
@@ -125,24 +120,24 @@ export default function HomePage() {
       </div>
 
       <div className="bg-gray-100 min-h-[500px] flex flex-col justify-center items-center py-16 md:py-32 text-center text-gray-900">
-        <h3 className="text-4xl sm:text-5xl font-extrabold mb-12 md:mb-24 tracking-wide text-gray-900">
+        <h3 className="text-4xl sm:text-5xl font-bold mb-12 md:mb-24 tracking-wide text-gray-900">
           Layanan Kami
         </h3>
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-16 max-w-6xl mx-auto px-6">
           {[
             {
-              icon: "https://drive.google.com/file/d/1M3ujtN2wAYVMfEpaYWkWmaw42OsojBWR/view?usp=sharing",
+              icon: "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Icon/earth.png",
               title: "Ramah Lingkungan",
               desc: "Berkontribusi dalam pengurangan emisi karbon dan mendukung transportasi berkelanjutan yang sejalan dengan visi hijau Anda.",
             },
             {
-              icon: "https://drive.google.com/file/d/1ZRRlpOiaeAzRtN1j8mpzkw7Y_51jsIRv/view?usp=sharing",
+              icon: "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Icon/network.png",
               title: "Layanan Luas & Kolaboratif",
               desc: "Jaringan Gridwiz terus berkembang melalui kemitraan strategis dengan universitas, kafe, hotel, dan area publik utama.",
             },
             {
-              icon: "https://drive.google.com/file/d/1f74vv7kgkCtv9jaQfdSYcvHHHFVYTmp8/view?usp=sharing",
+              icon: "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Icon/iot.png",
               title: "Akses Mudah via Aplikasi",
               desc: "Cukup unduh aplikasi, pindai barcode sepeda, dan mulai perjalanan dengan sistem kunci otomatis yang pintar.",
             },
@@ -154,13 +149,11 @@ export default function HomePage() {
               <div className="flex justify-center mb-6">
                 <div className="p-5 rounded-full bg-white/10 group-hover:bg-white/30 transition-all duration-500">
                   <div className="relative h-24 w-24">
-                    <Image
-                      src={driveImageUrl(item.icon)}
+                    <img
+                      src={item.icon}
                       alt={item.title}
-                      fill
                       className="object-contain transition-transform duration-500 group-hover:scale-110"
                       sizes="96px"
-                      priority
                     />
                   </div>
                 </div>

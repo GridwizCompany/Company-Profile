@@ -1,7 +1,6 @@
 "use client";
 
 import { driveImageUrl } from "../../utils/driveutils";
-import Image from "next/image";
 
 export default function AboutUs() {
   const structure =
@@ -25,14 +24,14 @@ export default function AboutUs() {
         <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row gap-32">
           <div className="flex flex-col justify-between">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Visi</h2>
-            <p className="text-gray-700 mb-6 max-w-2xl text-lg md:text-xl">
+            <p className="text-gray-700 mb-6 max-w-2xl text-lg md:text-xl text-justify">
               Menjadi pelopor solusi mobilitas mikro ramah lingkungan berbasis
               teknologi di Indonesia, dengan jangkauan yang inklusif dan
               berdampak sosial.
             </p>
 
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Misi</h2>
-            <ul className="list-disc list-inside text-gray-700 space-y-2 max-w-2xl text-lg md:text-xl">
+            <ul className="list-disc list-inside text-gray-700 space-y-2 max-w-2xl text-lg md:text-xl text-justify">
               <li>
                 Mendorong gaya hidup aktif dan sadar lingkungan di masyarakat
                 urban.
@@ -53,15 +52,12 @@ export default function AboutUs() {
           </div>
 
           <div className="flex justify-center items-center">
-            <Image
-              src={driveImageUrl(
-                "https://drive.google.com/file/d/11P5UtOPu6v3Fh_Zcjd2RB4S6hnshdfVl/view?usp=sharing"
-              )}
+            <img
+              src={
+                "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Logo/reflow-logo-black.png"
+              }
               alt="Logo Gridwiz"
-              width={500}
-              height={200}
               className="object-contain drop-shadow-lg"
-              priority
             />
           </div>
         </div>
@@ -100,13 +96,13 @@ export default function AboutUs() {
           <h2 className="text-3xl md:text-4xl font-bold mb-8 flex justify-center items-center gap-3 mx-auto">
             Produk Kami
           </h2>
-          <p className="text-gray-700 max-w-4xl mx-auto mb-6 text-lg md:text-xl">
+          <p className="text-gray-700 max-w-4xl mx-auto mb-6 text-lg md:text-xl text-justify">
             Re:Flow menghadirkan sepeda listrik modern yang mudah digunakan,
             efisien, dan ramah lingkungan. Saat ini, kami memiliki kurang lebih{" "}
             <strong>700 sepeda listrik</strong> yang tersebar di berbagai titik
             di Lombok.
           </p>
-          <p className="text-gray-700 max-w-4xl mx-auto text-lg md:text-xl">
+          <p className="text-gray-700 max-w-4xl mx-auto text-lg md:text-xl text-justify">
             Setiap sepeda dilengkapi dengan baterai tahan lama dan sistem
             keamanan canggih, memastikan pengalaman berkendara yang aman dan
             nyaman bagi semua pengguna.
@@ -117,21 +113,16 @@ export default function AboutUs() {
       <section className="py-24 px-6 md:px-16 bg-gray-50">
         <div className="max-w-5xl mx-auto text-center">
           <div className="mb-16 flex justify-center">
-            <Image
-              src={driveImageUrl(
-                "https://drive.google.com/file/d/14NPGJBCtehRDd10CuOtDrhjdpY1TeJG7/view?usp=sharing"
-              )}
-              alt="Solar PV"
-              width={140}
-              height={140}
-              className="w-full max-w-3xl rounded-xl shadow-lg object-cover"
-              priority
+            <img
+              src="https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/About%20Us/bcs.JPG"
+              alt="Tentang Kami"
+              className="w-full h-auto object-cover"
             />
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 flex justify-center items-center gap-3 mx-auto">
             Solar PV (Photovoltaic)
           </h2>
-          <p className="text-gray-700 text-lg md:text-xl leading-relaxed">
+          <p className="text-gray-700 text-lg md:text-xl leading-relaxed text-justify">
             Sebagai bagian dari komitmen kami dalam menciptakan ekosistem
             transportasi ramah lingkungan, Re:flow memanfaatkan energi matahari
             melalui pengembangan infrastruktur khusus berupa Solar PV
