@@ -1,11 +1,10 @@
-// app/layout.tsx
 import "./globals.css";
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "Gridwiz Company Profile",
+  title: "Gridwiz",
   description: "Website profil perusahaan Gridwiz Energy & Mobility",
   icons: {
     icon: "/favicon.svg",
