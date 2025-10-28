@@ -1,50 +1,38 @@
-"use client";
+﻿"use client";
 import { useState } from "react";
-import BeritaCard from "@/components/ui/berita-card";
-import { driveImageUrl } from "utils/driveutils";
 import Image from "next/image";
+import BeritaCard from "@/components/ui/berita-card";
+import { beritaItems } from "data/berita";
 
 export default function BeritaPage() {
-  const image =
+  const heroImage =
     "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/News/bg-news.jpg";
-
-  const beritaList = [
-    {
-      slug: "gridwiz-brida",
-      image:
-        "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/News/brida.jpeg",
-      title: "Gridwiz menjalin kerja sama dengan BRIDA Provinsi NTB",
-      description:
-        "Mataram – Menanggapi potensi besar di bidang energi terbarukan, PT. Gridwiz mengambil langkah awal dengan menawarkan kerja sama strategis kepada Pemerintah Provinsi Nusa Tenggara Barat (NTB). Dalam kunjungan resmi ke Badan Riset dan Inovasi Daerah (BRIDA) NTB pada Rabu, 27 Agustus 2025, perwakilan PT. Gridwiz mempresentasikan visi perusahaan untuk mendukung pengembangan teknologi listrik, terutama yang berfokus pada transportasi ramah lingkungan. Perwakilan dari PT. Gridwiz diterima langsung oleh Kepala BRIDA NTB, I Gede Putu Aryadi, S.Sos., M.H., beserta timnya. Dalam pertemuan tersebut, PT. Gridwiz menjelaskan bagaimana produk sepeda listrik mereka dapat menjadi solusi mobilitas yang berkelanjutan dan inklusif di NTB",
-      date: "2025-10-20",
-    },
-  ];
 
   const itemsPerPage = 6;
   const [currentPage, setCurrentPage] = useState(1);
 
-  const totalPages = Math.ceil(beritaList.length / itemsPerPage);
+  const totalPages = Math.max(1, Math.ceil(beritaItems.length / itemsPerPage));
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const currentItems = beritaList.slice(startIndex, startIndex + itemsPerPage);
+  const currentItems = beritaItems.slice(startIndex, startIndex + itemsPerPage);
 
   const goToPage = (page: number) => {
-    if (page >= 1 && page <= totalPages) setCurrentPage(page);
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+    }
   };
 
   return (
     <section className="bg-gray-950 text-white min-h-screen">
       <div className="relative w-full">
         <img
-          src={image}
-          alt="Gambar Hero"
+          src={heroImage}
+          alt="Gridwiz News Hero"
           referrerPolicy="no-referrer"
           className="h-[60svh] w-full object-cover brightness-75"
         />
         <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-center px-6">
           <Image
-            src={
-              "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Logo/reflow-logo-white.png"
-            }
+            src="https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Logo/reflow-logo-white.png"
             alt="Logo Gridwiz"
             width={140}
             height={140}
@@ -67,9 +55,9 @@ export default function BeritaPage() {
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
-          {currentItems.map((item, index) => (
+          {currentItems.map((item) => (
             <BeritaCard
-              key={index}
+              key={item.slug}
               image={item.image}
               title={item.title}
               description={item.description}
@@ -79,39 +67,41 @@ export default function BeritaPage() {
           ))}
         </div>
 
-        <div className="flex justify-center items-center gap-2 mt-12">
-          <button
-            onClick={() => goToPage(currentPage - 1)}
-            disabled={currentPage === 1}
-            className="px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-700 disabled:bg-gray-700 disabled:cursor-not-allowed transition"
-          >
-            ← Sebelumnya
-          </button>
+        {totalPages > 1 && (
+          <div className="flex justify-center items-center gap-2 mt-12">
+            <button
+              onClick={() => goToPage(currentPage - 1)}
+              disabled={currentPage === 1}
+              className="px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-700 disabled:bg-gray-700 disabled:cursor-not-allowed transition"
+            >
+              {"<"} Sebelumnya
+            </button>
 
-          <div className="flex gap-1">
-            {Array.from({ length: totalPages }, (_, i) => (
-              <button
-                key={i}
-                onClick={() => goToPage(i + 1)}
-                className={`w-10 h-10 rounded-lg ${
-                  currentPage === i + 1
-                    ? "bg-sky-500 text-white"
-                    : "bg-gray-800 hover:bg-gray-700"
-                } transition`}
-              >
-                {i + 1}
-              </button>
-            ))}
+            <div className="flex gap-1">
+              {Array.from({ length: totalPages }, (_, i) => (
+                <button
+                  key={i}
+                  onClick={() => goToPage(i + 1)}
+                  className={`w-10 h-10 rounded-lg ${
+                    currentPage === i + 1
+                      ? "bg-sky-500 text-white"
+                      : "bg-gray-800 hover:bg-gray-700"
+                  } transition`}
+                >
+                  {i + 1}
+                </button>
+              ))}
+            </div>
+
+            <button
+              onClick={() => goToPage(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className="px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-700 disabled:bg-gray-700 disabled:cursor-not-allowed transition"
+            >
+              Selanjutnya {">"}
+            </button>
           </div>
-
-          <button
-            onClick={() => goToPage(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className="px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-700 disabled:bg-gray-700 disabled:cursor-not-allowed transition"
-          >
-            Selanjutnya →
-          </button>
-        </div>
+        )}
       </div>
     </section>
   );
