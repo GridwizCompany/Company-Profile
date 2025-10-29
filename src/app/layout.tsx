@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
+import Minflow from "@/components/Mindflow";
 import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
@@ -27,6 +28,7 @@ export default function RootLayout({
         <Navbar />
         <main className="flex-grow">{children}</main>
         <Footer />
+        <Minflow />
       </body>
     </html>
   );

@@ -32,10 +32,7 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a
-                href="mailto:gridwizenergyandmobility@gmail.com"
-                className="hover:text-white transition"
-              >
+              <a href="/kontak" className="hover:text-white transition">
                 Kontak
               </a>
             </li>

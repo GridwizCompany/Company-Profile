@@ -28,7 +28,7 @@ export default function BeritaPage() {
           src={heroImage}
           alt="Gridwiz News Hero"
           referrerPolicy="no-referrer"
-          className="h-[60svh] w-full object-cover brightness-75"
+          className="h-[60svh] w-full object-cover object-[center_80%] brightness-75"
         />
         <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-center px-6">
           <Image
