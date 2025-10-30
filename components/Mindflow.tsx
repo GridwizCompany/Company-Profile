@@ -7,9 +7,11 @@ import {
   useEffect,
   useMemo,
   useRef,
-  useState,
+  useState
 } from "react";
 import type { KeyboardEvent as ReactKeyboardEvent } from "react";
+import Image from "next/image";
+import MinflowAvatar from "@/public/Minflow.png";
 
 type Role = "assistant" | "user";
 
@@ -30,12 +32,12 @@ const MAX_MESSAGES = 20;
 
 const suggestedQuestions = [
   "Apa layanan utama Gridwiz?",
-  "Di mana kantor Gridwiz berada?",
-  "Bagaimana cara menghubungi Gridwiz?",
+  "Di mana kantor  PT Gridwiz Energy and Mobility berada?",
+  "Bagaimana cara menghubungi admin Reflow Gridwiz?",
 ];
 
 const fallbackResponse =
-  "Maaf, Minflow sedang mengalami kendala teknis saat menghubungi basis pengetahuan Gridwiz. Silakan coba lagi dalam beberapa saat atau hubungi tim kami melalui WhatsApp maupun email.";
+  "Maaf, Minflow belum bisa mendapatkan jawaban dari Gemini sekarang. Silakan coba lagi sebentar lagi.";
 
 const formatTimestamp = (date: Date) =>
   date.toLocaleTimeString("id-ID", {
@@ -253,8 +255,11 @@ export default function Minflow({ onOpen, onClose }: MinflowProps) {
         });
 
         const data = await response.json().catch(() => ({}));
-        const assistantContent =
+        const serverMessage =
           typeof data?.message === "string" ? data.message.trim() : "";
+        const serverError =
+          typeof data?.error === "string" ? data.error.trim() : "";
+        const assistantContent = serverMessage || serverError;
 
         appendMessage({
           role: "assistant",
@@ -320,22 +325,16 @@ export default function Minflow({ onOpen, onClose }: MinflowProps) {
       <button
         type="button"
         onClick={toggleOpen}
-        className="fixed bottom-4 right-4 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-sky-500 via-blue-500 to-indigo-500 shadow-lg shadow-sky-500/30 transition hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-sky-300 focus-visible:ring-offset-slate-950 sm:bottom-6 sm:right-6"
+        className="fixed bottom-4 right-4 z-40 flex h-16 w-16 items-center justify-center rounded-full bg-transparent transition hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-sky-300 focus-visible:ring-offset-slate-950 sm:bottom-6 sm:right-6"
         aria-label={isOpen ? "Tutup Minflow chat" : "Buka Minflow chat"}
       >
-        <svg
-          aria-hidden="true"
-          className="h-7 w-7 text-white"
-          fill="none"
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="1.6"
-          viewBox="0 0 24 24"
-        >
-          <path d="M7 8h10M7 12h6" />
-          <path d="M4 4h16v12H6l-2 4Z" />
-        </svg>
+        <Image
+          src={MinflowAvatar}
+          alt="Ikon Minflow"
+          className="h-17 w-17 transform transition-transform duration-300 object-contain drop-shadow-[0_10px_25px_rgba(56,189,248,0.35)] sm:h-16 sm:w-16"
+          style={{ transform: "scaleX(-1)", objectPosition: "55% center" }}
+          priority
+        />
         {!isOpen && hasUnread && (
           <span className="absolute right-2 top-2 inline-flex h-3 w-3 rounded-full bg-rose-400 shadow" />
         )}
@@ -359,8 +358,13 @@ export default function Minflow({ onOpen, onClose }: MinflowProps) {
           >
             <header className="flex items-center justify-between border-b border-slate-800/60 bg-slate-900/80 px-6 py-4">
               <div className="flex items-center gap-3">
-                <span className="relative flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-sky-500 to-blue-600 text-lg font-semibold text-white">
-                  M
+                <span className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-slate-800">
+                  <Image
+                    src={MinflowAvatar}
+                    alt="Minflow"
+                    className="h-full w-full object-contain"
+                    style={{ objectPosition: "center" }}
+                  />
                   <span className="absolute -right-1 -bottom-1 flex h-3 w-3 items-center justify-center rounded-full bg-emerald-400">
                     <span className="h-2 w-2 rounded-full bg-white/90" />
                   </span>
