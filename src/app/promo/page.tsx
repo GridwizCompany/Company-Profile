@@ -125,23 +125,11 @@ export default function Promo() {
               </div>
               <div className="flex justify-between border-b border-gray-600 py-2">
                 <span>Tarif</span>
-                <span>Rp 500/min</span>
+                <span>Rp 350/min</span>
               </div>
               <div className="flex justify-between border-b border-gray-600 py-2">
                 <span>Jeda</span>
                 <span>Rp 200/min</span>
-              </div>
-              <div className="flex justify-between border-b border-gray-600 py-2">
-                <span>Pelanggaran</span>
-                <span>–</span>
-              </div>
-              <div className="flex justify-between border-b gap-10 border-gray-600 py-2">
-                <span>Berkendara diluar Area</span>
-                <span>Rp 10.000</span>
-              </div>
-              <div className="flex justify-between py-2">
-                <span>Parkir di luar area</span>
-                <span>Rp 30.000</span>
               </div>
             </div>
           </div>
@@ -172,18 +160,6 @@ export default function Promo() {
               <div className="flex justify-between border-b border-gray-900 py-2">
                 <span>Jeda</span>
                 <span>Rp 100/min</span>
-              </div>
-              <div className="flex justify-between border-b border-gray-900 py-2">
-                <span>Pelanggaran</span>
-                <span>–</span>
-              </div>
-              <div className="flex justify-between border-b gap-10 border-gray-900 py-2">
-                <span>Berkendara diluar Area</span>
-                <span>Rp 5.000</span>
-              </div>
-              <div className="flex justify-between py-2">
-                <span>Parkir di luar area</span>
-                <span>Rp 10.000</span>
               </div>
             </div>
           </div>
