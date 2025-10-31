@@ -49,7 +49,7 @@ export default function Promo() {
 
         {/* Tarif Publik */}
         <div className="flex flex-col md:flex-row-reverse justify-center items-center text-center md:text-left gap-16 lg:gap-32">
-          <div className="flex-shrink-0 relative w-[250px] h-[220px] md:w-[450px] md:h-[400px] overflow-visible flex justify-center">
+          <div className="shrink-0 relative w-[250px] h-[220px] md:w-[450px] md:h-[400px] overflow-visible flex justify-center">
             <Image
               src="https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Promo/public.png"
               alt="Tarif Publik"
@@ -64,7 +64,7 @@ export default function Promo() {
               Tarif Publik
             </h1>
             <h2 className="text-4xl font-extrabold text-white mb-6">
-              Saldo Minimal Rp. 20.000
+              Saldo Minimal Rp. 13.000
             </h2>
             <p className="text-lg leading-relaxed text-gray-300 text-justify">
               Penurunan saldo minimal ini berlaku untuk seluruh pengguna umum
@@ -75,7 +75,7 @@ export default function Promo() {
               biaya awal yang besar.
             </p>
             <p className="mt-4 text-sm font-semibold text-blue-400">
-              Tarif Sewa: Rp 500/menit | Jeda: Rp 200/menit
+              Tarif Sewa: Rp 350/menit | Jeda: Rp 150/menit
             </p>
           </div>
         </div>
@@ -121,7 +121,7 @@ export default function Promo() {
               </div>
               <div className="flex justify-between border-b border-gray-600 py-2">
                 <span>Minimal Saldo</span>
-                <span>Rp 20.000</span>
+                <span>Rp 13.000</span>
               </div>
               <div className="flex justify-between border-b border-gray-600 py-2">
                 <span>Tarif</span>
@@ -129,7 +129,7 @@ export default function Promo() {
               </div>
               <div className="flex justify-between border-b border-gray-600 py-2">
                 <span>Jeda</span>
-                <span>Rp 200/min</span>
+                <span>Rp 150/min</span>
               </div>
             </div>
           </div>
