@@ -46,7 +46,6 @@ export default function Promo() {
           </div>
         </div>
 
-        {/* Tarif Publik */}
         <div className="flex flex-col md:flex-row-reverse justify-center items-center text-center md:text-left gap-16 lg:gap-32">
           <div className="shrink-0 relative w-[250px] h-[220px] md:w-[450px] md:h-[400px] overflow-visible flex justify-center">
             <Image
