@@ -11,13 +11,12 @@ export default function Promo() {
             "url('https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Promo/lombok-bike-trip.jpg')",
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black" />
+        <div className="absolute inset-0 bg-linear-to-b from-black/10 via-black/20 to-black" />
       </div>
 
       <div className="flex flex-col gap-32 px-6 md:px-24 py-30">
-        {/* Tarif Pelajar */}
         <div className="flex flex-col md:flex-row justify-center items-center text-center md:text-left gap-16 lg:gap-32">
-          <div className="flex-shrink-0 relative w-[250px] h-[220px] md:w-[450px] md:h-[400px] overflow-visible flex justify-center">
+          <div className="shrink-0 relative w-[250px] h-[220px] md:w-[450px] md:h-[400px] overflow-visible flex justify-center">
             <Image
               src="https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Promo/student.png"
               alt="Tarif Pelajar"
