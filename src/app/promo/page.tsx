@@ -11,13 +11,12 @@ export default function Promo() {
             "url('https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Promo/lombok-bike-trip.jpg')",
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black" />
+        <div className="absolute inset-0 bg-linear-to-b from-black/10 via-black/20 to-black" />
       </div>
 
       <div className="flex flex-col gap-32 px-6 md:px-24 py-30">
-        {/* Tarif Pelajar */}
         <div className="flex flex-col md:flex-row justify-center items-center text-center md:text-left gap-16 lg:gap-32">
-          <div className="flex-shrink-0 relative w-[250px] h-[220px] md:w-[450px] md:h-[400px] overflow-visible flex justify-center">
+          <div className="shrink-0 relative w-[250px] h-[220px] md:w-[450px] md:h-[400px] overflow-visible flex justify-center">
             <Image
               src="https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Promo/student.png"
               alt="Tarif Pelajar"
@@ -47,9 +46,8 @@ export default function Promo() {
           </div>
         </div>
 
-        {/* Tarif Publik */}
         <div className="flex flex-col md:flex-row-reverse justify-center items-center text-center md:text-left gap-16 lg:gap-32">
-          <div className="flex-shrink-0 relative w-[250px] h-[220px] md:w-[450px] md:h-[400px] overflow-visible flex justify-center">
+          <div className="shrink-0 relative w-[250px] h-[220px] md:w-[450px] md:h-[400px] overflow-visible flex justify-center">
             <Image
               src="https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Promo/public.png"
               alt="Tarif Publik"
@@ -64,7 +62,7 @@ export default function Promo() {
               Tarif Publik
             </h1>
             <h2 className="text-4xl font-extrabold text-white mb-6">
-              Saldo Minimal Rp. 20.000
+              Saldo Minimal Rp. 13.000
             </h2>
             <p className="text-lg leading-relaxed text-gray-300 text-justify">
               Penurunan saldo minimal ini berlaku untuk seluruh pengguna umum
@@ -75,7 +73,7 @@ export default function Promo() {
               biaya awal yang besar.
             </p>
             <p className="mt-4 text-sm font-semibold text-blue-400">
-              Tarif Sewa: Rp 500/menit | Jeda: Rp 200/menit
+              Tarif Sewa: Rp 350/menit | Jeda: Rp 150/menit
             </p>
           </div>
         </div>
@@ -121,27 +119,15 @@ export default function Promo() {
               </div>
               <div className="flex justify-between border-b border-gray-600 py-2">
                 <span>Minimal Saldo</span>
-                <span>Rp 20.000</span>
+                <span>Rp 13.000</span>
               </div>
               <div className="flex justify-between border-b border-gray-600 py-2">
                 <span>Tarif</span>
-                <span>Rp 500/min</span>
+                <span>Rp 350/min</span>
               </div>
               <div className="flex justify-between border-b border-gray-600 py-2">
                 <span>Jeda</span>
-                <span>Rp 200/min</span>
-              </div>
-              <div className="flex justify-between border-b border-gray-600 py-2">
-                <span>Pelanggaran</span>
-                <span>–</span>
-              </div>
-              <div className="flex justify-between border-b gap-10 border-gray-600 py-2">
-                <span>Berkendara diluar Area</span>
-                <span>Rp 10.000</span>
-              </div>
-              <div className="flex justify-between py-2">
-                <span>Parkir di luar area</span>
-                <span>Rp 30.000</span>
+                <span>Rp 150/min</span>
               </div>
             </div>
           </div>
@@ -172,18 +158,6 @@ export default function Promo() {
               <div className="flex justify-between border-b border-gray-900 py-2">
                 <span>Jeda</span>
                 <span>Rp 100/min</span>
-              </div>
-              <div className="flex justify-between border-b border-gray-900 py-2">
-                <span>Pelanggaran</span>
-                <span>–</span>
-              </div>
-              <div className="flex justify-between border-b gap-10 border-gray-900 py-2">
-                <span>Berkendara diluar Area</span>
-                <span>Rp 5.000</span>
-              </div>
-              <div className="flex justify-between py-2">
-                <span>Parkir di luar area</span>
-                <span>Rp 10.000</span>
               </div>
             </div>
           </div>
