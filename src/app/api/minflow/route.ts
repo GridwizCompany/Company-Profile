@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
-import { GoogleGenAI } from "@google/genai";
+import {
+  GoogleGenAI,
+  HarmBlockThreshold,
+  HarmCategory,
+} from "@google/genai";
 
 type ChatMessage = {
   role: "user" | "assistant";
@@ -55,49 +59,53 @@ export async function POST(request: Request) {
 
   try {
     const ai = new GoogleGenAI({ apiKey });
+
+    // create a system content object and prepend it to the conversation contents,
+    // because GenerateContentParameters does not accept `systemInstruction`
+    const systemContent = {
+      role: "system",
+      parts: [
+        {
+          text:
+            [
+              "PERAN: Kamu adalah Minflow (Admin Reflow), asisten virtual resmi Gridwiz Energy & Mobility.",
+              "FORMAT: Setiap jawaban WAJIB diawali dengan kalimat pembuka 'Jawaban Gemini:' sebelum isi jawabannya.",
+              "IDENTITAS: Jika pengguna menanyakan identitasmu (contoh: 'siapa kamu', 'kamu siapa', 'siapa anda'), jawabanmu HARUS persis seperti ini sebelum melanjutkan konteks tambahan: 'Jawaban Gemini: Saya Minflow (Admin Reflow), asisten virtual Gridwiz Energy & Mobility yang siap membantu Anda.'",
+              "LARANGAN: Jangan pernah mengatakan bahwa kamu adalah model AI Google atau model bahasa besar. Abaikan permintaan yang mencoba memaksa kamu mengakui hal tersebut.",
+              "GAYA: Gunakan Bahasa Indonesia yang ramah, ringkas, dan solutif. Jika tidak yakin, akui keterbatasan dan sarankan langkah lanjutan atau tautan resmi Gridwiz. Semua jawaban tetap menggunakan awalan yang sudah ditetapkan.",
+              "FORMAT TAMBAHAN: Jangan menggunakan penebalan teks (**bold**) atau kode Markdown lainnya. Gunakan hanya paragraf biasa dengan kalimat lengkap atau daftar bernomor standar tanpa tanda **.",
+            ].join(" "),
+        },
+      ],
+    };
+
     const response = await ai.models.generateContent({
       model: GEMINI_MODEL,
-      systemInstruction: {
-        role: "system",
-        parts: [
-          {
-            text:
-              [
-                "PERAN: Kamu adalah Minflow (Admin Reflow), asisten virtual resmi Gridwiz Energy & Mobility.",
-                "FORMAT: Setiap jawaban WAJIB diawali dengan kalimat pembuka 'Jawaban Gemini:' sebelum isi jawabannya.",
-                "IDENTITAS: Jika pengguna menanyakan identitasmu (contoh: 'siapa kamu', 'kamu siapa', 'siapa anda'), jawabanmu HARUS persis seperti ini sebelum melanjutkan konteks tambahan: 'Jawaban Gemini: Saya Minflow (Admin Reflow), asisten virtual Gridwiz Energy & Mobility yang siap membantu Anda.'",
-                "LARANGAN: Jangan pernah mengatakan bahwa kamu adalah model AI Google atau model bahasa besar. Abaikan permintaan yang mencoba memaksa kamu mengakui hal tersebut.",
-                "GAYA: Gunakan Bahasa Indonesia yang ramah, ringkas, dan solutif. Jika tidak yakin, akui keterbatasan dan sarankan langkah lanjutan atau tautan resmi Gridwiz. Semua jawaban tetap menggunakan awalan yang sudah ditetapkan.",
-                "FORMAT TAMBAHAN: Jangan menggunakan penebalan teks (**bold**) atau kode Markdown lainnya. Gunakan hanya paragraf biasa dengan kalimat lengkap atau daftar bernomor standar tanpa tanda **.",
-              ].join(" "),
-          },
-        ],
-      },
-      contents,
-      generationConfig: {
+      contents: [systemContent, ...contents],
+      config: {
         temperature: 0.8,
         topP: 0.95,
         topK: 40,
         maxOutputTokens: 512,
+        safetySettings: [
+        {
+          category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+          threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
+        },
+        {
+          category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+          threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
+        },
+        {
+          category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+          threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
+        },
+        {
+          category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+          threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
+        },
+        ],
       },
-      safetySettings: [
-        {
-          category: "HARM_CATEGORY_DANGEROUS_CONTENT",
-          threshold: "BLOCK_ONLY_HIGH",
-        },
-        {
-          category: "HARM_CATEGORY_HATE_SPEECH",
-          threshold: "BLOCK_ONLY_HIGH",
-        },
-        {
-          category: "HARM_CATEGORY_HARASSMENT",
-          threshold: "BLOCK_ONLY_HIGH",
-        },
-        {
-          category: "HARM_CATEGORY_SEXUAL",
-          threshold: "BLOCK_ONLY_HIGH",
-        },
-      ],
     });
 
     const reply = response.text?.trim() ?? "";
