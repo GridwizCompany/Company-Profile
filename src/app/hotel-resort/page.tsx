@@ -114,45 +114,6 @@ export default function HotelResort() {
 
   return (
     <section>
-      {showPopup && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
-          <div className="relative w-[90%] max-w-sm bg-black rounded-2xl overflow-hidden shadow-2xl aspect-[9/16]">
-            {showCloseButton && (
-              <button
-                onClick={() => setShowPopup(false)}
-                className="absolute top-2 right-2 bg-white/20 hover:bg-white/40 text-white rounded-full p-2 transition"
-              >
-                ✕
-              </button>
-            )}
-
-            {!allowPlay && (
-              <button
-                onClick={() => setAllowPlay(true)}
-                className="absolute inset-0 flex items-center justify-center bg-black/50 text-white text-lg font-semibold"
-              >
-                🔊 Tap to Play with Sound
-              </button>
-            )}
-            {allowPlay ? (
-              <iframe
-                src={`https://www.youtube.com/embed/${videoId}?autoplay=1&controls=0&disablekb=1&modestbranding=1&rel=0`}
-                title="YouTube Shorts player"
-                allow="autoplay; encrypted-media"
-                className="w-full h-full rounded-2xl"
-              ></iframe>
-            ) : (
-              <iframe
-                src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&disablekb=1&modestbranding=1&rel=0`}
-                title="YouTube Shorts preview"
-                allow="autoplay; encrypted-media"
-                className="w-full h-full rounded-2xl"
-              ></iframe>
-            )}
-          </div>
-        </div>
-      )}
-
       <div className="relative max-w-screen min-h-screen overflow-hidden">
         <Image
           src={hotelImage}
@@ -174,6 +135,18 @@ export default function HotelResort() {
               berlibur dan memudahkan eksplorasi area sekitar hotel.
             </p>
           </div>
+        </div>
+      </div>
+
+      <div className="flex justify-center py-5 sm:px-8 md:px-72 md:py-32 bg-white">
+        <div className="relative w-full pb-[56.25%] h-0 overflow-hidden shadow-lg">
+          <iframe
+            className="absolute top-0 left-0 w-full h-full"
+            src="https://www.youtube.com/embed/jav1rwlGkjU"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
         </div>
       </div>
 

@@ -82,7 +82,6 @@ export default function Layanan() {
     return () => container.removeEventListener("scroll", handleStatistikScroll);
   }, []);
 
-  // Data statistik
   const statistik = [
     {
       icon: <FaUser className="text-3xl md:text-4xl text-blue-500" />,
@@ -122,7 +121,7 @@ export default function Layanan() {
           />
         </div>
 
-        <div className="max-w-screen-xl mx-auto py-16 flex flex-col md:flex-row items-center justify-between gap-10">
+        <div className="max-w-7xl mx-auto py-16 flex flex-col md:flex-row items-center justify-between gap-10">
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-2xl md:text-4xl font-bold  mb-6">
               Bersepeda Lebih Mudah, Hidup Lebih Hijau Bersama{" "}
@@ -240,7 +239,7 @@ export default function Layanan() {
               {statistik.map((stat, idx) => (
                 <div
                   key={idx}
-                  className="flex-shrink-0 w-full p-6 rounded-2xl shadow-lg snap-center"
+                  className="shrink-0 w-full p-6 rounded-2xl shadow-lg snap-center"
                 >
                   <div className="text-4xl mb-4 flex justify-center">
                     {stat.icon}
