@@ -131,15 +131,14 @@ export function BeritaDetailTemplate({
       {/* HERO */}
       <div className="relative isolate overflow-hidden rounded-b-[48px] bg-slate-950/50">
         <div className="relative h-[72svh] min-h-[460px] overflow-hidden">
-          <Image
-            src={heroImage}
+          <img
+            src={driveImageUrl(heroImage)}
             alt={berita.title}
-            fill
-            className="object-cover object-bottom saturate-[1.05]"
-            priority
+            className="absolute inset-0 w-full h-full object-cover object-bottom saturate-[1.05]"
+            referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/56 to-slate-950/32" />
-          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent via-slate-950/40 to-slate-950" />
+          <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/56 to-slate-950/32" />
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-b from-transparent via-slate-950/40 to-slate-950" />
           <div className="absolute inset-x-0">
             <div className="mx-auto w-full max-w-6xl px-6 py-32 md:py-56">
               <Link

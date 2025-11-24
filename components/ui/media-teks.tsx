@@ -46,14 +46,12 @@ export default function Partner({
           reverse ? "md:flex-row-reverse" : ""
         } items-center gap-8 md:gap-12`}
       >
-        <div className="relative w-full max-w-md h-[350px] flex justify-center mt-16 md:mt-0 ">
-          <Image
-            src={image}
+        <div className="relative w-full max-w-md h-[350px] flex justify-center mt-16 md:mt-0">
+          <img
+            src={driveImageUrl(image)}
             alt={title}
-            fill
-            className="object-contain"
-            sizes="(max-width: 768px) 100vw, 50vw"
-            priority
+            className="w-full h-full object-contain"
+            referrerPolicy="no-referrer"
           />
         </div>
 

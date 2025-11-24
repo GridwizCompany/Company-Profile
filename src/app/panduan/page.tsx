@@ -9,6 +9,7 @@ import {
   FaLock,
   FaUnlockAlt,
 } from "react-icons/fa";
+import { driveImageUrl } from "utils/driveutils";
 
 export default function Layanan() {
   const langkah = [
@@ -115,9 +116,12 @@ export default function Layanan() {
 
         <div className="w-full h-60 md:h-[500px] mt-8 md:mt-32 overflow-hidden rounded-xl">
           <img
-            src="https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Guide/ceo.JPG"
+            src={driveImageUrl(
+              "https://drive.google.com/file/d/1uDXuK3ljHXw8Y6Ye84Ao1F4Bza8Hcd5v/view?usp=drive_link"
+            )}
             alt="CEO"
             className="w-full h-full object-cover"
+            referrerPolicy="no-referrer"
           />
         </div>
 
@@ -195,9 +199,12 @@ export default function Layanan() {
 
         <div className="w-full h-60 md:h-[500px] overflow-hidden rounded-xl">
           <img
-            src="https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Guide/bike-guide.JPG"
+            src={driveImageUrl(
+              "https://drive.google.com/file/d/13ttTcx8WvYzJmu_YTOgWV_TfibFdQ3OV/view?usp=sharing"
+            )}
             alt="Riding Bike"
             className="w-full h-full object-cover"
+            referrerPolicy="no-referrer"
           />
         </div>
 
@@ -286,9 +293,12 @@ export default function Layanan() {
           <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 max-w-7xl mx-auto px-4 md:px-8">
             <div className="flex-1 w-full h-auto lg:h-[760px] rounded-xl overflow-hidden order-1 lg:order-2 mb-6 lg:mb-0">
               <img
-                src="https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Guide/how-to-use.JPG"
+                src={driveImageUrl(
+                  "https://drive.google.com/file/d/10Io8nFaAW5VsOPLvPiyIVCeEB9UN9wKN/view?usp=sharing"
+                )}
                 alt="Cara Menggunakan"
                 className="w-full h-full object-cover rounded-xl"
+                referrerPolicy="no-referrer"
               />
             </div>
 
@@ -328,7 +338,7 @@ export default function Layanan() {
                   {langkah.map((l) => (
                     <div
                       key={l.id}
-                      className="flex-shrink-0 w-full  p-6 rounded-2xl shadow-lg snap-center"
+                      className="shrink-0 w-full  p-6 rounded-2xl shadow-lg snap-center"
                     >
                       <div className="text-4xl mb-4 flex justify-center">
                         {l.ikon}

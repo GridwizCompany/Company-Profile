@@ -126,7 +126,7 @@ export default function KontakPage() {
               href={option.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative flex h-full flex-col overflow-hidden rounded-[32px] border border-slate-800/60 bg-slate-900/70 p-8 shadow-[0_35px_70px_-50px_rgba(56,189,248,0.6)] transition hover:border-sky-400/40 hover:shadow-[0_45px_90px_-55px_rgba(56,189,248,0.75)]"
+              className="group relative flex h-full flex-col overflow-hidden rounded-4xlrder border-slate-800/60 bg-slate-900/70 p-8 shadow-[0_35px_70px_-50px_rgba(56,189,248,0.6)] transition hover:border-sky-400/40 hover:shadow-[0_45px_90px_-55px_rgba(56,189,248,0.75)]"
             >
               <div
                 className="absolute -right-14 top-12 h-32 w-32 rounded-full bg-sky-500/10 blur-3xl transition group-hover:bg-sky-400/20"
@@ -174,7 +174,7 @@ export default function KontakPage() {
         </div>
 
         <div className="mx-auto mt-16 max-w-5xl px-6 text-center sm:px-10 md:px-16 lg:px-24">
-          <div className="rounded-[32px] border border-slate-800/60 bg-slate-900/50 p-10 shadow-[0_30px_60px_-55px_rgba(56,189,248,0.65)]">
+          <div className="rounded-4xl border border-slate-800/60 bg-slate-900/50 p-10 shadow-[0_30px_60px_-55px_rgba(56,189,248,0.65)]">
             <p className="text-sm uppercase tracking-[0.35em] text-slate-400">
               Preferensi Komunikasi
             </p>

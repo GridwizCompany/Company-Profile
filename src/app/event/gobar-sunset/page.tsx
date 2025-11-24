@@ -48,13 +48,14 @@ export default function GobarSunset() {
       <div className="relative min-h-screen bg-no-repeat bg-cover bg-center">
         <div className="absolute inset-0">
           <img
-            src={
-              "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Event/gobar-sunset.jpg"
-            }
+            src={driveImageUrl(
+              "https://drive.google.com/file/d/1vcCmTJ14LuzXp6uVbfEZ_gQ-Zv86LMZN/view?usp=sharing"
+            )}
             alt="Background"
             className="w-full h-full object-cover opacity-60"
+            referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
+          <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/50 to-black/70" />
         </div>
         <div className="absolute inset-0 bg-black/50"></div>
 
@@ -94,7 +95,7 @@ export default function GobarSunset() {
                 premium melalui rangkaian aktivitas tematik di titik perhentian.
               </p>
 
-              <div className="flex-1 flex items-center rounded-3xl bg-gradient-to-br from-amber-500 via-orange-500 to-rose-500 text-white p-8 md:p-9 md:mt-8">
+              <div className="flex-1 flex items-center rounded-3xl bg-linear-to-br from-amber-500 via-orange-500 to-rose-500 text-white p-8 md:p-9 md:mt-8">
                 <div>
                   <p className="text-base md:text-lg italic leading-relaxed">
                     “Sebagai bagian dari komitmen terhadap mobilitas
@@ -205,9 +206,9 @@ export default function GobarSunset() {
               {galleryItems.map((item, index) => (
                 <div
                   key={index}
-                  className="flex-shrink-0 w-80 sm:w-auto rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg snap-center"
+                  className="shrink-0 w-80 sm:w-auto rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg snap-center"
                 >
-                  <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
+                  <div className="relative aspect-4/3 overflow-hidden bg-gray-100">
                     <img
                       src={driveImageUrl(item.imageSource)}
                       alt={`Gallery ${index + 1}`}

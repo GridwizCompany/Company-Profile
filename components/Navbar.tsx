@@ -42,23 +42,21 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed w-full top-0 z-[1000] transition-all duration-300 ${
+      className={`fixed w-full top-0 z-1000 transition-all duration-300 ${
         scrolled
           ? "bg-white/50 backdrop-blur-sm shadow-md"
-          : "bg-gradient-to-b from-black/50 to-transparent"
+          : "bg-linear-to-b from-black/50 to-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto py-4 md:py-1 px-6 flex justify-between">
         <Link href="/" className="flex items-center space-x-3 group">
-          <Image
-            src={
-              "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Logo/gridwiz-logo.png"
-            }
-            alt="Logo Gridwiz"
-            width={80}
-            height={80}
-            className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-contain transition-transform duration-300 group-hover:scale-105"
-            priority
+          <img
+            src={driveImageUrl(
+              "https://drive.google.com/file/d/1zrDrnyPM12FLkibH_fN0CpPMgTQfetQU/view?usp=drive_link"
+            )}
+            alt="Logo"
+            className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain"
+            referrerPolicy="no-referrer"
           />
         </Link>
 

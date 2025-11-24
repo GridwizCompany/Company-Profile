@@ -49,13 +49,14 @@ export default function GobarKemerdekaan() {
       <div className="relative min-h-screen bg-no-repeat bg-cover bg-center">
         <div className="absolute inset-0">
           <img
-            src={
-              "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Event/gobar-kemerdekaan.JPG"
-            }
+            src={driveImageUrl(
+              "https://drive.google.com/file/d/1yKTr2INI_RGpoqN2pwHvTHvp5BYBFjUN/view?usp=sharing"
+            )}
             alt="Background"
             className="w-full h-full object-cover opacity-60"
+            referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
+          <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/50 to-black/70" />
         </div>
 
         <div className="absolute inset-0 bg-black/50"></div>
@@ -90,7 +91,7 @@ export default function GobarKemerdekaan() {
                 baterai, fasilitas charging port, serta berbagai aktivitas
                 tematik yang memperkuat rasa cinta tanah air.
               </p>
-              <div className="rounded-3xl bg-gradient-to-r from-red-600 via-rose-600 to-amber-700 text-white p-8 shadow-xl">
+              <div className="rounded-3xl bg-linear-to-r from-red-600 via-rose-600 to-amber-700 text-white p-8 shadow-xl">
                 <p className="text-lg md:text-xl italic leading-relaxed">
                   “Gowes Merdeka bukan sekadar perayaan, melainkan gerakan nyata
                   untuk menyalakan gaya hidup sehat, teknologi hijau, dan
@@ -128,7 +129,7 @@ export default function GobarKemerdekaan() {
             </div>
           </div>
 
-          <div className="rounded-3xl border-2 border-gray-200 bg-gradient-to-br from-white via-red-50 to-white p-10">
+          <div className="rounded-3xl border-2 border-gray-200 bg-linear-to-br from-white via-red-50 to-white p-10">
             <div className="grid gap-6 md:grid-cols-3">
               <div className="space-y-3">
                 <span className="inline-flex items-center rounded-full  py-1 text-base md:text-lg font-bold uppercase tracking-wide text-red-600">
@@ -183,9 +184,9 @@ export default function GobarKemerdekaan() {
               {galleryItems.map((item, index) => (
                 <div
                   key={index}
-                  className="flex-shrink-0 w-80 sm:w-auto rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg snap-center"
+                  className="shrink-0 w-80 sm:w-auto rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg snap-center"
                 >
-                  <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
+                  <div className="relative aspect-4/3 overflow-hidden bg-gray-100">
                     <img
                       src={driveImageUrl(item.imageSource)}
                       alt={`Gallery ${index + 1}`}

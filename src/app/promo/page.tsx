@@ -7,8 +7,9 @@ export default function Promo() {
       <div
         className="relative min-h-screen bg-no-repeat bg-cover bg-center py-20 px-20"
         style={{
-          backgroundImage:
-            "url('https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Promo/lombok-bike-trip.jpg')",
+          backgroundImage: `url(${driveImageUrl(
+            "https://drive.google.com/file/d/1OD3mxFqQoYj_Iaznc8DfjNDekEgf1hGj/view?usp=sharing"
+          )})`,
         }}
       >
         <div className="absolute inset-0 bg-linear-to-b from-black/10 via-black/20 to-black" />
@@ -17,12 +18,13 @@ export default function Promo() {
       <div className="flex flex-col gap-32 px-6 md:px-24 py-30">
         <div className="flex flex-col md:flex-row justify-center items-center text-center md:text-left gap-16 lg:gap-32">
           <div className="shrink-0 relative w-[250px] h-[220px] md:w-[450px] md:h-[400px] overflow-visible flex justify-center">
-            <Image
-              src="https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Promo/student.png"
-              alt="Tarif Pelajar"
-              fill
-              className="object-cover rounded-lg"
-              priority
+            <img
+              src={driveImageUrl(
+                "https://drive.google.com/file/d/16DfcQMlwpox9dy2uJD-hXZ3hW5_7v68O/view?usp=sharing"
+              )}
+              alt="Background"
+              className="absolute inset-0 w-full h-full object-cover"
+              referrerPolicy="no-referrer"
             />
           </div>
 
@@ -48,12 +50,13 @@ export default function Promo() {
 
         <div className="flex flex-col md:flex-row-reverse justify-center items-center text-center md:text-left gap-16 lg:gap-32">
           <div className="shrink-0 relative w-[250px] h-[220px] md:w-[450px] md:h-[400px] overflow-visible flex justify-center">
-            <Image
-              src="https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Promo/public.png"
-              alt="Tarif Publik"
-              fill
-              className="object-cover rounded-lg"
-              priority
+            <img
+              src={driveImageUrl(
+                "https://drive.google.com/file/d/1med5LLzjbixsc2yIociM6hX_ApIQsmMp/view?usp=sharing"
+              )}
+              alt="Background"
+              className="absolute inset-0 w-full h-full object-cover"
+              referrerPolicy="no-referrer"
             />
           </div>
 
@@ -80,14 +83,13 @@ export default function Promo() {
       </div>
 
       <div className="relative w-full h-[600px] bg-cover bg-center flex items-center px-6 md:px-12">
-        <Image
-          src={
-            "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Promo/riding-gridwiz.png"
-          }
-          alt="Contoh Gambar"
-          fill
-          className="object-cover"
-          priority
+        <img
+          src={driveImageUrl(
+            "https://drive.google.com/file/d/1suc-MLOB9BQjNEII-43NjXhemxZWpRd5/view?usp=sharing"
+          )}
+          alt="Background"
+          className="absolute inset-0 w-full h-full object-cover"
+          referrerPolicy="no-referrer"
         />
 
         <div className="relative z-10 max-w-2xl text-white">

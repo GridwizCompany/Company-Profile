@@ -51,12 +51,11 @@ export default function OverviewSection({
                   item.imagePosition === "right" ? "order-2" : "order-1"
                 }`}
               >
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="rounded-2xl shadow-lg object-cover"
-                  priority
+                <img
+                  src={driveImageUrl(item.image)}
+                  alt="Background"
+                  className="absolute inset-0 w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
                 />
               </div>
 

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { driveImageUrl } from "utils/driveutils";
 
 interface BeritaCardProps {
   image: string;
@@ -23,8 +24,8 @@ export default function BeritaCard({
       href={`/berita/${slug}`}
       className="bg-gray-900 rounded-xl overflow-hidden shadow-md hover:scale-[1.02] transition-transform w-full max-w-md"
     >
-      <Image
-        src={image}
+      <img
+        src={driveImageUrl(image)}
         alt={title}
         height={200}
         width={200}

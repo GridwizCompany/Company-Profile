@@ -18,7 +18,7 @@ export const beritaItems: BeritaItem[] = [
       "PT Gridwiz Mengawali Kerja Sama Strategis untuk Mendukung Inovasi Energi Terbarukan di NTB",
     date: "2025-08-27",
     image:
-      "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/News/brida.jpeg",
+      "https://drive.google.com/file/d/1NMgzY9RIBeauYWlwGn9qRZeIhzj7nbRT/view?usp=drive_link",
     description:
       "PT Gridwiz menawarkan kolaborasi strategis kepada BRIDA NTB untuk mempercepat adopsi teknologi transportasi listrik yang ramah lingkungan di seluruh provinsi.",
     location: "Mataram, NTB",
@@ -41,7 +41,7 @@ export const beritaItems: BeritaItem[] = [
     title: "PT Gridwiz Berpartisipasi dalam HUT ke-61 Partai Golkar NTB",
     date: "2025-10-21",
     image:
-      "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/News/golkar.jpg",
+      "https://drive.google.com/file/d/1KUw77gXRl2kkmN7fEh0TuOtikR44Aprb/view?usp=drive_link",
     description:
       "PT Gridwiz turut memeriahkan Hari Ulang Tahun ke-61 Partai Golkar NTB melalui kegiatan sepeda bersama dan sosialisasi transportasi listrik ramah lingkungan di Kota Mataram.",
     location: "Mataram, NTB",

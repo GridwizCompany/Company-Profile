@@ -53,13 +53,14 @@ export default function CarFreeDay() {
       <div className="relative min-h-screen bg-black flex flex-col items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src={
-              "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Event/cfd.jpg"
-            }
+            src={driveImageUrl(
+              "https://drive.google.com/file/d/1YtzSR1DpphkfsXcY3_vZTYuGFuKajK_D/view?usp=sharing"
+            )}
             alt="Background"
             className="w-full h-full object-cover opacity-60"
+            referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
+          <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/50 to-black/70" />
         </div>
 
         <div className="absolute inset-0 bg-black/10"></div>
@@ -73,11 +74,12 @@ export default function CarFreeDay() {
           <p className="text-3xl md:text-5xl font-extrabold my-6 md:my-12">X</p>
 
           <img
-            src={
-              "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Logo/reflow-logo-white.png"
-            }
+            src={driveImageUrl(
+              "https://drive.google.com/file/d/1Ozc3JZk7sL8lLJAk2CDQ7ZN57Oor4EcJ/view?usp=sharing"
+            )}
             alt="Logo Gridwiz"
-            className="object-contain drop-shadow-lg w-32 sm:w-40 md:w-48"
+            className=" object-contain drop-shadow-lg"
+            referrerPolicy="no-referrer"
           />
         </div>
       </div>
@@ -97,7 +99,7 @@ export default function CarFreeDay() {
               hijau.
             </p>
 
-            <div className="flex-1 flex items-center rounded-3xl bg-gradient-to-br from-sky-400 via-blue-500 to-indigo-600 text-white p-8 md:p-9 md:mt-8">
+            <div className="flex-1 flex items-center rounded-3xl bg-linear-to-br from-sky-400 via-blue-500 to-indigo-600 text-white p-8 md:p-9 md:mt-8">
               <div>
                 <p className="text-lg sm:text-xl italic leading-relaxed">
                   “Sebagai bagian dari komitmen terhadap mobilitas berkelanjutan
@@ -178,7 +180,7 @@ export default function CarFreeDay() {
                 {galleryItems.map((item, index) => (
                   <div
                     key={index}
-                    className="min-w-full flex-shrink-0 md:rounded-3xl overflow-hidden bg-gray-100"
+                    className="min-w-full shrink-0 md:rounded-3xl overflow-hidden bg-gray-100"
                   >
                     <img
                       src={driveImageUrl(item.imageSource)}
@@ -224,7 +226,7 @@ export default function CarFreeDay() {
                 key={index}
                 className="rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
               >
-                <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
+                <div className="relative aspect-4/3 overflow-hidden bg-gray-100">
                   <img
                     src={driveImageUrl(item.imageSource)}
                     alt={`Gallery ${index + 1}`}

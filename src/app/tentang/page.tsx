@@ -53,9 +53,9 @@ export default function AboutUs() {
 
           <div className="flex justify-center items-center">
             <img
-              src={
-                "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Logo/reflow-logo-black.png"
-              }
+              src={driveImageUrl(
+                "https://drive.google.com/file/d/11P5UtOPu6v3Fh_Zcjd2RB4S6hnshdfVl/view?usp=drive_link"
+              )}
               alt="Logo Gridwiz"
               className="object-contain drop-shadow-lg"
             />
@@ -63,7 +63,7 @@ export default function AboutUs() {
         </div>
       </section>
 
-      <section className="py-12 px-6 md:px-16 bg-gradient-to-b from-red-50 via-white to-white">
+      <section className="py-12 px-6 md:px-16 bg-linear-to-b from-red-50 via-white to-white">
         <div className="max-w-6xl mx-auto space-y-16">
           <div className="text-center max-w-3xl mx-auto space-y-4">
             <span className="inline-flex items-center rounded-full bg-red-100 px-4 py-1 text-sm font-semibold uppercase tracking-wide text-red-600">
@@ -114,9 +114,11 @@ export default function AboutUs() {
         <div className="max-w-5xl mx-auto text-center">
           <div className="mb-16 flex justify-center">
             <img
-              src="https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/About%20Us/bcs.JPG"
-              alt="Tentang Kami"
+              src={driveImageUrl(
+                "https://drive.google.com/file/d/14NPGJBCtehRDd10CuOtDrhjdpY1TeJG7/view?usp=drive_link"
+              )}
               className="w-full h-auto object-cover"
+              alt="Solar PV"
             />
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 flex justify-center items-center gap-3 mx-auto">

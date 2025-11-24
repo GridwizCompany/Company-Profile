@@ -3,11 +3,9 @@ import { useState } from "react";
 import Image from "next/image";
 import BeritaCard from "@/components/ui/berita-card";
 import { beritaItems } from "data/berita";
+import { driveImageUrl } from "utils/driveutils";
 
 export default function BeritaPage() {
-  const heroImage =
-    "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/News/bg-news.jpg";
-
   const itemsPerPage = 6;
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -25,19 +23,21 @@ export default function BeritaPage() {
     <section className="bg-gray-950 text-white min-h-screen">
       <div className="relative w-full">
         <img
-          src={heroImage}
+          src={driveImageUrl(
+            "https://drive.google.com/file/d/1bRYjDLZ1-E4yPrvYOZyuD4I35l1pJzbo/view?usp=drive_link"
+          )}
           alt="Gridwiz News Hero"
           referrerPolicy="no-referrer"
           className="h-[60svh] w-full object-cover object-[center_80%] brightness-75"
         />
         <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-center px-6">
-          <Image
-            src="https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Logo/reflow-logo-white.png"
+          <img
+            src={driveImageUrl(
+              "https://drive.google.com/file/d/1Ozc3JZk7sL8lLJAk2CDQ7ZN57Oor4EcJ/view?usp=sharing"
+            )}
             alt="Logo Gridwiz"
-            width={140}
-            height={140}
-            className="w-40 mb-8"
-            priority
+            className="w-[140px] h-[140px] object-contain drop-shadow-lg"
+            referrerPolicy="no-referrer"
           />
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold max-w-3xl leading-tight">
             Berita Terbaru <span className="text-sky-400">Gridwiz</span>

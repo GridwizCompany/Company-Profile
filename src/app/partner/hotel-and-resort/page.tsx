@@ -18,7 +18,7 @@ export default function HotelAndResort() {
   const promos = [
     {
       image:
-        "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Hotel%20&%20Resort/aruna.png",
+        "https://drive.google.com/file/d/1Fh8peVGrb_V15pAewdVWrgJjD8m7Y65k/view?usp=sharing",
       title: "Aruna Hotel",
       description:
         "Aruna Hotel memadukan pesona alam Lombok dengan kenyamanan modern. Terletak di tepi pantai, Aruna berkomitmen pada prinsip pariwisata berkelanjutan melalui efisiensi energi, pengurangan plastik sekali pakai, dan dukungan terhadap produk lokal. Setiap tamu diajak menikmati pengalaman menginap yang tidak hanya nyaman, tetapi juga penuh kepedulian terhadap bumi.",
@@ -43,7 +43,7 @@ export default function HotelAndResort() {
     },
     {
       image:
-        "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Hotel%20&%20Resort/holiday.png",
+        "https://drive.google.com/file/d/1mDxzbG101jjGg2dMU2GS90F4-2yvPWqS/view?usp=sharing",
       title: "Holiday Resort Lombok",
       description:
         "Holiday Resort Lombok menghadirkan keseimbangan antara kemewahan dan keasrian alam. Dengan lokasi di Senggigi yang dikelilingi pohon kelapa dan suara ombak, resort ini menggunakan bahan bangunan alami serta sistem pengolahan air berkelanjutan. Pengunjung dapat menikmati suasana tropis yang menenangkan tanpa meninggalkan tanggung jawab terhadap lingkungan.",
@@ -69,7 +69,7 @@ export default function HotelAndResort() {
     },
     {
       image:
-        "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Hotel%20&%20Resort/merumata.png",
+        "https://drive.google.com/file/d/1t1ZpMI7ob6szg74NnlBmiCzeEBbGl4bx/view?usp=sharing",
       title: "Merumata Hotel",
       description:
         "Merumata Hotel menawarkan pengalaman menginap eksklusif dengan standar ramah lingkungan tinggi. Setiap detail — mulai dari pencahayaan hemat energi, bahan interior berkelanjutan, hingga kuliner berbasis bahan organik — dirancang untuk menciptakan keseimbangan antara kemewahan dan keberlanjutan. Di sini, elegansi bertemu dengan kepedulian terhadap bumi.",
@@ -96,7 +96,7 @@ export default function HotelAndResort() {
 
   return (
     <section>
-      <div className="relative min-h-screen bg-gradient-to-b from-cyan-100 via-sky-100 to-gray-200 text-gray-800 flex flex-col items-center justify-center px-6 py-24 text-center">
+      <div className="relative min-h-screen bg-linear-to-b from-cyan-100 via-sky-100 to-gray-200 text-gray-800 flex flex-col items-center justify-center px-6 py-24 text-center">
         <div className="absolute inset-0 overflow-hidden opacity-30 z-0">
           <Leaf className="absolute top-20 left-10 w-16 h-16 text-sky-300 animate-bounce-slow" />
           <Wind className="absolute top-40 right-20 w-20 h-20 text-sky-300 animate-spin-slow" />
@@ -107,15 +107,13 @@ export default function HotelAndResort() {
 
         <div className="relative w-full h-[600px] flex flex-col items-center justify-center text-center px-6 md:px-12 overflow-hidden">
           <div className="absolute top-10 left-1/2 -translate-x-1/2 z-20">
-            <Image
-              src={
-                "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Logo/reflow-logo-black.png"
-              }
+            <img
+              src={driveImageUrl(
+                "https://drive.google.com/file/d/11P5UtOPu6v3Fh_Zcjd2RB4S6hnshdfVl/view?usp=sharing"
+              )}
               alt="Logo Gridwiz"
-              width={140}
-              height={140}
-              className="object-contain drop-shadow-lg"
-              priority
+              className="w-[140px] h-[140px] object-contain drop-shadow-lg"
+              referrerPolicy="no-referrer"
             />
           </div>
 
@@ -142,17 +140,17 @@ export default function HotelAndResort() {
           </div>
         </div>
       </div>
-      <div className="relative max-h-[500px] min-h-[700px] bg-no-repeat bg-cover bg-center">
-        <Image
-          src={
-            "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Hotel%20&%20Resort/launching-gridwiz.JPG"
-          }
-          alt={"title"}
-          fill
-          className="object-cover object-center w-full h-full"
-          priority
+      <div className="relative min-h-[700px] max-h-[500px] overflow-hidden">
+        <img
+          src={driveImageUrl(
+            "https://drive.google.com/file/d/1M-rnxWZgRen5SpwvakNfBLqxk-3BlAKt/view?usp=sharing"
+          )}
+          alt="Logo Gridwiz"
+          className="absolute inset-0 w-full h-full object-cover"
+          referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-black/10"></div>
+
+        <div className="absolute inset-0 bg-black/10 z-10"></div>
       </div>
 
       <div id="promo-section" className="bg-gray-200 py-16">

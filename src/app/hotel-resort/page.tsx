@@ -5,22 +5,6 @@ import { useEffect, useState } from "react";
 import { driveImageUrl } from "utils/driveutils";
 
 export default function HotelResort() {
-  const [showPopup, setShowPopup] = useState(false);
-  const [showCloseButton, setShowCloseButton] = useState(false);
-  const [allowPlay, setAllowPlay] = useState(false);
-
-  const videoId = "RrFkEv5ysIM";
-
-  useEffect(() => {
-    setShowPopup(true);
-
-    const timer = setTimeout(() => {
-      setShowCloseButton(true);
-    }, 10000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   const hotelImage =
     "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Top%20Destination/bg-destination.JPG";
 
@@ -38,7 +22,7 @@ export default function HotelResort() {
       description:
         "Pura Batu Bolong adalah salah satu destinasi wisata spiritual dan alam yang paling ikonik di Lombok. Terletak di tepi Pantai Senggigi, pura ini didirikan di atas batu karang besar yang menjorok langsung ke laut.",
       image:
-        "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Top%20Destination/batu-bolong.jpg",
+        "https://drive.google.com/file/d/1bBosYHlXQFSgrnrd9oYWXLQDByzA2gsI/view?usp=sharing",
       imagePosition: "left",
       rating: "4.5/5",
       location: "maps.app.goo.gl/KeKyVgs4fmina7bt5",
@@ -49,7 +33,7 @@ export default function HotelResort() {
       description:
         "Cafe Alberto adalah salah satu restoran tepi pantai paling terkenal di Senggigi, Lombok, yang menawarkan perpaduan hidangan Italia, seafood segar, dan menu internasional lainnya dengan suasana yang elegan dan romantis.",
       image:
-        "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Top%20Destination/Alberto.jpg",
+        "https://drive.google.com/file/d/1lr6RNkAeyEDPwUIJC9mVWgp9IryBlgO_/view?usp=sharing",
       imagePosition: "right",
       rating: "4.3/5",
       location: "maps.app.goo.gl/FVpaNhBDBsCb4rcu6",
@@ -60,7 +44,7 @@ export default function HotelResort() {
       description:
         "Mentez Art Gallery adalah galeri seni terkemuka di kawasan Senggigi, Lombok, yang menjadi surga bagi para pecinta seni dan kolektor. Galeri ini secara khusus memamerkan berbagai karya seni lukis yang menawan, seringkali menampilkan gaya khas seniman lokal yang berfokus pada kehidupan, budaya, dan keindahan alam Pulau Lombok.",
       image:
-        "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Top%20Destination/mentez.jpg",
+        "https://drive.google.com/file/d/1RgcHVtPTHTr3sTDmr-QgoE4bq-peK3-m/view?usp=sharing",
       imagePosition: "left",
       rating: "4.7/5",
       location: "maps.app.goo.gl/BD8XyZGoxcfhSpXG7",
@@ -71,7 +55,7 @@ export default function HotelResort() {
       description:
         "Pantai Kerandangan memancarkan pesona alam yang otentik dan menenangkan, menjadikannya permata tersembunyi yang damai di dekat kawasan Senggigi. Keindahan pantai ini terletak pada kontras antara pasir putih kecokelatan yang lembut dengan hijaunya deretan pepohonan di sepanjang garis pantai, menciptakan suasana yang lebih teduh dan asri dibandingkan pantai-pantai komersil lainnya.",
       image:
-        "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Top%20Destination/Pantai-Kerandangan.jpg",
+        "https://drive.google.com/file/d/1BgTSq4QtkRnMiZaArMFJcE6LmMvdgIHq/view?usp=sharing",
       imagePosition: "right",
       rating: "4.8/5",
       location: "maps.app.goo.gl/uD8ZKwdo5chuzBPw5",
@@ -82,7 +66,7 @@ export default function HotelResort() {
       description:
         "Beach Club Lombok by Bale Solah, sebuah permata elegan yang menawarkan kombinasi sempurna antara resort bintang empat dan beach club premium di kawasan Senggigi.",
       image:
-        "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Top%20Destination/beach-club-lombok.jpg",
+        "https://drive.google.com/file/d/1_aTMQijkTxq4_XRcWPXuh8EjaouaJRe1/view?usp=sharing",
       imagePosition: "left",
       rating: "4.4/5",
       location: "maps.app.goo.gl/DPznhDPa7KXxMAxt7",
@@ -93,7 +77,7 @@ export default function HotelResort() {
       description:
         "Pantai Tanjung Bias, sebuah destinasi yang menawarkan perpaduan sempurna antara keindahan alam, wisata kuliner, dan kegiatan rekreasi keluarga di Desa Senteluk, Lombok Barat.",
       image:
-        "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Top%20Destination/pantai-tanjung-bias.jpg",
+        "https://drive.google.com/file/d/1IGeynpPU6dv3t3uy_BBlxw7VZODr_QOE/view?usp=sharing",
       imagePosition: "right",
       rating: "4.5/5",
       location: "maps.app.goo.gl/vUQfHwMUphj6wywt9",
@@ -104,7 +88,7 @@ export default function HotelResort() {
       description:
         "Pantai Kecinan di Lombok Utara, sebuah permata yang menyajikan ketenangan dengan panorama alam yang menawan dan suasana damai. Daya tarik utama pantai ini adalah pasir putihnya yang lembut dan bersih serta air laut yang jernih dengan ombak yang sangat tenang, menjadikannya sangat aman dan ideal untuk berenang, bermain air bersama keluarga, bahkan menjadi spot populer untuk snorkeling dan menyelam karena kekayaan terumbu karang di bawah lautnya.",
       image:
-        "https://stuproztnegtdvowxqvt.supabase.co/storage/v1/object/public/images/Top%20Destination/pantai-kecinan.jpg",
+        "https://drive.google.com/file/d/1osmTM7QRgR8mimjqBBKK92faHbdZC49k/view?usp=sharing",
       imagePosition: "left",
       rating: "4.5/5",
       location: "maps.app.goo.gl/pAxoWsfbmDkpxN9W9",
@@ -115,13 +99,16 @@ export default function HotelResort() {
   return (
     <section>
       <div className="relative max-w-screen min-h-screen overflow-hidden">
-        <Image
-          src={hotelImage}
-          alt="Hotel"
-          fill
-          className="object-cover"
-          sizes="100vw"
-        />
+        <div className="relative w-full min-h-screen overflow-hidden">
+          <img
+            src={driveImageUrl(
+              "https://drive.google.com/file/d/1WNmm3FZwShu3rQs6pJ-TwbccFJ-uwKi8/view?usp=sharing"
+            )}
+            alt="Hotel"
+            className="absolute inset-0 w-full h-full object-cover"
+            referrerPolicy="no-referrer"
+          />
+        </div>
 
         <div className="absolute inset-0 bg-black/60"></div>
 
