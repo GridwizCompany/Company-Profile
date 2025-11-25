@@ -91,84 +91,89 @@ export default function BestRidersPage() {
         </div>
       </div>
 
-      <div className="relative w-full h-screen flex items-center justify-center px-6 overflow-hidden">
+      <div className="relative w-full min-h-screen flex items-center justify-center px-6 py-12 overflow-hidden">
         <img
           src={driveImageUrl(riders[2])}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover opacity-60 sm:opacity-100"
           referrerPolicy="no-referrer"
         />
 
-        <div className="relative z-20 max-w-7xl mx-auto px-6 py-20">
-          <div className="grid md:grid-cols-2 gap-16">
+        <div className="relative z-20 max-w-7xl mx-auto w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+            {/* KIRI: Cara Mengikuti */}
             <div>
-              <div className="inline-block bg-[#2b2b6b] text-white px-5 py-2 rounded-lg mb-6">
-                <h3 className="text-lg font-semibold">Cara Mengikuti</h3>
+              <div className="inline-block bg-[#2b2b6b] text-white px-4 py-2 rounded-lg mb-4">
+                <h3 className="text-base sm:text-lg font-semibold">
+                  Cara Mengikuti
+                </h3>
               </div>
 
-              <ol className="space-y-10 text-[#0f172a]">
-                <li className="flex gap-6">
-                  <div className="shrink-0 w-12 h-12 rounded-full bg-[#173a8a] flex items-center justify-center text-white text-xl font-bold">
+              <ol className="space-y-6 sm:space-y-10 text-[#0f172a]">
+                <li className="flex gap-4 sm:gap-6 items-start">
+                  <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#173a8a] flex items-center justify-center text-white text-lg sm:text-xl font-bold">
                     1
                   </div>
-                  <div className="flex-1 flex items-center">
-                    <p className="text-lg font-semibold">
+                  <div className="flex-1">
+                    <p className="text-base sm:text-lg font-semibold">
                       Gunakan sepeda <strong>Re:Flow</strong> secara rutin
                     </p>
                   </div>
                 </li>
 
-                <li className="flex gap-6">
-                  <div className="shrink-0 w-12 h-12 rounded-full bg-[#173a8a] flex items-center justify-center text-white text-xl font-bold">
+                <li className="flex gap-4 sm:gap-6 items-start">
+                  <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#173a8a] flex items-center justify-center text-white text-lg sm:text-xl font-bold">
                     2
                   </div>
-                  <div className="flex-1 flex items-center">
-                    <p className="text-lg font-semibold">
+                  <div className="flex-1">
+                    <p className="text-base sm:text-lg font-semibold">
                       Pantau total pengurangan emisi karbon di aplikasi
                     </p>
                   </div>
                 </li>
 
-                <li className="flex gap-6">
-                  <div className="shrink-0 w-12 h-12 rounded-full bg-[#173a8a] flex items-center justify-center text-white text-xl font-bold">
+                <li className="flex gap-4 sm:gap-6 items-start">
+                  <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#173a8a] flex items-center justify-center text-white text-lg sm:text-xl font-bold">
                     3
                   </div>
                   <div className="flex-1">
-                    <div className="flex items-center gap-6">
-                      <div className="w-1/2 sm:w-1/3 bg-white rounded-2xl shadow-md overflow-hidden">
+                    {/* gambar: kolom di mobile */}
+                    <div className="flex flex-col sm:flex-row items-center gap-4">
+                      <div className="w-full sm:w-1/2 bg-white rounded-2xl shadow-md overflow-hidden p-2">
                         <img
                           src={driveImageUrl(
                             "https://drive.google.com/file/d/1f809h0vuH3jFpm0I1hOPZlfP03-HEFJm/view?usp=sharing"
                           )}
-                          className="w-full h-[360px] object-cover"
-                          referrerPolicy="no-referrer"
+                          className=" w-full h-auto object-contain bg-white"
                         />
                       </div>
+
                       <div className="hidden sm:block text-4xl font-bold text-[#0f172a]">
                         →
                       </div>
-                      <div className="w-1/2 sm:w-1/3 bg-white rounded-2xl shadow-md overflow-hidden">
+
+                      <div className="w-full sm:w-1/2 bg-white rounded-2xl shadow-md overflow-hidden p-2">
                         <img
                           src={driveImageUrl(
                             "https://drive.google.com/file/d/1Ssew8N-jA2stMj8MQw0ua_KvxVprdhCW/view?usp=sharing"
                           )}
-                          className="w-full h-[360px] object-cover"
-                          referrerPolicy="no-referrer"
+                          className="w-full h-auto object-contain bg-white"
                         />
                       </div>
                     </div>
-                    <p className="text-sm text-gray-700 mt-4">
+
+                    <p className="text-sm text-gray-700 mt-3 sm:mt-4">
                       Buka menu <strong>Perjalanan Saya</strong> untuk melihat
                       angka pengurangan emisi.
                     </p>
                   </div>
                 </li>
 
-                <li className="flex gap-6">
-                  <div className="shrink-0 w-12 h-12 rounded-full bg-[#173a8a] flex items-center justify-center text-white text-xl font-bold">
+                <li className="flex gap-4 sm:gap-6 items-start">
+                  <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#173a8a] flex items-center justify-center text-white text-lg sm:text-xl font-bold">
                     4
                   </div>
-                  <div className="flex-1 flex items-center">
-                    <p className="text-lg font-semibold">
+                  <div className="flex-1">
+                    <p className="text-base sm:text-lg font-semibold">
                       Pastikan berada dalam 100 rider dengan pengurangan emisi
                       tertinggi
                     </p>
@@ -177,120 +182,124 @@ export default function BestRidersPage() {
               </ol>
             </div>
 
+            {/* KANAN: Ketentuan */}
             <div>
-              <div className="inline-block bg-[#2b2b6b] text-white px-5 py-2 rounded-lg mb-6">
-                <h3 className="text-lg font-semibold">Ketentuan</h3>
+              <div className="inline-block bg-[#2b2b6b] text-white px-4 py-2 rounded-lg mb-4">
+                <h3 className="text-base sm:text-lg font-semibold">
+                  Ketentuan
+                </h3>
               </div>
 
-              <ol className="space-y-10 text-[#0f172a]">
-                <li className="flex gap-6">
-                  <div className="shrink-0 w-12 h-12 rounded-full bg-[#173a8a] flex items-center justify-center text-white text-xl font-bold">
+              <ol className="space-y-6 sm:space-y-10 text-[#0f172a]">
+                {/** Ulangi format list item => setiap item responsive */}
+                <li className="flex gap-4 sm:gap-6 items-start">
+                  <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#173a8a] flex items-center justify-center text-white text-lg sm:text-xl font-bold">
                     1
                   </div>
-                  <div className="flex-1 flex items-center">
-                    <p className="text-lg font-semibold">
+                  <div className="flex-1">
+                    <p className="text-base sm:text-lg font-semibold">
                       Terbuka bagi seluruh pengguna sepeda Re:Flow, baik pelajar
                       maupun publik.
                     </p>
                   </div>
                 </li>
 
-                <li className="flex gap-6">
-                  <div className="shrink-0 w-12 h-12 rounded-full bg-[#173a8a] flex items-center justify-center text-white text-xl font-bold">
+                <li className="flex gap-4 sm:gap-6 items-start">
+                  <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#173a8a] flex items-center justify-center text-white text-lg sm:text-xl font-bold">
                     2
                   </div>
-                  <div className="flex-1 flex items-center">
-                    <p className="text-lg font-semibold">
+                  <div className="flex-1">
+                    <p className="text-base sm:text-lg font-semibold">
                       100 rider dengan pengurangan emisi karbon tertinggi berhak
                       memperoleh hadiah.
                     </p>
                   </div>
                 </li>
 
-                <li className="flex gap-6">
-                  <div className="shrink-0 w-12 h-12 rounded-full bg-[#173a8a] flex items-center justify-center text-white text-xl font-bold">
+                <li className="flex gap-4 sm:gap-6 items-start">
+                  <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#173a8a] flex items-center justify-center text-white text-lg sm:text-xl font-bold">
                     3
                   </div>
-                  <div className="flex-1 flex items-center">
-                    <p className="text-lg font-semibold">
+                  <div className="flex-1">
+                    <p className="text-base sm:text-lg font-semibold">
                       Peringkat dihitung dari total pengurangan emisi tertinggi
                       dalam sistem Re:Flow.
                     </p>
                   </div>
                 </li>
 
-                <li className="flex gap-6">
-                  <div className="shrink-0 w-12 h-12 rounded-full bg-[#173a8a] flex items-center justify-center text-white text-xl font-bold">
+                <li className="flex gap-4 sm:gap-6 items-start">
+                  <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#173a8a] flex items-center justify-center text-white text-lg sm:text-xl font-bold">
                     4
                   </div>
-                  <div className="flex-1 flex items-center">
-                    <p className="text-lg font-semibold">
+                  <div className="flex-1">
+                    <p className="text-base sm:text-lg font-semibold">
                       Periode penghitungan berlangsung 1–31 Desember 2025.
                     </p>
                   </div>
                 </li>
 
-                <li className="flex gap-6">
-                  <div className="shrink-0 w-12 h-12 rounded-full bg-[#173a8a] flex items-center justify-center text-white text-xl font-bold">
+                <li className="flex gap-4 sm:gap-6 items-start">
+                  <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#173a8a] flex items-center justify-center text-white text-lg sm:text-xl font-bold">
                     5
                   </div>
-                  <div className="flex-1 flex items-center">
-                    <p className="text-lg font-semibold">
+                  <div className="flex-1">
+                    <p className="text-base sm:text-lg font-semibold">
                       Tim Re:Flow berhak melakukan verifikasi terhadap seluruh
                       data penggunaan.
                     </p>
                   </div>
                 </li>
 
-                <li className="flex gap-6">
-                  <div className="shrink-0 w-12 h-12 rounded-full bg-[#173a8a] flex items-center justify-center text-white text-xl font-bold">
+                <li className="flex gap-4 sm:gap-6 items-start">
+                  <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#173a8a] flex items-center justify-center text-white text-lg sm:text-xl font-bold">
                     6
                   </div>
-                  <div className="flex-1 flex items-center">
-                    <p className="text-lg font-semibold">
+                  <div className="flex-1">
+                    <p className="text-base sm:text-lg font-semibold">
                       Penyalahgunaan sistem atau manipulasi data dapat
                       menyebabkan diskualifikasi.
                     </p>
                   </div>
                 </li>
 
-                <li className="flex gap-6">
-                  <div className="shrink-0 w-12 h-12 rounded-full bg-[#173a8a] flex items-center justify-center text-white text-xl font-bold">
+                <li className="flex gap-4 sm:gap-6 items-start">
+                  <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#173a8a] flex items-center justify-center text-white text-lg sm:text-xl font-bold">
                     7
                   </div>
-                  <div className="flex-1 flex items-center">
-                    <p className="text-lg font-semibold">
+                  <div className="flex-1">
+                    <p className="text-base sm:text-lg font-semibold">
                       Pengumuman pemenang dilakukan melalui Instagram
                       @reflow.gridwizenm.
                     </p>
                   </div>
                 </li>
 
-                <li className="flex gap-6">
-                  <div className="shrink-0 w-12 h-12 rounded-full bg-[#173a8a] flex items-center justify-center text-white text-xl font-bold">
+                <li className="flex gap-4 sm:gap-6 items-start">
+                  <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#173a8a] flex items-center justify-center text-white text-lg sm:text-xl font-bold">
                     8
                   </div>
-                  <div className="flex-1 flex items-center">
-                    <p className="text-lg font-semibold">
+                  <div className="flex-1">
+                    <p className="text-base sm:text-lg font-semibold">
                       Semua voucher mengikuti aturan masing-masing mitra.
                     </p>
                   </div>
                 </li>
 
-                <li className="flex gap-6">
-                  <div className="shrink-0 w-12 h-12 rounded-full bg-[#173a8a] flex items-center justify-center text-white text-xl font-bold">
+                <li className="flex gap-4 sm:gap-6 items-start">
+                  <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#173a8a] flex items-center justify-center text-white text-lg sm:text-xl font-bold">
                     9
                   </div>
-                  <div className="flex-1 flex items-center">
-                    <p className="text-lg font-semibold">
+                  <div className="flex-1">
+                    <p className="text-base sm:text-lg font-semibold">
                       Beasiswa diberikan sebagai bantuan pendidikan, bukan uang
                       tunai bebas.
                     </p>
                   </div>
                 </li>
 
-                <li className="flex gap-6 text-sm opacity-80">
-                  <span className="shrink-0 w-12 h-12"></span>
+                <li className="flex gap-4 items-start text-sm opacity-80">
+                  <span className="shrink-0 w-10 h-10"></span>
                   <p>
                     Re:Flow berhak mengubah ketentuan tanpa pemberitahuan.
                     Keputusan final tidak dapat diganggu gugat.
