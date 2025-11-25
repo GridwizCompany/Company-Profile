@@ -4,14 +4,15 @@ import { driveImageUrl } from "utils/driveutils";
 export default function Promo() {
   return (
     <section className="bg-black text-white">
-      <div
-        className="relative min-h-screen bg-no-repeat bg-cover bg-center py-20 px-20"
-        style={{
-          backgroundImage: `url(${driveImageUrl(
+      <div className="relative min-h-screen bg-black py-20 px-20 overflow-hidden">
+        <img
+          src={driveImageUrl(
             "https://drive.google.com/file/d/1OD3mxFqQoYj_Iaznc8DfjNDekEgf1hGj/view?usp=sharing"
-          )})`,
-        }}
-      >
+          )}
+          alt="Promo Background"
+          className="absolute inset-0 h-full w-full object-cover"
+          referrerPolicy="no-referrer"
+        />
         <div className="absolute inset-0 bg-linear-to-b from-black/10 via-black/20 to-black" />
       </div>
 

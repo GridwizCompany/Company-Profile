@@ -58,6 +58,7 @@ export default function AboutUs() {
               )}
               alt="Logo Gridwiz"
               className="object-contain drop-shadow-lg"
+              referrerPolicy="no-referrer"
             />
           </div>
         </div>
@@ -119,6 +120,7 @@ export default function AboutUs() {
               )}
               className="w-full h-auto object-cover"
               alt="Solar PV"
+              referrerPolicy="no-referrer"
             />
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 flex justify-center items-center gap-3 mx-auto">

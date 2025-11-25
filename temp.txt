@@ -140,7 +140,6 @@ export default function BestRidersPage() {
                             "https://drive.google.com/file/d/1f809h0vuH3jFpm0I1hOPZlfP03-HEFJm/view?usp=sharing"
                           )}
                           className="w-full h-[360px] object-cover"
-                          referrerPolicy="no-referrer"
                         />
                       </div>
                       <div className="hidden sm:block text-4xl font-bold text-[#0f172a]">
@@ -152,7 +151,6 @@ export default function BestRidersPage() {
                             "https://drive.google.com/file/d/1Ssew8N-jA2stMj8MQw0ua_KvxVprdhCW/view?usp=sharing"
                           )}
                           className="w-full h-[360px] object-cover"
-                          referrerPolicy="no-referrer"
                         />
                       </div>
                     </div>
@@ -304,3 +302,4 @@ export default function BestRidersPage() {
     </section>
   );
 }
+

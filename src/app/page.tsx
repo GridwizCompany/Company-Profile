@@ -93,14 +93,17 @@ export default function HomePage() {
     items-center md:items-start 
     text-center md:text-left 
     px-6 sm:px-12 md:px-24 
-    bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url(${driveImageUrl(
-            "https://drive.google.com/file/d/1JmW1s8NURtG8xbGo8Jiib1eaHo3JYqTR/view?usp=sharing"
-          )})`,
-        }}
+    bg-black"
       >
-        <div className="absolute inset-0 bg-black/50"></div>
+        <img
+          src={driveImageUrl(
+            "https://drive.google.com/file/d/1JmW1s8NURtG8xbGo8Jiib1eaHo3JYqTR/view?usp=sharing"
+          )}
+          alt="Hero Background"
+          className="absolute inset-0 h-full w-full object-cover"
+          referrerPolicy="no-referrer"
+        />
+        <div className="absolute inset-0 bg-black/50" />
 
         <div className="relative z-10 max-w-2xl">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -147,6 +150,7 @@ export default function HomePage() {
                       alt={item.title}
                       className="object-contain transition-transform duration-500 group-hover:scale-110"
                       sizes="96px"
+                      referrerPolicy="no-referrer"
                     />
                   </div>
                 </div>

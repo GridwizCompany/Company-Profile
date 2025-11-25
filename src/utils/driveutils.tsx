@@ -27,14 +27,16 @@ export const extractDriveId = (input: string): string => {
     return fallback.split("?")[0];
   }
 
-  return trimmed;
+ return trimmed;
 };
 
 /**
  * Mengubah link Google Drive menjadi direct image link
- * agar bisa ditampilkan dengan <img /> atau <Image />.
+ * agar bisa ditampilkan dengan <img /> atau sebagai background image.
  */
 export const driveImageUrl = (source: string): string => {
   const id = extractDriveId(source);
+  // Gunakan googleusercontent (lebih stabil untuk hotlinking + background CSS).
+  // Ukuran 1600x900 cukup besar untuk hero/section.
   return `https://lh3.googleusercontent.com/d/${id}=w1600-h900-no`;
 };
