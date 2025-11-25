@@ -5,8 +5,8 @@ import { driveImageUrl } from "utils/driveutils";
 export default function BestRidersPage() {
   const riders = [
     "https://drive.google.com/file/d/1fOMaCM-dsQsJixyK6MOP_N7gP8IJyXeW/view?usp=sharing",
-    "https://drive.google.com/file/d/1SkYbRBK7dfzGyC48g3nZU0Q2h0vTxIc9/view?usp=sharing",
-    "https://drive.google.com/file/d/17Cgcw32sa_rCvcoMz23L1MZjB7Kc69jM/view?usp=sharing",
+    "https://drive.google.com/file/d/1j8nppF4Q_0CM9vTisHQNu-74expqGq5J/view?usp=sharing",
+    "https://drive.google.com/file/d/1CXSD1TF4xWEo2jljf_i6roWLZ7YZINBB/view?usp=sharing",
   ];
 
   return (
@@ -70,16 +70,16 @@ export default function BestRidersPage() {
                 <div className="bg-white text-[#1F2A55] p-10 pt-16 rounded-3xl shadow-xl border border-gray-200 relative overflow-hidden min-h-[260px]">
                   <div className="absolute -bottom-14 -right-10 w-64 h-48 bg-pink-400 rotate-6 opacity-40 rounded-3xl" />
                   <h3 className="text-3xl md:text-4xl font-extrabold mb-4 tracking-wide text-pink-700">
-                    VOUCHER <br /> MENGINAP
+                    VOUCHER <br /> LAINNYA
                   </h3>
                   <p className="text-lg md:text-xl font-medium mb-1">
                     Nominal hingga
                   </p>
                   <div className="inline-block bg-pink-600 text-white font-bold text-3xl md:text-4xl px-6 py-2 rounded-xl shadow-md">
-                    Rp 200.000
+                    JUTAAN RUPIAH
                   </div>
                   <p className="mt-6 text-sm md:text-base leading-relaxed">
-                    Berlaku di café & hotel mitra Re:Flow.
+                    Berlaku di hotel & cafe mitra Re:Flow.
                   </p>
                   <p className="mt-3 text-xs font-semibold text-gray-600">
                     *Mengikuti aturan masing-masing mitra

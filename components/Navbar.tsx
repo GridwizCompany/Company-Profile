@@ -16,7 +16,7 @@ const navItems = [
       { name: "Car Free Day", path: "/event/car-free-day" },
       { name: "Gobar Sunset", path: "/event/gobar-sunset" },
       { name: "Gobar Kemerdekaan", path: "/event/gobar-kemerdekaan" },
-      { name: "100 Riders", path: "/event/best-riders" },
+      { name: "Hero Carbon", path: "/event/hero-carbon" },
     ],
   },
   {
