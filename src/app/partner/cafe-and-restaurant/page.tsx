@@ -11,6 +11,7 @@ import {
   Wind,
 } from "lucide-react";
 import { driveImageUrl } from "utils/driveutils";
+import { reverse } from "dns";
 
 export default function CafeAndRestaurant() {
   const promos = [
@@ -95,6 +96,16 @@ export default function CafeAndRestaurant() {
           text: "Nuansa kafe yang menenangkan",
         },
       ],
+      darkMode: true,
+    },
+    {
+      image:
+        "https://drive.google.com/file/d/1umJrYazrI0BVIzTrgQTrSkSfsuq23tSm/view?usp=sharing",
+      title: "Madjoe",
+      description:
+        "Nikmati suasana santai di Madjoe sambil mendukung gaya hidup berkelanjutan. Datang dengan sepeda menggunakan Re:Flow dan dapatkan pengalaman yang menyenangkan.",
+
+      reverse: true,
       darkMode: true,
     },
   ];

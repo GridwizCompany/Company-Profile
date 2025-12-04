@@ -13,6 +13,7 @@ import {
   Wind,
 } from "lucide-react";
 import { driveImageUrl } from "utils/driveutils";
+import { reverse } from "dns";
 
 export default function HotelAndResort() {
   const promos = [
@@ -22,24 +23,6 @@ export default function HotelAndResort() {
       title: "Aruna Hotel",
       description:
         "Aruna Hotel memadukan pesona alam Lombok dengan kenyamanan modern. Terletak di tepi pantai, Aruna berkomitmen pada prinsip pariwisata berkelanjutan melalui efisiensi energi, pengurangan plastik sekali pakai, dan dukungan terhadap produk lokal. Setiap tamu diajak menikmati pengalaman menginap yang tidak hanya nyaman, tetapi juga penuh kepedulian terhadap bumi.",
-      features: [
-        {
-          icon: <TreePalm className="text-sky-500 w-6 h-6" />,
-          text: "Taman Tropis Alami",
-        },
-        {
-          icon: <Coffee className="text-sky-500 w-6 h-6" />,
-          text: "Kopi Lombok Asli",
-        },
-        {
-          icon: <Waves className="text-sky-500 w-6 h-6" />,
-          text: "Akses Langsung ke Pantai",
-        },
-        {
-          icon: <Star className="text-sky-500 w-6 h-6" />,
-          text: "Layanan Ramah Lingkungan",
-        },
-      ],
     },
     {
       image:
@@ -47,24 +30,7 @@ export default function HotelAndResort() {
       title: "Holiday Resort Lombok",
       description:
         "Holiday Resort Lombok menghadirkan keseimbangan antara kemewahan dan keasrian alam. Dengan lokasi di Senggigi yang dikelilingi pohon kelapa dan suara ombak, resort ini menggunakan bahan bangunan alami serta sistem pengolahan air berkelanjutan. Pengunjung dapat menikmati suasana tropis yang menenangkan tanpa meninggalkan tanggung jawab terhadap lingkungan.",
-      features: [
-        {
-          icon: <Wind className="text-sky-500 w-6 h-6" />,
-          text: "Udara Segar dari Alam",
-        },
-        {
-          icon: <Droplets className="text-sky-500 w-6 h-6" />,
-          text: "Kolam Air Bersih Alami",
-        },
-        {
-          icon: <Leaf className="text-sky-500 w-6 h-6" />,
-          text: "Desain Ramah Lingkungan",
-        },
-        {
-          icon: <Bike className="text-sky-500 w-6 h-6" />,
-          text: "Jalur Sepeda Pantai",
-        },
-      ],
+
       reverse: true,
     },
     {
@@ -73,24 +39,29 @@ export default function HotelAndResort() {
       title: "Merumata Hotel",
       description:
         "Merumata Hotel menawarkan pengalaman menginap eksklusif dengan standar ramah lingkungan tinggi. Setiap detail — mulai dari pencahayaan hemat energi, bahan interior berkelanjutan, hingga kuliner berbasis bahan organik — dirancang untuk menciptakan keseimbangan antara kemewahan dan keberlanjutan. Di sini, elegansi bertemu dengan kepedulian terhadap bumi.",
-      features: [
-        {
-          icon: <Sparkles className="text-sky-500 w-6 h-6" />,
-          text: "Desain Interior Elegan",
-        },
-        {
-          icon: <Star className="text-sky-500 w-6 h-6" />,
-          text: "Pelayanan Premium",
-        },
-        {
-          icon: <Leaf className="text-sky-500 w-6 h-6" />,
-          text: "Bangunan Ramah Energi",
-        },
-        {
-          icon: <Coffee className="text-sky-500 w-6 h-6" />,
-          text: "Kuliner Organik Lokal",
-        },
-      ],
+    },
+    {
+      image:
+        "https://drive.google.com/file/d/1-Q8u7iWaPL7ciWjK7B_5v_EXGed8ceVx/view?usp=sharing",
+      title: "Kebun Villas & Resort",
+      description:
+        "Kebun Villas & Resort menghadirkan suasana tenang di tengah keindahan alam tropis. Dikelilingi pepohonan hijau dan pemandangan alami yang menenangkan, resort ini menjadi pilihan sempurna bagi wisatawan yang mencari ketenangan, kenyamanan, serta pengalaman menginap yang menyatu dengan alam.",
+      reverse: true,
+    },
+    {
+      image:
+        "https://drive.google.com/file/d/14H78sbCeqdFTwED8_oGfhAM_fIgO0spU/view?usp=sharing",
+      title: "Svarga Resort",
+      description:
+        "Svarga Resort menawarkan pengalaman liburan mewah dengan sentuhan budaya lokal yang kental. Perpaduan desain modern, pelayanan premium, serta panorama alam yang memukau menjadikan setiap momen menginap terasa istimewa dan berkesan.",
+    },
+    {
+      image:
+        "https://drive.google.com/file/d/1V2DwzdM0Ie-ZVtrD-jvwjCP0AGYuJw6s/view?usp=sharing",
+      title: "Rajavilla Lombok Resort",
+      description:
+        "Rajavilla Lombok Resort dikenal sebagai destinasi penginapan eksklusif dengan pemandangan laut yang memukau. Menghadirkan suasana elegan, privasi tinggi, serta fasilitas kelas atas, resort ini cocok untuk liburan romantis maupun relaksasi penuh ketenangan.",
+      reverse: true,
     },
   ];
 
