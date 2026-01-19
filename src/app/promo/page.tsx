@@ -44,7 +44,7 @@ export default function Promo() {
               ramah lingkungan di kalangan generasi muda.
             </p>
             <p className="mt-4 text-sm font-semibold text-yellow-400">
-              Tarif Sewa: Rp 250/menit | Jeda: Rp 100/menit
+              Tarif Sewa: Rp 290/menit | Jeda: Rp 100/menit
             </p>
           </div>
         </div>
@@ -77,7 +77,7 @@ export default function Promo() {
               biaya awal yang besar.
             </p>
             <p className="mt-4 text-sm font-semibold text-blue-400">
-              Tarif Sewa: Rp 350/menit | Jeda: Rp 150/menit
+              Tarif Sewa: Rp 390/menit | Jeda: Rp 150/menit
             </p>
           </div>
         </div>
@@ -126,7 +126,7 @@ export default function Promo() {
               </div>
               <div className="flex justify-between border-b border-gray-600 py-2">
                 <span>Tarif</span>
-                <span>Rp 350/min</span>
+                <span>Rp 390/min</span>
               </div>
               <div className="flex justify-between border-b border-gray-600 py-2">
                 <span>Jeda</span>
@@ -156,7 +156,7 @@ export default function Promo() {
               </div>
               <div className="flex justify-between border-b border-gray-900 py-2">
                 <span>Tarif</span>
-                <span>Rp 250/min</span>
+                <span>Rp 290/min</span>
               </div>
               <div className="flex justify-between border-b border-gray-900 py-2">
                 <span>Jeda</span>
