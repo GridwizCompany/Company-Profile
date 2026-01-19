@@ -36,7 +36,6 @@ export const extractDriveId = (input: string): string => {
  */
 export const driveImageUrl = (source: string): string => {
   const id = extractDriveId(source);
-  // Gunakan googleusercontent (lebih stabil untuk hotlinking + background CSS).
-  // Ukuran 1600x900 cukup besar untuk hero/section.
-  return `https://lh3.googleusercontent.com/d/${id}=w1600-h900-no`;
+  // Gunakan thumbnail endpoint agar bisa di-embed lintas origin.
+  return `https://drive.google.com/thumbnail?id=${id}&sz=w1600`;
 };
