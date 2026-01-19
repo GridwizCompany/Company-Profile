@@ -13,6 +13,7 @@ const navItems = [
   {
     name: "Event",
     submenu: [
+      { name: "Gratis 30 Menit", path: "/event/free-30-menit" },
       { name: "Car Free Day", path: "/event/car-free-day" },
       { name: "Gobar Sunset", path: "/event/gobar-sunset" },
       { name: "Gobar Kemerdekaan", path: "/event/gobar-kemerdekaan" },
