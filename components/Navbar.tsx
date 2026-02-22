@@ -13,8 +13,11 @@ const navItems = [
   {
     name: "Event",
     submenu: [
+      { name: "Claim Cashback", path: "/event/claim-cashback" },
       { name: "Gratis 30 Menit", path: "/event/free-30-menit" },
       { name: "Car Free Day", path: "/event/car-free-day" },
+      { name: "Gobar Loteng", path: "/event/gobar-loteng" },
+      { name: "Gobar Holiday", path: "/event/gobar-holiday" },
       { name: "Gobar Sunset", path: "/event/gobar-sunset" },
       { name: "Gobar Kemerdekaan", path: "/event/gobar-kemerdekaan" },
       { name: "Hero Carbon", path: "/event/hero-carbon" },
