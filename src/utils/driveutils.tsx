@@ -36,6 +36,6 @@ export const extractDriveId = (input: string): string => {
  */
 export const driveImageUrl = (source: string): string => {
   const id = extractDriveId(source);
-  // Gunakan thumbnail endpoint agar bisa di-embed lintas origin.
-  return `https://drive.google.com/thumbnail?id=${id}&sz=w1600`;
+  // Gunakan endpoint direct dari googleusercontent agar lebih stabil di-embed.
+  return `https://lh3.googleusercontent.com/d/${id}=w1600`;
 };
