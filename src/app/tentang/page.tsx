@@ -4,7 +4,7 @@ import { driveImageUrl } from "../../utils/driveutils";
 
 export default function AboutUs() {
   const structure =
-    "https://drive.google.com/file/d/175Nfm1ess_rRZvVk_xNI6wqMIy7e60h8/view?usp=sharing";
+    "https://drive.google.com/file/d/1DW_ahXBn5D6xjHlCGncwsQtT1uIxta22/view?usp=sharing";
 
   return (
     <div className="text-gray-900">

@@ -12,7 +12,7 @@ export default function BestRidersPage() {
   return (
     <section className="w-full">
       {/* SECTION 1: HERO / PENGUMUMAN */}
-      <div className="relative w-full min-h-screen flex items-center justify-center text-center px-6 overflow-hidden">
+      <div className="relative w-full min-h-screen flex items-center justify-center text-center px-6 pt-24 overflow-hidden">
         <img
           src={driveImageUrl(riders[0])}
           className="absolute inset-0 w-full h-full object-cover"
