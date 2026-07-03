@@ -1,5 +1,5 @@
 #!/bin/bash
-# Setup WireGuard tunnel for public IP (IP Publik ID5 - perwiramedia.com)
+# Setup WireGuard tunnel for public IP (IP Publik SG3 - perwiramedia.com)
 # Run as root: bash scripts/setup-wireguard.sh
 set -e
 
@@ -15,13 +15,13 @@ apt install -y wireguard
 echo "== Tulis /etc/wireguard/wg0.conf =="
 cat > /etc/wireguard/wg0.conf << 'WGEOF'
 [Interface]
-PrivateKey = CBaUFYA6IM+Shx4SgDHCOMaGO6ie4F94bMmVCyJzI3g=
-Address = 41.216.190.31/32
+PrivateKey = WK7abymudIix780mmQvESd3oxyEFhVHwGCOO/qBy10U=
+Address = 191.101.190.150/32
 DNS = 8.8.8.8
 
 [Peer]
-PublicKey = MOUS3ZZcK/A36g8srapHeKj2Mp57RpcyyP8893ckvA8=
-Endpoint = ippid5.perwiramedia.com:8443
+PublicKey = 6BENimzeKyneXEhunWnww9xXJCagD+F8on9jPk6U53I=
+Endpoint = ippsg3.perwiramedia.com:8443
 AllowedIPs = 0.0.0.0/0, ::/0
 PersistentKeepalive = 25
 WGEOF
@@ -40,4 +40,4 @@ wg show
 
 echo ""
 echo "Selesai. Tunggu beberapa saat untuk 'latest handshake' muncul di atas."
-echo "Test dari luar: ssh root@41.216.190.31"
+echo "Test dari luar: ssh root@191.101.190.150"
