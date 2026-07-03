@@ -15,7 +15,7 @@ apt install -y wireguard
 echo "== Tulis /etc/wireguard/wg0.conf =="
 cat > /etc/wireguard/wg0.conf << 'WGEOF'
 [Interface]
-PrivateKey = CBaUFYA6IM+Shx4SgDHCOMaGO6ie4F94bMmVCyJzl3g=
+PrivateKey = CBaUFYA6IM+Shx4SgDHCOMaGO6ie4F94bMmVCyJzI3g=
 Address = 41.216.190.31/32
 DNS = 8.8.8.8
 
