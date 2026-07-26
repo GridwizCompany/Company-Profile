@@ -1,7 +1,12 @@
+"use client";
+
 // components/Footer.tsx
 import { FaInstagram, FaYoutube, FaFacebook, FaTiktok } from "react-icons/fa";
+import { useLanguage } from "@/lib/language";
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-gray-900 text-gray-300 py-20">
       <div className="max-w-6xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
@@ -11,29 +16,31 @@ export default function Footer() {
             Gridwiz Energy & Mobility
           </h2>
           <p className="text-sm leading-relaxed">
-            Platform pintar untuk penyewaan sepeda listrik. Kelola dengan mudah,
-            cepat, dan fleksibel.
+            {t({
+              id: "Platform pintar untuk penyewaan sepeda listrik. Kelola dengan mudah, cepat, dan fleksibel.",
+              en: "A smart platform for electric bike rentals. Manage rides easily, quickly, and flexibly.",
+            })}
           </p>
         </div>
 
         <div>
           <h3 className="text-lg font-semibold text-white mb-3">
-            Tautan Cepat
+            {t({ id: "Tautan Cepat", en: "Quick Links" })}
           </h3>
           <ul className="space-y-2">
             <li>
               <a href="/tentang" className="hover:text-white transition">
-                Tentang Kami
+                {t({ id: "Tentang Kami", en: "About Us" })}
               </a>
             </li>
             <li>
               <a href="/panduan" className="hover:text-white transition">
-                Layanan
+                {t({ id: "Layanan", en: "Services" })}
               </a>
             </li>
             <li>
               <a href="/kontak" className="hover:text-white transition">
-                Kontak
+                {t({ id: "Kontak", en: "Contact" })}
               </a>
             </li>
           </ul>
@@ -52,7 +59,9 @@ export default function Footer() {
         </div>
 
         <div>
-          <h3 className="text-lg font-semibold text-white mb-3">Ikuti Kami</h3>
+          <h3 className="text-lg font-semibold text-white mb-3">
+            {t({ id: "Ikuti Kami", en: "Follow Us" })}
+          </h3>
           <div className="flex justify-center md:justify-start gap-4 text-2xl">
             <a
               href="https://www.instagram.com/reflow.gridwizenm/"
@@ -91,7 +100,7 @@ export default function Footer() {
         <span className="text-white font-semibold">
           Gridwiz Energy & Mobility
         </span>
-        . Semua hak cipta dilindungi.
+        . {t({ id: "Semua hak cipta dilindungi.", en: "All rights reserved." })}
       </div>
     </footer>
   );

@@ -3,10 +3,11 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { driveImageUrl } from "utils/driveutils";
+import { useLanguage, type LocalizedText } from "@/lib/language";
 
 type Section = {
-  title: string;
-  description: string;
+  title: LocalizedText;
+  description: LocalizedText;
   image: string;
   imagePosition?: "left" | "right";
 };
@@ -18,6 +19,7 @@ interface OverviewSectionProps {
 export default function OverviewSection({
   sections = [],
 }: OverviewSectionProps) {
+  const { t } = useLanguage();
   const [isMobile, setIsMobile] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -65,10 +67,10 @@ export default function OverviewSection({
                 }`}
               >
                 <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
-                  {item.title}
+                  {t(item.title)}
                 </h2>
                 <p className="leading-relaxed mb-6 text-lg sm:text-xl">
-                  {item.description}
+                  {t(item.description)}
                 </p>
               </div>
             </div>
@@ -85,13 +87,13 @@ export default function OverviewSection({
                 <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
                   <img
                     src={driveImageUrl(item.image)}
-                    alt={item.title}
+                    alt={t(item.title)}
                     className="w-full h-56 object-cover"
                   />
                   <div className="p-6">
-                    <h2 className="text-2xl font-bold mb-3">{item.title}</h2>
+                    <h2 className="text-2xl font-bold mb-3">{t(item.title)}</h2>
                     <p className="text-gray-700 mb-4 text-base leading-relaxed">
-                      {item.description}
+                      {t(item.description)}
                     </p>
                   </div>
                 </div>

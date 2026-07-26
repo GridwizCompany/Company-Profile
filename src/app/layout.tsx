@@ -1,6 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
+
+import { LanguageProvider } from "@/lib/language";
 import Minflow from "@/components/Mindflow";
 import Navbar from "@/components/Navbar";
 
@@ -26,10 +28,12 @@ export default function RootLayout({
   return (
     <html lang="id">
       <body className="min-h-screen flex flex-col">
-        <Navbar />
-        <main className="grow">{children}</main>
-        <Footer />
-        <Minflow />
+        <LanguageProvider>
+          <Navbar />
+          <main className="grow">{children}</main>
+          <Footer />
+          <Minflow />
+        </LanguageProvider>
       </body>
     </html>
   );

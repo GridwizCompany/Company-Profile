@@ -6,20 +6,25 @@ import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { driveImageUrl } from "utils/driveutils";
+import { useLanguage, type LocalizedText } from "@/lib/language";
 
-const navItems = [
-  { name: "Beranda", path: "/" },
+const navItems: {
+  name: LocalizedText;
+  path?: string;
+  submenu?: { name: LocalizedText; path: string }[];
+}[] = [
+  { name: { id: "Beranda", en: "Home" }, path: "/" },
   { name: "Promo", path: "/promo" },
   {
     name: "Event",
     submenu: [
       { name: "Claim Cashback", path: "/event/claim-cashback" },
-      { name: "Gratis 30 Menit", path: "/event/free-30-menit" },
+      { name: { id: "Gratis 30 Menit", en: "Free 30 Minutes" }, path: "/event/free-30-menit" },
       { name: "Car Free Day", path: "/event/car-free-day" },
-      { name: "Gobar Loteng", path: "/event/gobar-loteng" },
+      { name: { id: "Gobar Loteng", en: "Central Lombok Ride" }, path: "/event/gobar-loteng" },
       { name: "Gobar Holiday", path: "/event/gobar-holiday" },
       { name: "Gobar Sunset", path: "/event/gobar-sunset" },
-      { name: "Gobar Kemerdekaan", path: "/event/gobar-kemerdekaan" },
+      { name: { id: "Gobar Kemerdekaan", en: "Independence Ride" }, path: "/event/gobar-kemerdekaan" },
       { name: "Hero Carbon", path: "/event/hero-carbon" },
     ],
   },
@@ -27,15 +32,16 @@ const navItems = [
     name: "Partner",
     submenu: [
       { name: "Hotel & Resort", path: "/partner/hotel-and-resort" },
-      { name: "Cafe & restaurant", path: "/partner/cafe-and-restaurant" },
+      { name: "Cafe & Restaurant", path: "/partner/cafe-and-restaurant" },
     ],
   },
-  { name: "Berita", path: "/berita" },
-  { name: "Tentang Kami", path: "/tentang" },
+  { name: { id: "Berita", en: "News" }, path: "/berita" },
+  { name: { id: "Tentang Kami", en: "About Us" }, path: "/tentang" },
 ];
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { language, setLanguage, t } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -110,18 +116,19 @@ export default function Navbar() {
           {navItems.map((item) => {
             const isActive = pathname === item.path;
             const hasSubmenu = item.submenu?.length;
+            const itemName = t(item.name);
 
             return (
-              <li key={item.name} className="relative w-full md:w-auto group">
+              <li key={itemName} className="relative w-full md:w-auto group">
                 {hasSubmenu ? (
                   <div
                     className={`flex items-center gap-1 px-2 py-2 cursor-default transition-all duration-300 ${
                       scrolled
                         ? "md:text-black text-white hover:text-blue-600"
                         : "text-white hover:text-blue-300"
-                    }`}
+                      }`}
                   >
-                    {item.name}
+                    {itemName}
                     <ChevronDown
                       size={16}
                       className="group-hover:rotate-180 transition-transform duration-300"
@@ -139,7 +146,7 @@ export default function Navbar() {
                       isActive ? "font-bold text-blue-600 md:text-blue-500" : ""
                     }`}
                   >
-                    {item.name}
+                    {itemName}
                   </Link>
                 )}
 
@@ -157,7 +164,7 @@ export default function Navbar() {
                           onClick={() => setMenuOpen(false)}
                           className="block px-4 py-2 md:text-gray-800 text-white md:hover:bg-gray-100 hover:text-blue-400 transition-all"
                         >
-                          {sub.name}
+                          {t(sub.name)}
                         </Link>
                       </li>
                     ))}
@@ -166,6 +173,35 @@ export default function Navbar() {
               </li>
             );
           })}
+          <li className="px-2 py-2 md:py-0">
+            <div
+              className={`inline-flex rounded-full border p-1 text-xs font-bold ${
+                scrolled
+                  ? "border-gray-300 bg-white/80 text-gray-900"
+                  : "border-white/30 bg-black/20 text-white"
+              }`}
+              aria-label={t({ id: "Pilih bahasa", en: "Choose language" })}
+            >
+              {(["id", "en"] as const).map((item) => (
+                <button
+                  key={item}
+                  type="button"
+                  onClick={() => {
+                    setLanguage(item);
+                    setMenuOpen(false);
+                  }}
+                  className={`rounded-full px-3 py-1 transition ${
+                    language === item
+                      ? "bg-sky-500 text-white"
+                      : "hover:bg-white/15"
+                  }`}
+                  aria-pressed={language === item}
+                >
+                  {item.toUpperCase()}
+                </button>
+              ))}
+            </div>
+          </li>
         </ul>
       </div>
     </nav>

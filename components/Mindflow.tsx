@@ -12,6 +12,7 @@ import {
 import type { KeyboardEvent as ReactKeyboardEvent } from "react";
 import Image from "next/image";
 import MinflowAvatar from "@/public/Minflow.png";
+import { useLanguage } from "@/lib/language";
 
 type Role = "assistant" | "user";
 
@@ -27,7 +28,8 @@ type MinflowProps = {
   onClose?: () => void;
 };
 
-const STORAGE_KEY = "Minflow:session";
+const STORAGE_KEY = "Midnflow:session";
+const SESSION_ID_KEY = "Midnflow:sessionId";
 const MAX_MESSAGES = 20;
 
 const suggestedQuestions = [
@@ -37,7 +39,7 @@ const suggestedQuestions = [
 ];
 
 const fallbackResponse =
-  "Maaf, Minflow belum bisa mendapatkan jawaban dari Gemini sekarang. Silakan coba lagi sebentar lagi.";
+  "Maaf, Midnflow belum bisa mendapatkan jawaban dari backend CS bot sekarang. Silakan coba lagi sebentar lagi.";
 
 const formatTimestamp = (date: Date) =>
   date.toLocaleTimeString("id-ID", {
@@ -46,6 +48,7 @@ const formatTimestamp = (date: Date) =>
   });
 
 export default function Minflow({ onOpen, onClose }: MinflowProps) {
+  const { language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [isStreaming, setIsStreaming] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
@@ -57,10 +60,18 @@ export default function Minflow({ onOpen, onClose }: MinflowProps) {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
+  const sessionIdRef = useRef<string>("");
 
   const isFirstLoad = messages.length === 0;
 
   useEffect(() => {
+    const existingSessionId = window.localStorage.getItem(SESSION_ID_KEY);
+    const sessionId = existingSessionId || crypto.randomUUID();
+    sessionIdRef.current = sessionId;
+    if (!existingSessionId) {
+      window.localStorage.setItem(SESSION_ID_KEY, sessionId);
+    }
+
     const stored = window.localStorage.getItem(STORAGE_KEY);
     if (!stored) {
       return;
@@ -243,6 +254,8 @@ export default function Minflow({ onOpen, onClose }: MinflowProps) {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
+            sessionId: sessionIdRef.current,
+            language,
             messages: [
               ...messages.map(({ role, content: messageContent }) => ({
                 role,
@@ -287,7 +300,7 @@ export default function Minflow({ onOpen, onClose }: MinflowProps) {
         setIsTyping(false);
       }
     },
-    [appendMessage, isOpen, isStreaming, messages]
+    [appendMessage, isOpen, isStreaming, language, messages]
   );
 
   const handleSubmit = useCallback(
@@ -326,11 +339,11 @@ export default function Minflow({ onOpen, onClose }: MinflowProps) {
         type="button"
         onClick={toggleOpen}
         className="fixed bottom-4 right-4 z-40 flex h-16 w-16 items-center justify-center rounded-full bg-transparent transition hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-sky-300 focus-visible:ring-offset-slate-950 sm:bottom-6 sm:right-6"
-        aria-label={isOpen ? "Tutup Minflow chat" : "Buka Minflow chat"}
+        aria-label={isOpen ? "Tutup Midnflow chat" : "Buka Midnflow chat"}
       >
         <Image
           src={MinflowAvatar}
-          alt="Ikon Minflow"
+          alt="Ikon Midnflow"
           className="h-17 w-17 transform transition-transform duration-300 object-contain drop-shadow-[0_10px_25px_rgba(56,189,248,0.35)] sm:h-16 sm:w-16"
           style={{ transform: "scaleX(-1)", objectPosition: "55% center" }}
           priority
@@ -344,7 +357,7 @@ export default function Minflow({ onOpen, onClose }: MinflowProps) {
         <div
           role="dialog"
           aria-modal="true"
-          aria-label="Minflow conversation panel"
+          aria-label="Midnflow conversation panel"
           className="fixed inset-0 z-40 flex items-end justify-end bg-transparent"
         >
           <div
@@ -361,7 +374,7 @@ export default function Minflow({ onOpen, onClose }: MinflowProps) {
                 <span className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-slate-800">
                   <Image
                     src={MinflowAvatar}
-                    alt="Minflow"
+                    alt="Midnflow"
                     className="h-full w-full object-contain"
                     style={{ objectPosition: "center" }}
                   />
@@ -370,7 +383,7 @@ export default function Minflow({ onOpen, onClose }: MinflowProps) {
                   </span>
                 </span>
                 <div>
-                  <p className="text-sm font-semibold text-white">Minflow</p>
+                  <p className="text-sm font-semibold text-white">Midnflow</p>
                   <p className="text-xs text-slate-400">Selalu siap membantu</p>
                 </div>
               </div>
@@ -388,7 +401,7 @@ export default function Minflow({ onOpen, onClose }: MinflowProps) {
                   type="button"
                   onClick={handleClose}
                   className="rounded-full p-2 text-slate-400 transition hover:bg-slate-800/60 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
-                  aria-label="Tutup panel Minflow"
+                  aria-label="Tutup panel Midnflow"
                 >
                   <svg
                     aria-hidden="true"
@@ -444,7 +457,7 @@ export default function Minflow({ onOpen, onClose }: MinflowProps) {
                       </span>
                     </span>
                     <span className="text-xs text-slate-400">
-                      Minflow sedang mengetik...
+                      Midnflow sedang mengetik...
                     </span>
                   </div>
                 )}
@@ -484,7 +497,7 @@ export default function Minflow({ onOpen, onClose }: MinflowProps) {
                     placeholder="Tulis pesan Anda..."
                     rows={1}
                     className="max-h-32 w-full resize-none bg-transparent text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none"
-                    aria-label="Ketik pesan untuk Minflow"
+                    aria-label="Ketik pesan untuk Midnflow"
                     disabled={isStreaming}
                   />
                   <div className="mt-3 flex items-center justify-between">

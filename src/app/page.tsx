@@ -1,35 +1,53 @@
+"use client";
+
 import OverviewSection from "@/components/ui/OverviewHome";
+import { useLanguage, type LocalizedText } from "@/lib/language";
 import { driveImageUrl } from "utils/driveutils";
 import Image from "next/image";
 
 export default function HomePage() {
+  const { t } = useLanguage();
   const overviewData: {
-    title: string;
-    description: string;
+    title: LocalizedText;
+    description: LocalizedText;
     image: string;
     imagePosition: "left" | "right";
   }[] = [
     {
-      title: "Hemat Waktu dan Ramah Lingkungan",
-      description:
-        "Sepeda listrik Gridwiz (Re:Flow) memungkinkan Anda bergerak bebas dan cepat, melewati kepadatan lalu lintas dengan mudah. Fitur bantuan listrik yang cerdas memastikan Anda tiba di tujuan tepat waktu tanpa kelelahan, sambil tetap hemat energi. Dengan Gridwiz, perjalanan sehari-hari menjadi lebih efisien, nyaman, dan ramah lingkungan.",
+      title: {
+        id: "Hemat Waktu dan Ramah Lingkungan",
+        en: "Time-Saving and Environmentally Friendly",
+      },
+      description: {
+        id: "Sepeda listrik Gridwiz (Re:Flow) memungkinkan Anda bergerak bebas dan cepat, melewati kepadatan lalu lintas dengan mudah. Fitur bantuan listrik yang cerdas memastikan Anda tiba di tujuan tepat waktu tanpa kelelahan, sambil tetap hemat energi. Dengan Gridwiz, perjalanan sehari-hari menjadi lebih efisien, nyaman, dan ramah lingkungan.",
+        en: "Gridwiz (Re:Flow) electric bikes let you move freely and quickly through traffic. Smart electric assistance helps you arrive on time without fatigue while saving energy. With Gridwiz, daily travel becomes more efficient, comfortable, and environmentally friendly.",
+      },
       image:
         "https://drive.google.com/file/d/1qtaNSU8uTP0GCuz7sEdNUrxwTrvh8G9m/view?usp=sharing",
       imagePosition: "left",
     },
     {
-      title:
-        "Setiap perjalanan Anda berkontribusi pada lingkungan yang lebih sehat",
-      description:
-        "Setiap perjalanan menggunakan E-Bike Gridwiz adalah langkah nyata dalam mendukung keberlanjutan. Dengan solusi zero-emission, Anda tidak hanya bergerak dengan nyaman, tapi juga membantu mengurangi polusi udara dan jejak karbon. Gridwiz berkomitmen menciptakan udara yang lebih bersih untuk generasi sekarang dan masa depan.",
+      title: {
+        id: "Setiap perjalanan Anda berkontribusi pada lingkungan yang lebih sehat",
+        en: "Every Ride Contributes to a Healthier Environment",
+      },
+      description: {
+        id: "Setiap perjalanan menggunakan E-Bike Gridwiz adalah langkah nyata dalam mendukung keberlanjutan. Dengan solusi zero-emission, Anda tidak hanya bergerak dengan nyaman, tapi juga membantu mengurangi polusi udara dan jejak karbon. Gridwiz berkomitmen menciptakan udara yang lebih bersih untuk generasi sekarang dan masa depan.",
+        en: "Every ride with a Gridwiz E-Bike is a real step toward sustainability. With a zero-emission solution, you travel comfortably while helping reduce air pollution and carbon footprint. Gridwiz is committed to cleaner air for current and future generations.",
+      },
       image:
         "https://drive.google.com/file/d/1XaijjMqpBeqD8-NdY3LkM60oyvkC_ITD/view?usp=sharing",
       imagePosition: "right",
     },
     {
-      title: "Sewa Praktis dan Aksesibilitas Tinggi",
-      description:
-        "Nikmati kebebasan untuk menyewa sepeda kapan pun Anda butuhkan melalui aplikasi kami yang intuitif. Proses scan barcode cepat, ditambah ketersediaan layanan di berbagai titik kolaborasi seperti kampus, kafe, dan area publik, menjadikan Gridwiz pilihan mobilitas paling praktis dan mudah diakses di kota Anda.",
+      title: {
+        id: "Sewa Praktis dan Aksesibilitas Tinggi",
+        en: "Practical Rentals with High Accessibility",
+      },
+      description: {
+        id: "Nikmati kebebasan untuk menyewa sepeda kapan pun Anda butuhkan melalui aplikasi kami yang intuitif. Proses scan barcode cepat, ditambah ketersediaan layanan di berbagai titik kolaborasi seperti kampus, kafe, dan area publik, menjadikan Gridwiz pilihan mobilitas paling praktis dan mudah diakses di kota Anda.",
+        en: "Enjoy the freedom to rent a bike whenever you need it through our intuitive app. Fast barcode scanning and availability at partner points such as campuses, cafes, and public areas make Gridwiz a practical and accessible mobility choice in your city.",
+      },
       image:
         "https://drive.google.com/file/d/1W_XVVN9kmY9SdMIitlZNIifCAa0ly-4K/view?usp=sharing",
       imagePosition: "left",
@@ -53,8 +71,10 @@ export default function HomePage() {
             Gridwiz Energy & Mobility
           </h1>
           <p className="text-lg sm:text-xl text-gray-100 mb-8">
-            Memanfaatkan inovasi teknologi untuk menghadirkan layanan penyewaan
-            sepeda listrik yang mengedepankan efisiensi energi
+            {t({
+              id: "Memanfaatkan inovasi teknologi untuk menghadirkan layanan penyewaan sepeda listrik yang mengedepankan efisiensi energi",
+              en: "Using technological innovation to deliver electric bike rental services focused on energy efficiency",
+            })}
           </p>
 
           <div className="flex items-center justify-center md:justify-start flex-wrap">
@@ -107,17 +127,22 @@ export default function HomePage() {
 
         <div className="relative z-10 max-w-2xl">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Jelajahi Mobilitas Hijau Bersama Gridwiz
+            {t({
+              id: "Jelajahi Mobilitas Hijau Bersama Gridwiz",
+              en: "Explore Green Mobility with Gridwiz",
+            })}
           </h1>
           <p className="text-gray-200 text-lg md:text-xl mb-6">
-            Solusi transportasi listrik modern yang efisien dan berkelanjutan
-            untuk semua.
+            {t({
+              id: "Solusi transportasi listrik modern yang efisien dan berkelanjutan untuk semua.",
+              en: "Modern electric transportation solutions that are efficient and sustainable for everyone.",
+            })}
           </p>
         </div>
       </div>
       <div className="bg-gray-100 min-h-[500px] flex flex-col justify-center items-center py-16 md:py-32 text-center text-gray-900">
         <h3 className="text-4xl sm:text-5xl font-bold mb-12 md:mb-24 tracking-wide text-gray-900">
-          Layanan Kami
+          {t({ id: "Layanan Kami", en: "Our Services" })}
         </h3>
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-16 max-w-6xl mx-auto px-6">
@@ -125,17 +150,26 @@ export default function HomePage() {
             {
               icon: "https://drive.google.com/file/d/1M3ujtN2wAYVMfEpaYWkWmaw42OsojBWR/view?usp=sharing",
               title: "Ramah Lingkungan",
+              titleEn: "Eco-Friendly",
               desc: "Berkontribusi dalam pengurangan emisi karbon dan mendukung transportasi berkelanjutan yang sejalan dengan visi hijau Anda.",
+              descEn:
+                "Contribute to carbon emission reduction and support sustainable transportation aligned with your green vision.",
             },
             {
               icon: "https://drive.google.com/file/d/1f74vv7kgkCtv9jaQfdSYcvHHHFVYTmp8/view?usp=sharing",
               title: "Layanan Luas & Kolaboratif",
+              titleEn: "Broad & Collaborative Services",
               desc: "Jaringan Gridwiz terus berkembang melalui kemitraan strategis dengan universitas, kafe, hotel, dan area publik utama.",
+              descEn:
+                "Gridwiz continues to expand through strategic partnerships with universities, cafes, hotels, and key public areas.",
             },
             {
               icon: "https://drive.google.com/file/d/1ZRRlpOiaeAzRtN1j8mpzkw7Y_51jsIRv/view?usp=sharing",
               title: "Akses Mudah via Aplikasi",
+              titleEn: "Easy Access via App",
               desc: "Cukup unduh aplikasi, pindai barcode sepeda, dan mulai perjalanan dengan sistem kunci otomatis yang pintar.",
+              descEn:
+                "Simply download the app, scan the bike barcode, and start riding with a smart automatic locking system.",
             },
           ].map((item, idx) => (
             <div
@@ -147,7 +181,7 @@ export default function HomePage() {
                   <div className="relative h-24 w-24">
                     <img
                       src={driveImageUrl(item.icon)}
-                      alt={item.title}
+                      alt={t({ id: item.title, en: item.titleEn })}
                       className="object-contain transition-transform duration-500 group-hover:scale-110"
                       sizes="96px"
                       referrerPolicy="no-referrer"
@@ -156,10 +190,10 @@ export default function HomePage() {
                 </div>
               </div>
               <h4 className="text-xl sm:text-2xl font-bold mb-3 text-gray-900 group-hover:text-blue-500 transition-colors duration-500">
-                {item.title}
+                {t({ id: item.title, en: item.titleEn })}
               </h4>
               <p className="text-gray-800 text-base sm:text-lg leading-relaxed">
-                {item.desc}
+                {t({ id: item.desc, en: item.descEn })}
               </p>
             </div>
           ))}
@@ -170,7 +204,7 @@ export default function HomePage() {
             href="/panduan"
             className="px-8 py-4 bg-blue-500 text-white font-semibold rounded-md shadow-lg hover:bg-blue-600 transition-colors duration-300"
           >
-            Pelajari Lebih Lanjut
+            {t({ id: "Pelajari Lebih Lanjut", en: "Learn More" })}
           </a>
         </div>
       </div>

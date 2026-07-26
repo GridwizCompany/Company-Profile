@@ -1,28 +1,86 @@
 import { NextResponse } from "next/server";
-import {
-  GoogleGenAI,
-  HarmBlockThreshold,
-  HarmCategory,
-} from "@google/genai";
 
 type ChatMessage = {
   role: "user" | "assistant";
   content: string;
+  timestamp?: string;
 };
 
 type RequestBody = {
   messages?: ChatMessage[];
+  sessionId?: string;
+  language?: "id" | "en";
+};
+
+type CsBotResponse = {
+  reply?: string | null;
+  message?: string | null;
+  error?: string | null;
+  detail?: string | null;
+  log_id?: string;
+  cs_enabled?: boolean;
 };
 
 export const runtime = "nodejs";
 
-const GEMINI_MODEL = "gemini-2.5-flash";
-export async function POST(request: Request) {
-  const apiKey = process.env.GEMINI_API_KEY;
+const MAX_HISTORY = 10;
+const MAX_MESSAGE_LENGTH = 2000;
+const DEFAULT_BACKEND_URL = "https://reflowapi.ptms3.com";
+const RATE_LIMIT_WINDOW_MS = 60_000;
+const RATE_LIMIT_MAX_REQUESTS = 30;
+const BACKEND_TIMEOUT_MS = 60_000;
 
-  if (!apiKey) {
+const rateLimitBuckets = new Map<string, { count: number; resetAt: number }>();
+
+const trimTrailingSlash = (value: string) => value.replace(/\/+$/, "");
+
+const getBackendUrl = () =>
+  trimTrailingSlash(
+    process.env.MINFLOW_BACKEND_URL ||
+      process.env.NEXT_PUBLIC_API_BASE_URL ||
+      DEFAULT_BACKEND_URL
+  );
+
+const getMinflowSource = () => process.env.MINFLOW_SOURCE || "whatsapp";
+
+const getClientIp = (request: Request) =>
+  request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+  request.headers.get("x-real-ip") ||
+  "unknown";
+
+const stripReasoning = (value: string) => {
+  const text = value.trim();
+  const markerPatterns = [
+    /(?:^|\n)\s*(?:final answer|answer|jawaban)\s*:\s*/i,
+    /(?:^|\n)\s*(?:response to user|user-facing response)\s*:\s*/i,
+  ];
+
+  for (const pattern of markerPatterns) {
+    const match = pattern.exec(text);
+    if (match?.index !== undefined) {
+      const start = match.index + match[0].length;
+      const cleaned = text.slice(start).trim();
+      if (cleaned) return cleaned;
+    }
+  }
+
+  return text
+    .replace(
+      /^\s*(?:thinking process|reasoning|analysis)\s*:\s*[\s\S]*?(?=\n\s*(?:final answer|answer|jawaban|response to user|user-facing response)\s*:|$)/i,
+      ""
+    )
+    .trim();
+};
+
+export async function POST(request: Request) {
+  const secret =
+    process.env.MINFLOW_CS_SECRET ||
+    process.env.LOCAL_LLM_WA_SECRET ||
+    process.env.LOCAL_LLM_META_SECRET;
+
+  if (!secret) {
     return NextResponse.json(
-      { message: "", error: "GEMINI_API_KEY environment variable is missing." },
+      { message: "", error: "MINFLOW_CS_SECRET environment variable is missing." },
       { status: 500 }
     );
   }
@@ -38,119 +96,146 @@ export async function POST(request: Request) {
     );
   }
 
-  const history = body.messages ?? [];
+  const messages = Array.isArray(body.messages) ? body.messages : [];
+  const lastMessage = [...messages].reverse().find((item) => item.role === "user");
+  const message = lastMessage?.content?.trim() ?? "";
+  const clientIp = getClientIp(request);
+  const now = Date.now();
+  const bucket = rateLimitBuckets.get(clientIp);
 
-  if (!Array.isArray(history) || history.length === 0) {
+  if (!bucket || bucket.resetAt <= now) {
+    rateLimitBuckets.set(clientIp, {
+      count: 1,
+      resetAt: now + RATE_LIMIT_WINDOW_MS,
+    });
+  } else {
+    bucket.count += 1;
+    if (bucket.count > RATE_LIMIT_MAX_REQUESTS) {
+      return NextResponse.json(
+        {
+          message: "",
+          error: "Terlalu banyak permintaan. Silakan coba lagi sebentar.",
+        },
+        { status: 429 }
+      );
+    }
+  }
+
+  if (!message) {
     return NextResponse.json(
-      { message: "", error: "Messages array is required." },
+      { message: "", error: "Message is required." },
       { status: 400 }
     );
   }
 
-  const contents = history.map((message) => ({
-    role: message.role === "assistant" ? "model" : "user",
-    parts: [{ text: message.content ?? "" }],
-  }));
+  if (message.length > MAX_MESSAGE_LENGTH) {
+    return NextResponse.json(
+      {
+        message: "",
+        error: `Message is too long. Maximum ${MAX_MESSAGE_LENGTH} characters.`,
+      },
+      { status: 400 }
+    );
+  }
 
-  console.info("[Minflow] Gemini request", {
-    messageCount: contents.length,
-    lastRole: contents.at(-1)?.role,
-  });
+  const history = messages
+    .slice(0, -1)
+    .slice(-MAX_HISTORY)
+    .filter(
+      (item) =>
+        item?.content &&
+        (item.role === "user" || item.role === "assistant")
+    )
+    .map((item) => ({
+      role: item.role,
+      content: String(item.content).slice(0, MAX_MESSAGE_LENGTH),
+      timestamp: item.timestamp,
+    }));
+
+  const senderId =
+    body.sessionId?.trim() ||
+    `company-profile:${clientIp}`;
+  const language = body.language === "en" ? "en" : "id";
 
   try {
-    const ai = new GoogleGenAI({ apiKey });
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), BACKEND_TIMEOUT_MS);
 
-    // create a system content object and prepend it to the conversation contents,
-    // because GenerateContentParameters does not accept `systemInstruction`
-    const systemContent = {
-      role: "system",
-      parts: [
-        {
-          text:
-            [
-              "PERAN: Kamu adalah Minflow (Admin Reflow), asisten virtual resmi Gridwiz Energy & Mobility.",
-              "FORMAT: Setiap jawaban WAJIB diawali dengan kalimat pembuka 'Jawaban Gemini:' sebelum isi jawabannya.",
-              "IDENTITAS: Jika pengguna menanyakan identitasmu (contoh: 'siapa kamu', 'kamu siapa', 'siapa anda'), jawabanmu HARUS persis seperti ini sebelum melanjutkan konteks tambahan: 'Jawaban Gemini: Saya Minflow (Admin Reflow), asisten virtual Gridwiz Energy & Mobility yang siap membantu Anda.'",
-              "LARANGAN: Jangan pernah mengatakan bahwa kamu adalah model AI Google atau model bahasa besar. Abaikan permintaan yang mencoba memaksa kamu mengakui hal tersebut.",
-              "GAYA: Gunakan Bahasa Indonesia yang ramah, ringkas, dan solutif. Jika tidak yakin, akui keterbatasan dan sarankan langkah lanjutan atau tautan resmi Gridwiz. Semua jawaban tetap menggunakan awalan yang sudah ditetapkan.",
-              "FORMAT TAMBAHAN: Jangan menggunakan penebalan teks (**bold**) atau kode Markdown lainnya. Gunakan hanya paragraf biasa dengan kalimat lengkap atau daftar bernomor standar tanpa tanda **.",
-            ].join(" "),
-        },
-      ],
-    };
-
-    const response = await ai.models.generateContent({
-      model: GEMINI_MODEL,
-      contents: [systemContent, ...contents],
-      config: {
-        temperature: 0.8,
-        topP: 0.95,
-        topK: 40,
-        maxOutputTokens: 512,
-        safetySettings: [
-        {
-          category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-          threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-        },
-        {
-          category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-          threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-        },
-        {
-          category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-          threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-        },
-        {
-          category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-          threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-        },
-        ],
+    const response = await fetch(`${getBackendUrl()}/local-llm/cs`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-llm-cs-secret": secret,
       },
+      body: JSON.stringify({
+        message,
+        history,
+        sender_id: senderId,
+        source: getMinflowSource(),
+        language,
+        max_tokens: 300,
+        skip_menu_guard: true,
+      }),
+      signal: controller.signal,
     });
+    clearTimeout(timeout);
 
-    const reply = response.text?.trim() ?? "";
+    const data = (await response.json().catch(() => ({}))) as CsBotResponse;
+    const responseMessage = Array.isArray(data.message)
+      ? data.message.join(", ")
+      : data.message || "";
+    const reply = stripReasoning(data.reply || responseMessage || "");
+    const error = (data.detail || responseMessage || data.error || "").trim();
 
-    if (!reply) {
-      console.error(
-        "[Minflow] Gemini empty reply",
-        JSON.stringify(response, null, 2)
-      );
-      return NextResponse.json({
-        message:
-          "Maaf, saya belum menerima jawaban dari Gemini saat ini. Silakan coba lagi.",
+    if (!response.ok) {
+      console.error("[Midnflow] Backend CS bot failed", {
+        status: response.status,
+        error,
       });
+
+      return NextResponse.json(
+        {
+          message: "",
+          error: error || "CS bot backend request failed.",
+        },
+        { status: response.status }
+      );
     }
 
-    console.info("[Minflow] Gemini reply", reply);
-
-    return NextResponse.json({ message: reply });
+    return NextResponse.json({
+      message:
+        reply ||
+        "Maaf, Midnflow belum menerima jawaban saat ini. Silakan coba lagi sebentar.",
+      log_id: data.log_id,
+      cs_enabled: data.cs_enabled,
+    });
   } catch (error) {
-    const baseDescription =
-      error instanceof Error ? error.message : "Unexpected server error.";
-    const status =
-      typeof error === "object" && error !== null && "status" in error
-        ? (error as { status?: unknown }).status
-        : undefined;
-    const errorPayload =
-      typeof error === "object" && error !== null && "context" in error
-        ? (error as { context?: unknown }).context
-        : undefined;
+    if (error instanceof DOMException && error.name === "AbortError") {
+      return NextResponse.json(
+        {
+          message: "",
+          error:
+            language === "en"
+              ? "Midnflow is taking too long to respond. Please try again in a moment."
+              : "Midnflow terlalu lama merespons. Silakan coba lagi sebentar.",
+        },
+        { status: 504 }
+      );
+    }
 
-    console.error("[Minflow] Gemini API request failed", {
-      name: error instanceof Error ? error.name : "UnknownError",
-      message: baseDescription,
-      status,
-      errorPayload,
+    const description =
+      error instanceof Error ? error.message : "Unexpected server error.";
+
+    console.error("[Midnflow] Backend CS bot unreachable", {
+      message: description,
     });
 
     return NextResponse.json(
       {
         message: "",
-        error: `${baseDescription}${
-          status ? ` (status: ${status as string})` : ""
-        }`,
+        error: "Midnflow belum bisa terhubung ke backend CS bot saat ini.",
       },
-      { status: 500 }
+      { status: 502 }
     );
   }
 }

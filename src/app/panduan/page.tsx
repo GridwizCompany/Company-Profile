@@ -9,33 +9,46 @@ import {
   FaLock,
   FaUnlockAlt,
 } from "react-icons/fa";
+import { useLanguage } from "@/lib/language";
 import { driveImageUrl } from "utils/driveutils";
 
 export default function Layanan() {
+  const { t } = useLanguage();
   const langkah = [
     {
       id: 1,
-      judul: "Buka Kunci Sepeda",
-      deskripsi: "Scan QR code pada sepeda menggunakan aplikasi Re:Flow.",
+      judul: { id: "Buka Kunci Sepeda", en: "Unlock the Bike" },
+      deskripsi: {
+        id: "Scan QR code pada sepeda menggunakan aplikasi Re:Flow.",
+        en: "Scan the QR code on the bike using the Re:Flow app.",
+      },
       ikon: <FaUnlockAlt className="w-10 h-10 mx-auto" />,
     },
     {
       id: 2,
-      judul: "Cek Baterai",
-      deskripsi: "Pastikan baterai sepeda cukup sebelum memulai perjalanan.",
+      judul: { id: "Cek Baterai", en: "Check the Battery" },
+      deskripsi: {
+        id: "Pastikan baterai sepeda cukup sebelum memulai perjalanan.",
+        en: "Make sure the bike has enough battery before starting your ride.",
+      },
       ikon: <FaBatteryHalf className="w-10 h-10 mx-auto" />,
     },
     {
       id: 3,
-      judul: "Mulai Perjalanan",
-      deskripsi:
-        "Nikmati perjalananmu dan patuhi peraturan lalu lintas setempat.",
+      judul: { id: "Mulai Perjalanan", en: "Start Riding" },
+      deskripsi: {
+        id: "Nikmati perjalananmu dan patuhi peraturan lalu lintas setempat.",
+        en: "Enjoy your ride and follow local traffic rules.",
+      },
       ikon: <FaBicycle className="w-10 h-10 mx-auto" />,
     },
     {
       id: 4,
-      judul: "Parkir & Kunci",
-      deskripsi: "Parkirkan sepeda di area resmi dan kunci melalui aplikasi.",
+      judul: { id: "Parkir & Kunci", en: "Park & Lock" },
+      deskripsi: {
+        id: "Parkirkan sepeda di area resmi dan kunci melalui aplikasi.",
+        en: "Park the bike in an official area and lock it through the app.",
+      },
       ikon: <FaLock className="w-10 h-10 mx-auto" />,
     },
   ];
@@ -86,20 +99,27 @@ export default function Layanan() {
   const statistik = [
     {
       icon: <FaUser className="text-3xl md:text-4xl text-blue-500" />,
-      title: "11.100+ Pengguna",
-      description:
-        "Total perjalanan tercatat 18.660 kali, dengan pengguna aktif 11.100+ orang.",
+      title: { id: "11.100+ Pengguna", en: "11,100+ Users" },
+      description: {
+        id: "Total perjalanan tercatat 18.660 kali, dengan pengguna aktif 11.100+ orang.",
+        en: "A total of 18,660 trips have been recorded, with more than 11,100 active users.",
+      },
     },
     {
       icon: <FaClock className="text-3xl md:text-4xl text-blue-500" />,
-      title: "24,71 Menit",
-      description: "Rata-rata durasi penggunaan sepeda listrik per perjalanan.",
+      title: { id: "24,71 Menit", en: "24.71 Minutes" },
+      description: {
+        id: "Rata-rata durasi penggunaan sepeda listrik per perjalanan.",
+        en: "Average electric bike usage duration per trip.",
+      },
     },
     {
       icon: <FaTicketAlt className="text-3xl md:text-4xl text-blue-500" />,
-      title: "401.923 Kupon",
-      description:
-        "Sebanyak 401.923 kupon digunakan oleh pengguna selama periode ini.",
+      title: { id: "401.923 Kupon", en: "401,923 Coupons" },
+      description: {
+        id: "Sebanyak 401.923 kupon digunakan oleh pengguna selama periode ini.",
+        en: "A total of 401,923 coupons were used by riders during this period.",
+      },
     },
   ];
 
@@ -110,8 +130,10 @@ export default function Layanan() {
           Re:Flow oleh Gridwiz E&M
         </h1>
         <p className="mt-4 text-center max-w-xl text-gray-300 text-lg md:text-xl">
-          Re:Flow menghadirkan sepeda listrik (E-Bike) yang mudah, ramah
-          lingkungan, dan efisien.
+          {t({
+            id: "Re:Flow menghadirkan sepeda listrik (E-Bike) yang mudah, ramah lingkungan, dan efisien.",
+            en: "Re:Flow provides electric bikes that are easy to use, environmentally friendly, and efficient.",
+          })}
         </p>
 
         <div className="w-full h-60 md:h-[500px] mt-8 md:mt-32 overflow-hidden rounded-xl">
@@ -128,14 +150,17 @@ export default function Layanan() {
         <div className="max-w-7xl mx-auto py-16 flex flex-col md:flex-row items-center justify-between gap-10">
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-2xl md:text-4xl font-bold  mb-6">
-              Bersepeda Lebih Mudah, Hidup Lebih Hijau Bersama{" "}
+              {t({
+                id: "Bersepeda Lebih Mudah, Hidup Lebih Hijau Bersama ",
+                en: "Ride Easier, Live Greener with ",
+              })}
               <span className="text-sky-600">Re:Flow</span>
             </h1>
             <p className=" text-lg leading-relaxed mb-8 text-justify">
-              Re:flow adalah layanan penyewaan sepeda listrik terintegrasi
-              aplikasi digital, memungkinkan pengguna memesan, menyewa, dan
-              membayar secara mudah. Dirancang untuk menghadirkan mobilitas yang
-              praktis, efisien, dan ramah lingkungan.
+              {t({
+                id: "Re:flow adalah layanan penyewaan sepeda listrik terintegrasi aplikasi digital, memungkinkan pengguna memesan, menyewa, dan membayar secara mudah. Dirancang untuk menghadirkan mobilitas yang praktis, efisien, dan ramah lingkungan.",
+                en: "Re:Flow is an electric bike rental service integrated with a digital app, allowing users to book, rent, and pay easily. It is designed to deliver practical, efficient, and environmentally friendly mobility.",
+              })}
             </p>
 
             <div className="flex items-center justify-center md:justify-start flex-wrap">
@@ -167,31 +192,37 @@ export default function Layanan() {
           <div className="flex-1 grid grid-rows-3 gap-6 text-center md:text-left">
             <div className="bg-white/10 rounded-2xl p-6 shadow-md hover:shadow-lg hover:bg-white/15 transition">
               <h3 className="text-lg md:text-xl font-bold text-sky-400 mb-2">
-                Hemat
+                {t({ id: "Hemat", en: "Affordable" })}
               </h3>
               <p className="text-gray-200 text-base md:text-lg leading-relaxed text-justify">
-                Nikmati transportasi dengan biaya lebih rendah dibanding
-                kendaraan konvensional.
+                {t({
+                  id: "Nikmati transportasi dengan biaya lebih rendah dibanding kendaraan konvensional.",
+                  en: "Enjoy transportation at a lower cost than conventional vehicles.",
+                })}
               </p>
             </div>
 
             <div className="bg-white/10 rounded-2xl p-6 shadow-md hover:shadow-lg hover:bg-white/15 transition">
               <h3 className="text-lg md:text-xl font-bold text-green-400 mb-2">
-                Ramah Lingkungan
+                {t({ id: "Ramah Lingkungan", en: "Eco-Friendly" })}
               </h3>
               <p className="text-gray-200 text-base md:text-lg leading-relaxed text-justify">
-                Menggunakan energi listrik tanpa emisi karbon, mendukung udara
-                yang lebih bersih dan sehat.
+                {t({
+                  id: "Menggunakan energi listrik tanpa emisi karbon, mendukung udara yang lebih bersih dan sehat.",
+                  en: "Powered by electricity with no carbon emissions, supporting cleaner and healthier air.",
+                })}
               </p>
             </div>
 
             <div className="bg-white/10 rounded-2xl p-6 shadow-md hover:shadow-lg hover:bg-white/15 transition">
               <h3 className="text-lg md:text-xl font-bold text-yellow-400 mb-2">
-                Cepat & Praktis
+                {t({ id: "Cepat & Praktis", en: "Fast & Practical" })}
               </h3>
               <p className="text-gray-200 text-base md:text-lg leading-relaxed text-justify">
-                Sewa sepeda cukup lewat aplikasi Re:Flow, tanpa antre, tanpa
-                ribet, langsung siap digunakan.
+                {t({
+                  id: "Sewa sepeda cukup lewat aplikasi Re:Flow, tanpa antre, tanpa ribet, langsung siap digunakan.",
+                  en: "Rent a bike directly through the Re:Flow app with no queue, no hassle, and ready to ride.",
+                })}
               </p>
             </div>
           </div>
@@ -211,28 +242,30 @@ export default function Layanan() {
         <div className="flex flex-col lg:flex-row gap-8 w-full mt-12 md:mt-24">
           <div className="flex-1">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
-              Ketercapaian Re:Flow
+              {t({ id: "Ketercapaian Re:Flow", en: "Re:Flow Achievements" })}
             </h2>
             <h3 className="text-xl md:text-2xl text-gray-300 mb-2">
-              Februari - Oktober 2025
+              {t({ id: "Februari - Oktober 2025", en: "February - October 2025" })}
             </h3>
             <p className="text-gray-300 text-lg md:text-xl leading-relaxed text-justify">
-              Dalam 9 bulan terakhir, sepeda listrik kami terus menunjukkan
-              perkembangan positif. Masyarakat semakin antusias memanfaatkan
-              moda transportasi ramah lingkungan.
+              {t({
+                id: "Dalam 9 bulan terakhir, sepeda listrik kami terus menunjukkan perkembangan positif. Masyarakat semakin antusias memanfaatkan moda transportasi ramah lingkungan.",
+                en: "Over the last 9 months, our electric bikes have continued to show positive growth. Communities are increasingly enthusiastic about using environmentally friendly transportation.",
+              })}
             </p>
           </div>
           <div className="flex-1">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
-              Kontribusi Re:Flow
+              {t({ id: "Kontribusi Re:Flow", en: "Re:Flow Contribution" })}
             </h2>
             <h3 className="text-xl md:text-2xl text-gray-300 mb-2">
               NTB Zero Emission 2050
             </h3>
             <p className="text-gray-300 text-lg md:text-xl leading-relaxed text-justify">
-              Aktivitas pengguna mengurangi emisi karbon di NTB. Total jarak
-              tempuh 70.000 km setara pengurangan 62.000 kg CO2, mendukung
-              target zero emission NTB 2050.
+              {t({
+                id: "Aktivitas pengguna mengurangi emisi karbon di NTB. Total jarak tempuh 70.000 km setara pengurangan 62.000 kg CO2, mendukung target zero emission NTB 2050.",
+                en: "User activity helps reduce carbon emissions in NTB. A total travel distance of 70,000 km equals a reduction of 62,000 kg of CO2, supporting NTB's 2050 zero emission target.",
+              })}
             </p>
           </div>
         </div>
@@ -252,10 +285,10 @@ export default function Layanan() {
                     {stat.icon}
                   </div>
                   <h3 className="text-lg font-semibold mb-2 text-center">
-                    {stat.title}
+                    {t(stat.title)}
                   </h3>
                   <p className="text-gray-300 text-lg md:text-xl text-center">
-                    {stat.description}
+                    {t(stat.description)}
                   </p>
                 </div>
               ))}
@@ -280,9 +313,9 @@ export default function Layanan() {
                 className="flex-1 flex flex-col items-center gap-2 hover:scale-105 transition-transform duration-300"
               >
                 {stat.icon}
-                <h3 className="text-2xl md:text-3xl font-bold">{stat.title}</h3>
+                <h3 className="text-2xl md:text-3xl font-bold">{t(stat.title)}</h3>
                 <p className="text-gray-300 text-lg md:text-xl">
-                  {stat.description}
+                  {t(stat.description)}
                 </p>
               </div>
             ))}
@@ -304,11 +337,13 @@ export default function Layanan() {
 
             <div className="flex flex-col gap-4 order-2 lg:order-1">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center lg:text-left">
-                Cara Menggunakan Sepeda
+                {t({ id: "Cara Menggunakan Sepeda", en: "How to Use the Bike" })}
               </h2>
               <p className="text-gray-300 mb-6 text-lg md:text-xl text-center lg:text-left">
-                Ikuti langkah-langkah mudah berikut untuk menggunakan sepeda
-                listrik Re:Flow dengan aman dan nyaman.
+                {t({
+                  id: "Ikuti langkah-langkah mudah berikut untuk menggunakan sepeda listrik Re:Flow dengan aman dan nyaman.",
+                  en: "Follow these simple steps to use a Re:Flow electric bike safely and comfortably.",
+                })}
               </p>
 
               <div className="hidden md:grid grid-cols-1 gap-6">
@@ -320,10 +355,10 @@ export default function Layanan() {
                     <div className="text-3xl md:text-4xl">{l.ikon}</div>
                     <div>
                       <h3 className="font-semibold text-lg md:text-xl">
-                        {l.judul}
+                        {t(l.judul)}
                       </h3>
                       <p className="text-gray-300 text-lg md:text-xl">
-                        {l.deskripsi}
+                        {t(l.deskripsi)}
                       </p>
                     </div>
                   </div>
@@ -344,10 +379,10 @@ export default function Layanan() {
                         {l.ikon}
                       </div>
                       <h3 className="text-lg font-semibold mb-2 text-center">
-                        {l.judul}
+                        {t(l.judul)}
                       </h3>
                       <p className="text-gray-300 text-lg md:text-xl text-center">
-                        {l.deskripsi}
+                        {t(l.deskripsi)}
                       </p>
                     </div>
                   ))}

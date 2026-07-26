@@ -35,6 +35,10 @@ export const extractDriveId = (input: string): string => {
  * agar bisa ditampilkan dengan <img /> atau sebagai background image.
  */
 export const driveImageUrl = (source: string): string => {
+  if (source.includes("lh3.googleusercontent.com")) {
+    return source;
+  }
+
   const id = extractDriveId(source);
-  return `https://drive.google.com/thumbnail?id=${id}&sz=w2000`;
+  return `https://lh3.googleusercontent.com/d/${id}=w2000`;
 };

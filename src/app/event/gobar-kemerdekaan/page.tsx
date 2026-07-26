@@ -1,5 +1,6 @@
-"use client";
+﻿"use client";
 import { useState } from "react";
+import { useLanguage } from "@/lib/language";
 import { driveImageUrl } from "../../../utils/driveutils";
 import Image from "next/image";
 
@@ -35,6 +36,7 @@ const galleryItems: GalleryItem[] = [
 ];
 
 export default function GobarKemerdekaan() {
+  const { t } = useLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
@@ -93,9 +95,10 @@ export default function GobarKemerdekaan() {
               </p>
               <div className="rounded-3xl bg-linear-to-r from-red-600 via-rose-600 to-amber-700 text-white p-8 shadow-xl">
                 <p className="text-lg md:text-xl italic leading-relaxed">
-                  “Gowes Merdeka bukan sekadar perayaan, melainkan gerakan nyata
-                  untuk menyalakan gaya hidup sehat, teknologi hijau, dan
-                  solidaritas antar generasi.”
+                  {t({
+                    id: "Gowes Merdeka bukan sekadar perayaan, melainkan gerakan nyata untuk menyalakan gaya hidup sehat, teknologi hijau, dan solidaritas antar generasi.",
+                    en: '"Independence Ride is more than a celebration; it is a real movement to spark healthy living, green technology, and solidarity across generations."',
+                  })}
                 </p>
                 <p className="mt-4 text-sm uppercase tracking-wide text-white/80">
                   Gridwiz Energy &amp; Mobility
