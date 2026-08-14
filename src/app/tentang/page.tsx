@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useLanguage } from "@/lib/language";
 import { driveImageUrl } from "../../utils/driveutils";
 
@@ -108,28 +109,120 @@ export default function AboutUs() {
         </div>
       </section>
 
-      <section className="py-24 px-6 md:px-16 bg-gray-200">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 flex justify-center items-center gap-3 mx-auto">
-            {t({ id: "Produk Kami", en: "Our Product" })}
-          </h2>
-          <p className="text-gray-700 max-w-4xl mx-auto mb-6 text-lg md:text-xl text-justify">
-            {t({
-              id: "Re:Flow menghadirkan sepeda listrik modern yang mudah digunakan, efisien, dan ramah lingkungan. Saat ini, kami memiliki kurang lebih ",
-              en: "Re:Flow provides modern electric bikes that are easy to use, efficient, and environmentally friendly. We currently have approximately ",
-            })}
-            <strong>{t({ id: "700 sepeda listrik", en: "700 electric bikes" })}</strong>
-            {t({
-              id: " yang tersebar di berbagai titik di Lombok.",
-              en: " distributed across multiple points in Lombok.",
-            })}
-          </p>
-          <p className="text-gray-700 max-w-4xl mx-auto text-lg md:text-xl text-justify">
-            {t({
-              id: "Setiap sepeda dilengkapi dengan baterai tahan lama dan sistem keamanan canggih, memastikan pengalaman berkendara yang aman dan nyaman bagi semua pengguna.",
-              en: "Each bike is equipped with a long-lasting battery and advanced safety system, ensuring a safe and comfortable riding experience for every user.",
-            })}
-          </p>
+      <section className="overflow-hidden bg-slate-950 px-6 py-24 text-white md:px-16">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-12 max-w-3xl">
+            <span className="inline-flex rounded-full bg-cyan-400/12 px-4 py-2 text-sm font-bold uppercase tracking-wide text-cyan-200">
+              {t({ id: "Produk Kami", en: "Our Products" })}
+            </span>
+            <h2 className="mt-5 text-3xl md:text-5xl font-black leading-tight">
+              {t({
+                id: "Ekosistem Re:Flow mencakup e-bike, e-motor, dan EV charging.",
+                en: "The Re:Flow ecosystem covers e-bikes, e-motors, and EV charging.",
+              })}
+            </h2>
+            <p className="mt-5 text-base md:text-lg leading-8 text-slate-300">
+              {t({
+                id: "Kami membangun layanan mobilitas listrik yang mudah dipahami pengguna: pilih unit sesuai kebutuhan, gunakan dengan aman, dan dukung perjalanan rendah emisi di Lombok.",
+                en: "We build electric mobility services that are easy for users to understand: choose the right unit, ride safely, and support low-emission travel in Lombok.",
+              })}
+            </p>
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-3">
+            <div className="rounded-lg border border-white/12 bg-white/7 p-6">
+              <div className="mb-5 flex items-center justify-between gap-3">
+                <h3 className="text-2xl font-black">E-Bike Re:Flow</h3>
+                <span className="rounded-full bg-cyan-300/14 px-3 py-1 text-[11px] font-black uppercase text-cyan-200">
+                  Available
+                </span>
+              </div>
+              <div className="relative mb-6 h-48 overflow-hidden rounded-md bg-slate-900/60">
+                <img
+                  src="/ebike/reflow-ebike-lineup.jpeg"
+                  alt="E-Bike Re:Flow"
+                  className="h-full w-full object-contain p-3"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <p className="mt-4 text-sm leading-7 text-slate-300">
+                {t({
+                  id: "Kurang lebih 700 sepeda listrik tersedia di berbagai titik Lombok untuk perjalanan pendek, aktivitas harian, area publik, kampus, kafe, hotel, dan resort.",
+                  en: "Approximately 700 electric bikes are available across Lombok for short trips, daily activities, public areas, campuses, cafes, hotels, and resorts.",
+                })}
+              </p>
+              <div className="mt-6 grid grid-cols-2 gap-3 text-sm">
+                <div className="rounded-md bg-white/8 p-4">
+                  <p className="font-black text-cyan-200">700+</p>
+                  <p className="mt-1 text-slate-400">E-Bike</p>
+                </div>
+                <div className="rounded-md bg-white/8 p-4">
+                  <p className="font-black text-cyan-200">App</p>
+                  <p className="mt-1 text-slate-400">Scan QR</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-lg border border-cyan-300/30 bg-cyan-300/10 p-6">
+              <div className="flex items-center justify-between gap-3">
+                <h3 className="text-2xl font-black">E-Motor Re:Flow</h3>
+                <span className="rounded-full bg-cyan-300/18 px-3 py-1 text-[11px] font-black uppercase text-cyan-100">
+                  Available
+                </span>
+              </div>
+              <p className="mt-4 text-sm leading-7 text-slate-200">
+                {t({
+                  id: "E-motor E1 dan E2 hadir untuk kebutuhan jarak lebih jauh, operasional harian, serta skema sewa fleksibel: rent biasa dan rent to ownership.",
+                  en: "E1 and E2 e-motors support longer distances, daily operations, and flexible rental schemes: regular rental and rent to ownership.",
+                })}
+              </p>
+              <div className="relative mt-6 aspect-[4/3]">
+                <Image
+                  src="/emotor-cutout/e2/silver.png"
+                  alt="Re:Flow E-Motor E2"
+                  fill
+                  sizes="(max-width: 1024px) 92vw, 360px"
+                  className="object-contain drop-shadow-[0_24px_34px_rgba(0,0,0,0.35)]"
+                />
+              </div>
+              <a
+                href="/produk-emotor"
+                className="mt-5 inline-flex rounded-md bg-cyan-300 px-5 py-3 text-sm font-black text-slate-950 transition hover:-translate-y-1 hover:bg-cyan-200"
+              >
+                {t({ id: "Lihat Detail E-Motor", en: "View E-Motor Details" })}
+              </a>
+            </div>
+
+            <div className="rounded-lg border border-white/12 bg-white/7 p-6">
+              <div className="flex items-center justify-between gap-3">
+                <h3 className="text-2xl font-black">EV Charging</h3>
+                <span className="rounded-full bg-amber-300/18 px-3 py-1 text-[11px] font-black uppercase text-amber-100">
+                  Coming Soon
+                </span>
+              </div>
+              <p className="mt-4 text-sm leading-7 text-slate-300">
+                {t({
+                  id: "Charging station hitam premium sedang disiapkan untuk memperluas ekosistem kendaraan listrik Gridwiz. Nantinya pengguna dapat melakukan pembayaran langsung melalui aplikasi.",
+                  en: "A premium black charging station is being prepared to expand Gridwiz's electric vehicle ecosystem. Users will be able to pay directly through the app.",
+                })}
+              </p>
+              <div className="relative mt-6 h-56 overflow-hidden rounded-md bg-black/40">
+                <Image
+                  src="/ev-charging/solar-ev-charger-blue.png"
+                  alt="Solar EV Charging Station"
+                  fill
+                  sizes="(max-width: 1024px) 92vw, 360px"
+                  className="object-contain"
+                />
+              </div>
+              <div className="mt-5 grid gap-3 text-sm font-semibold text-slate-200">
+                <p className="rounded-md bg-white/8 px-4 py-3">
+                  {t({ id: "Pembayaran via aplikasi", en: "In-app payment" })}
+                </p>
+                <p className="rounded-md bg-white/8 px-4 py-3">Clean energy infrastructure</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -150,8 +243,8 @@ export default function AboutUs() {
           </h2>
           <p className="text-gray-700 text-lg md:text-xl leading-relaxed text-justify">
             {t({
-              id: "Sebagai bagian dari komitmen kami dalam menciptakan ekosistem transportasi ramah lingkungan, Re:flow memanfaatkan energi matahari melalui pengembangan infrastruktur khusus berupa Solar PV (Pembangkit Listrik Tenaga Surya) yang terintegrasi dengan Battery Charging Station (BCS). Infrastruktur ini memungkinkan proses pengisian daya sepeda listrik dilakukan secara mandiri menggunakan energi terbarukan. Dengan memanfaatkan sinar matahari sebagai sumber energi utama, sistem ini mampu mengurangi ketergantungan pada listrik konvensional serta menekan jejak karbon yang dihasilkan selama proses pengisian daya. Penerapan Solar PV dan Battery Charging Station ini menjadi langkah nyata kami dalam mendukung keberlanjutan lingkungan, sekaligus menghadirkan solusi mobilitas yang lebih bersih, efisien, dan ramah lingkungan bagi para pengguna Re:flow.",
-              en: "As part of our commitment to creating an environmentally friendly transportation ecosystem, Re:Flow uses solar energy through dedicated Solar PV infrastructure integrated with Battery Charging Stations (BCS). This infrastructure allows electric bike charging to run independently using renewable energy. By using sunlight as the primary energy source, the system reduces dependence on conventional electricity and lowers the carbon footprint generated during charging. The implementation of Solar PV and Battery Charging Stations is a concrete step in supporting environmental sustainability while delivering cleaner, more efficient, and environmentally friendly mobility for Re:Flow users.",
+              id: "Sebagai bagian dari komitmen kami dalam menciptakan ekosistem transportasi ramah lingkungan, Re:flow memanfaatkan energi matahari melalui pengembangan infrastruktur khusus berupa Solar PV (Pembangkit Listrik Tenaga Surya) yang terintegrasi dengan Battery Charging Station (BCS). Infrastruktur ini mendukung proses pengisian daya unit mobilitas listrik Re:Flow menggunakan energi terbarukan. Dengan memanfaatkan sinar matahari sebagai sumber energi utama, sistem ini mampu mengurangi ketergantungan pada listrik konvensional serta menekan jejak karbon yang dihasilkan selama proses pengisian daya.",
+              en: "As part of our commitment to creating an environmentally friendly transportation ecosystem, Re:Flow uses solar energy through dedicated Solar PV infrastructure integrated with Battery Charging Stations (BCS). This infrastructure supports Re:Flow electric mobility charging using renewable energy. By using sunlight as the primary energy source, the system reduces dependence on conventional electricity and lowers the carbon footprint generated during charging.",
             })}
           </p>
         </div>

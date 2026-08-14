@@ -14,6 +14,7 @@ const navItems: {
   submenu?: { name: LocalizedText; path: string }[];
 }[] = [
   { name: { id: "Beranda", en: "Home" }, path: "/" },
+  { name: { id: "E-Motor", en: "E-Motor" }, path: "/produk-emotor" },
   { name: "Promo", path: "/promo" },
   {
     name: "Event",

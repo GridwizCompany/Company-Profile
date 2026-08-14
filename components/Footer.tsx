@@ -17,8 +17,8 @@ export default function Footer() {
           </h2>
           <p className="text-sm leading-relaxed">
             {t({
-              id: "Platform pintar untuk penyewaan sepeda listrik. Kelola dengan mudah, cepat, dan fleksibel.",
-              en: "A smart platform for electric bike rentals. Manage rides easily, quickly, and flexibly.",
+              id: "Platform pintar untuk penyewaan mobilitas listrik. Kelola perjalanan dengan mudah, cepat, dan fleksibel.",
+              en: "A smart platform for electric mobility rentals. Manage rides easily, quickly, and flexibly.",
             })}
           </p>
         </div>
@@ -31,6 +31,11 @@ export default function Footer() {
             <li>
               <a href="/tentang" className="hover:text-white transition">
                 {t({ id: "Tentang Kami", en: "About Us" })}
+              </a>
+            </li>
+            <li>
+              <a href="/produk-emotor" className="hover:text-white transition">
+                E-Motor
               </a>
             </li>
             <li>

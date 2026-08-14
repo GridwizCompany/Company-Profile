@@ -9,7 +9,7 @@ import Navbar from "@/components/Navbar";
 export const metadata: Metadata = {
   title: "Gridwiz Energy & Mobility",
   description: "Website profil perusahaan Gridwiz Energy & Mobility",
-  referrer: "no-referrer",
+  referrer: "strict-origin-when-cross-origin",
   icons: {
     icon: [
       { url: "/favicon.svg?v=2", type: "image/svg+xml" },

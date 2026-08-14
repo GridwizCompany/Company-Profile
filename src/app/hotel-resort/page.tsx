@@ -129,8 +129,9 @@ export default function HotelResort() {
         <div className="relative w-full pb-[56.25%] h-0 overflow-hidden shadow-lg">
           <iframe
             className="absolute top-0 left-0 w-full h-full"
-            src="https://www.youtube.com/embed/jav1rwlGkjU"
+            src="https://www.youtube.com/embed/jav1rwlGkjU?rel=0&modestbranding=1&playsinline=1"
             title="YouTube video player"
+            referrerPolicy="strict-origin-when-cross-origin"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
           ></iframe>
