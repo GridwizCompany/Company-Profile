@@ -47,6 +47,21 @@ const formatTimestamp = (date: Date) =>
     minute: "2-digit",
   });
 
+const generateUUID = (): string => {
+  if (
+    typeof window !== "undefined" &&
+    window.crypto &&
+    typeof window.crypto.randomUUID === "function"
+  ) {
+    return window.crypto.randomUUID();
+  }
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+    const r = (Math.random() * 16) | 0;
+    const v = c === "x" ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+};
+
 export default function Minflow({ onOpen, onClose }: MinflowProps) {
   const { language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
@@ -66,7 +81,7 @@ export default function Minflow({ onOpen, onClose }: MinflowProps) {
 
   useEffect(() => {
     const existingSessionId = window.localStorage.getItem(SESSION_ID_KEY);
-    const sessionId = existingSessionId || crypto.randomUUID();
+    const sessionId = existingSessionId || generateUUID();
     sessionIdRef.current = sessionId;
     if (!existingSessionId) {
       window.localStorage.setItem(SESSION_ID_KEY, sessionId);
@@ -203,7 +218,7 @@ export default function Minflow({ onOpen, onClose }: MinflowProps) {
   const appendMessage = useCallback((message: Omit<Message, "id">) => {
     setMessages((prev) => [
       ...prev.slice(-(MAX_MESSAGES - 1)),
-      { ...message, id: crypto.randomUUID() },
+      { ...message, id: generateUUID() },
     ]);
   }, []);
 
@@ -222,7 +237,7 @@ export default function Minflow({ onOpen, onClose }: MinflowProps) {
 
       const trimmed = content.trim();
       const userMessage: Message = {
-        id: crypto.randomUUID(),
+        id: generateUUID(),
         role: "user",
         content: trimmed,
         timestamp: formatTimestamp(new Date()),
