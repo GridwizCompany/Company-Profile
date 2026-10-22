@@ -1,0 +1,804 @@
+/* =========================================
+   EV CHARGING DESIGN SYSTEM & STYLES
+   ========================================= */
+
+.evc-page {
+  padding-top: 72px;
+  background: #ffffff;
+  color: #1E293B;
+  overflow-x: hidden;
+}
+
+.evc-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+/* --- HERO --- */
+.evc-hero {
+  position: relative;
+  min-height: calc(100vh - 72px);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: #0B192C;
+}
+
+.evc-hero-img {
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+.evc-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg,
+      rgba(10, 25, 47, 0.85) 0%,
+      rgba(10, 25, 47, 0.55) 45%,
+      rgba(10, 25, 47, 0.15) 100%),
+    linear-gradient(0deg, rgba(10, 25, 47, 0.75) 0%, transparent 55%);
+  z-index: 1;
+}
+
+.evc-hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 clamp(1.5rem, 7vw, 5rem) 5.5rem;
+  max-width: 680px;
+}
+
+.evc-hero-coming-soon {
+  display: inline-block;
+  background: #ffffff;
+  color: #0B192C;
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.5rem 1.75rem;
+  border-radius: 9999px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  margin-bottom: 1.5rem;
+}
+
+.evc-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.4rem 1.25rem;
+  border-radius: 9999px;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.evc-hero-title {
+  font-size: clamp(2.8rem, 6vw, 4.8rem);
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.25rem;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+}
+
+.evc-hero-desc {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.65;
+  margin-bottom: 2.25rem;
+  max-width: 680px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.evc-hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: linear-gradient(135deg, #1565C0, #29B6F6);
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.9rem 2.25rem;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(21, 101, 192, 0.45);
+  transition: all 0.25s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.evc-hero-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(21, 101, 192, 0.6);
+}
+
+.evc-hero-scroll {
+  position: absolute;
+  bottom: 1.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.25s ease;
+}
+
+.evc-hero-scroll:hover {
+  opacity: 1;
+  color: #29B6F6;
+}
+
+.evc-hero-scroll svg {
+  animation: bounceDown 2s infinite;
+}
+
+@keyframes bounceDown {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(6px);
+  }
+
+  60% {
+    transform: translateY(3px);
+  }
+}
+
+/* --- COMMON SECTION TAGS & TITLES --- */
+.evc-section-tag {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #1565C0;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.65rem;
+}
+
+.evc-section-title {
+  font-size: clamp(2rem, 3.8vw, 2.75rem);
+  font-weight: 900;
+  color: #0F4068;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+
+/* --- SECTION 1: ABOUT INTRODUCTION --- */
+.evc-about-section {
+  padding: 6.5rem 1.5rem;
+  background: #ffffff;
+}
+
+.evc-about-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.evc-about-desc {
+  font-size: 1.05rem;
+  color: #4A6080;
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
+}
+
+.evc-about-img-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.evc-about-img {
+  width: 100%;
+  height: auto;
+  max-width: 520px;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 32px rgba(15, 64, 104, 0.1));
+  transition: transform 0.4s ease;
+}
+
+.evc-about-img-wrap:hover .evc-about-img {
+  transform: scale(1.02);
+}
+
+/* --- SECTION 2: WHY REFLOW E-CHARGING --- */
+.evc-why-section {
+  padding: 4.5rem 1.5rem 6.5rem;
+  background: #FAFCFE;
+  border-top: 1px solid #EDF3FA;
+}
+
+.evc-why-header {
+  margin-bottom: 3.5rem;
+}
+
+.evc-why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.evc-why-item {
+  background: #ffffff;
+  border: 1px solid #E2ECF8;
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  box-shadow: 0 6px 20px rgba(15, 64, 104, 0.04);
+  transition: all 0.3s ease;
+}
+
+.evc-why-item:hover {
+  transform: translateY(-4px);
+  border-color: #29B6F6;
+  box-shadow: 0 14px 32px rgba(41, 182, 246, 0.15);
+}
+
+.evc-why-icon-box {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.evc-why-icon-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.evc-why-label {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0F4068;
+  line-height: 1.35;
+}
+
+/* --- SECTION 3: BUILD WITH SMART TECHNOLOGY --- */
+.evc-smart-section {
+  padding: 6.5rem 1.5rem;
+  background: linear-gradient(135deg, #4A7A9C 0%, #3B6888 100%);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.evc-smart-header {
+  margin-bottom: 3.5rem;
+  max-width: 800px;
+}
+
+.evc-smart-header-title {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.evc-smart-content-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 0.9fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.evc-smart-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.evc-smart-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 18px;
+  padding: 1.4rem 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: all 0.3s ease;
+}
+
+.evc-smart-card:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.45);
+  transform: translateY(-3px);
+}
+
+.evc-smart-card-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.evc-smart-card-icon img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.evc-smart-card-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.35rem;
+  line-height: 1.25;
+}
+
+.evc-smart-card-desc {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.evc-smart-img-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.evc-smart-img {
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.35));
+  transition: transform 0.4s ease;
+}
+
+.evc-smart-img-wrap:hover .evc-smart-img {
+  transform: scale(1.03);
+}
+
+/* --- SECTION 4: HOW IT WORKS --- */
+.evc-how-section {
+  padding: 6.5rem 1.5rem;
+  background: #ffffff;
+}
+
+.evc-how-header {
+  text-align: left;
+  margin-bottom: 3.5rem;
+}
+
+.evc-how-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.75rem;
+}
+
+.evc-how-card {
+  background: linear-gradient(145deg, #4A7C9D 0%, #35627E 100%);
+  border-radius: 22px;
+  padding: 3rem 1.75rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  box-shadow: 0 12px 30px rgba(53, 98, 126, 0.22);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.evc-how-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(53, 98, 126, 0.35);
+}
+
+/* .evc-how-icon-wrap {
+  width: 76px;
+  height: 76px;
+  background: #ffffff;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+} */
+
+.evc-how-card:hover .evc-how-icon-wrap {
+  transform: scale(1.08);
+}
+
+.evc-how-icon-wrap img {
+  width: 66px;
+  height: 66px;
+  object-fit: contain;
+}
+
+.evc-how-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 3.35;
+  margin: 0;
+}
+
+/* --- SECTION 5: CONNECTED EXPERIENCE --- */
+.evc-connected-section {
+  padding: 6.5rem 1.5rem;
+  background: #ffffff;
+  border-top: 1px solid #EDF3FA;
+}
+
+.evc-connected-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.evc-connected-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.evc-connected-mid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.evc-connected-phone {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 45px rgba(15, 64, 104, 0.22));
+  transition: transform 0.4s ease;
+}
+
+.evc-connected-mid:hover .evc-connected-phone {
+  transform: scale(1.03);
+}
+
+.evc-connected-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.evc-connected-app-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #0F4068;
+  margin-bottom: 1.5rem;
+}
+
+.evc-connected-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.evc-connected-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2C3E50;
+}
+
+.evc-connected-item svg {
+  color: #1565C0;
+  flex-shrink: 0;
+}
+
+.evc-connected-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-width: 170px;
+}
+
+.evc-store-btn {
+  display: block;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.evc-store-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.evc-store-btn img {
+  width: 200px;
+  height: 65px;
+  object-fit: contain;
+  display: block;
+}
+
+/* --- SECTION 6: VISUAL MATERIAL APPLICATION --- */
+.evc-material-section {
+  padding: 6.5rem 1.5rem;
+  background: #ffffff;
+  text-align: center;
+}
+
+.evc-material-title {
+  font-size: clamp(2rem, 3.8vw, 2.75rem);
+  font-weight: 900;
+  color: #0F4068;
+  letter-spacing: -0.02em;
+  margin-bottom: 3.5rem;
+}
+
+.evc-material-img-wrap {
+  width: 100%;
+  max-width: 1050px;
+  margin-inline: auto;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 16px 45px rgba(15, 64, 104, 0.08);
+  border: 1px solid #EDF3FA;
+}
+
+.evc-material-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --- SECTION 7: DOWNLOAD BANNER --- */
+.evc-download-section {
+  padding: 5rem 1.5rem 6.5rem;
+  background: linear-gradient(180deg, #F0F8FF 0%, #E3F2FD 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.evc-download-title {
+  font-size: clamp(2.2rem, 4.2vw, 3.2rem);
+  font-weight: 900;
+  color: #0F4068;
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+}
+
+.evc-download-badges-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.evc-download-badge-btn {
+  display: inline-block;
+  transition: transform 0.25s ease, filter 0.25s ease;
+  filter: drop-shadow(0 6px 16px rgba(15, 64, 104, 0.15));
+}
+
+.evc-download-badge-btn:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 10px 24px rgba(15, 64, 104, 0.25));
+}
+
+.evc-download-badge-btn img {
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* --- PRICING CALLOUT --- */
+.evc-pricing-section {
+  padding: 4.5rem 1.5rem;
+  background: #ffffff;
+}
+
+.evc-pricing-card {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: linear-gradient(135deg, #f0f8ff 0%, #e3f1fd 100%);
+  border: 1.5px solid #c8e0f4;
+  border-radius: 20px;
+  padding: 2.5rem 3rem;
+  box-shadow: 0 8px 28px rgba(15, 64, 104, 0.08);
+}
+
+.evc-pricing-icon {
+  font-size: 3.2rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.evc-pricing-amount {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 900;
+  color: #1565C0;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.evc-pricing-unit {
+  font-size: 0.45em;
+  font-weight: 600;
+  color: #4A6080;
+}
+
+.evc-pricing-note {
+  font-size: 0.92rem;
+  color: #5A7184;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* --- FAQ --- */
+.evc-faq-section {
+  background: #F8FAFF;
+  padding: 6rem 1.5rem;
+}
+
+.evc-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.evc-faq-item {
+  background: #fff;
+  border: 1px solid #DCE8F8;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.evc-faq-item.open {
+  border-color: #29B6F6;
+  box-shadow: 0 4px 16px rgba(41, 182, 246, 0.12);
+}
+
+.evc-faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.975rem;
+  font-weight: 600;
+  color: #0F4068;
+  transition: background 0.2s ease;
+}
+
+.evc-faq-question:hover {
+  background: #F0F6FC;
+}
+
+.evc-faq-answer {
+  padding: 0 1.5rem 1.25rem;
+  font-size: 0.9rem;
+  color: #4A6080;
+  line-height: 1.7;
+  animation: evc-faq-fade 0.25s ease;
+}
+
+@keyframes evc-faq-fade {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   EV CHARGING RESPONSIVE
+   ========================================= */
+@media (max-width: 1024px) {
+  .evc-about-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .evc-why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .evc-smart-content-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .evc-smart-img-wrap {
+    order: -1;
+  }
+
+  .evc-how-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .evc-connected-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 3rem;
+  }
+
+  .evc-connected-list {
+    align-items: center;
+  }
+
+  .evc-connected-badges {
+    margin-inline: auto;
+    flex-direction: row;
+    max-width: 360px;
+  }
+}
+
+@media (max-width: 768px) {
+  .evc-smart-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .evc-why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .evc-how-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .evc-connected-badges {
+    flex-direction: column;
+    max-width: 170px;
+  }
+}

@@ -1,0 +1,22 @@
+/* ====================================================================
+   NEWS STYLES
+   Inherits base partner layout classes
+   ==================================================================== */
+@import "../partners/partners.css";
+@import "../events/events.css";
+
+/* News-specific overrides */
+.news-hero-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1.25rem;
+}

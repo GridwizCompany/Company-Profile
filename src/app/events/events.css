@@ -1,0 +1,107 @@
+/* ====================================================================
+   EVENTS STYLES (Gridwiz Re:Flow Events)
+   Inherits base partner & showcase layout classes
+   ==================================================================== */
+@import "../partners/partners.css";
+
+/* Events-specific custom overrides or additions can be added below */
+
+/* ── Filter Bar ─────────────────────────────────────────────────────── */
+.events-filter-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.events-category-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.events-cat-btn {
+  padding: 8px 20px;
+  border-radius: 999px;
+  border: 1.5px solid #0F4068;
+  background: transparent;
+  color: #0F4068;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.events-cat-btn:hover {
+  background: rgba(15, 64, 104, 0.08);
+}
+
+.events-cat-btn.active {
+  background: #0F4068;
+  color: #fff;
+  border-color: #0F4068;
+}
+
+/* ── Search ──────────────────────────────────────────────────────────── */
+.events-search-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+}
+
+.events-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9CA3AF;
+  pointer-events: none;
+}
+
+.events-search-input {
+  width: 100%;
+  padding: 12px 16px 12px 44px;
+  border-radius: 12px;
+  border: 1.5px solid #D1D5DB;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  background: #fff;
+}
+
+.events-search-input:focus {
+  border-color: #0F4068;
+  box-shadow: 0 0 0 3px rgba(15, 64, 104, 0.1);
+}
+
+/* ── Empty State ─────────────────────────────────────────────────────── */
+.events-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  color: #9CA3AF;
+  text-align: center;
+  gap: 0.75rem;
+}
+
+.events-empty-state h3 {
+  font-size: 1.25rem;
+  color: #4B5563;
+  margin: 0;
+}
+
+.events-empty-state p {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .events-filter-bar {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

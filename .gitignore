@@ -32,6 +32,11 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
+
+# ide & scratch
+.vscode/
+*.py
 
 # vercel
 .vercel
@@ -40,3 +45,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 public/company-video.mp4 
+
+# Uploaded images (admin)
+public/uploads/*
+!public/uploads/**/.gitkeep
+

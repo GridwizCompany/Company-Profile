@@ -1,22 +1,28 @@
-import "./globals.css";
 import type { Metadata } from "next";
-import Footer from "@/components/Footer";
-
-import { LanguageProvider } from "@/lib/language";
-import Minflow from "@/components/Mindflow";
-import Navbar from "@/components/Navbar";
+import "./globals.css";
+import Navbar from "../component/Navbar";
+import ScrollToTop from "../component/ScrollToTop";
+import { LanguageProvider } from "../lib/LanguageContext";
+import { AdminDataProvider } from "../context/AdminDataContext";
 
 export const metadata: Metadata = {
-  title: "Gridwiz Energy & Mobility",
-  description: "Website profil perusahaan Gridwiz Energy & Mobility",
-  referrer: "no-referrer",
-  icons: {
-    icon: [
-      { url: "/favicon.svg?v=2", type: "image/svg+xml" },
-      { url: "/favicon.ico?v=2", type: "image/x-icon" },
-    ],
-    shortcut: [{ url: "/favicon.svg?v=2", type: "image/svg+xml" }],
-    apple: [{ url: "/favicon-256.png?v=2", sizes: "256x256" }],
+  title: {
+    default: "Gridwiz Energy & Mobility",
+    template: "%s | Gridwiz",
+  },
+  description:
+    "Gridwiz menyediakan ekosistem kendaraan listrik terlengkap: E-Bike, E-Motor, dan E-Charging untuk mobilitas berkelanjutan di Indonesia.",
+  keywords: ["gridwiz", "e-bike", "e-motor", "e-charging", "kendaraan listrik", "reflow"],
+  authors: [{ name: "Gridwiz" }],
+  metadataBase: new URL("https://gridwiz.id"),
+  openGraph: {
+    type: "website",
+    locale: "id_ID",
+    url: "https://gridwiz.id",
+    siteName: "Gridwiz",
+    title: "Gridwiz Energy & Mobility",
+    description: "Ekosistem kendaraan listrik terlengkap untuk mobilitas berkelanjutan.",
+    images: [{ url: "/images/logo/LOGO-GWE&M.png", width: 512, height: 512, alt: "Gridwiz Logo" }],
   },
 };
 
@@ -27,13 +33,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id">
-      <body className="min-h-screen flex flex-col">
-        <LanguageProvider>
-          <Navbar />
-          <main className="grow">{children}</main>
-          <Footer />
-          <Minflow />
-        </LanguageProvider>
+      <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon-256.png" sizes="256x256" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
+      <body>
+        <AdminDataProvider>
+          <LanguageProvider> {/* LanguageProvider di sini */}
+            <Navbar />           {/* ← Navbar di sini */}
+            {children}           {/* ← Semua halaman di sini */}
+            <ScrollToTop />
+          </LanguageProvider>
+        </AdminDataProvider>
       </body>
     </html>
   );
