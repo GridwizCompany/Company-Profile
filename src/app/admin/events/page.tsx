@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Plus, Edit2, Trash2, Calendar, MapPin, Users, ArrowRight } from "lucide-react";
+import { Plus, Edit2, Trash2, Calendar, MapPin, Users } from "lucide-react";
 import { useAdminData } from "../../../context/AdminDataContext";
 import "../admin.css";
 
@@ -58,7 +58,7 @@ export default function AdminEventsPage() {
                   <td>
                     <div style={{ position: "relative", width: 56, height: 40, borderRadius: 6, overflow: "hidden", background: "#f1f5f9", display: "flex", alignItems: "center", justifyContent: "center" }}>
                       {ev.imageSrc ? (
-                        <Image src={ev.imageSrc} alt={ev.title} fill style={{ objectFit: "cover" }} onError={() => {}} />
+                        <Image src={ev.imageSrc} alt={ev.title} fill style={{ objectFit: "cover" }} onError={() => { }} />
                       ) : (
                         <Calendar size={16} color="#94a3b8" />
                       )}
@@ -98,7 +98,7 @@ export default function AdminEventsPage() {
                   <td colSpan={7}>
                     <div className="admin-empty">
                       <Calendar size={40} />
-                      <p>Belum ada event. Klik "Tambah Event" untuk membuat event baru.</p>
+                      <p>Belum ada event. Klik &quot;Tambah Event&quot; untuk membuat event baru.</p>
                     </div>
                   </td>
                 </tr>
@@ -114,7 +114,7 @@ export default function AdminEventsPage() {
           <div className="admin-modal" onClick={(e) => e.stopPropagation()}>
             <h3>🗑️ Hapus Event?</h3>
             <p>
-              Event "<strong>{events.find((e) => e.id === deleteTarget)?.title}</strong>" akan dihapus secara permanen.
+              Event &quot;<strong>{events.find((e) => e.id === deleteTarget)?.title}</strong>&quot; akan dihapus secara permanen.
               Tindakan ini tidak dapat dibatalkan.
             </p>
             <div className="admin-modal-actions">

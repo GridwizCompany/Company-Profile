@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin, Calendar, Tag, Search, ArrowRight } from "lucide-react";
+import { MapPin, Calendar, Search, ArrowRight } from "lucide-react";
 import Footer from "../../component/Footer";
 import { useAdminData } from "../../context/AdminDataContext";
 import "./news.css";

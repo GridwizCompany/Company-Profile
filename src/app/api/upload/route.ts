@@ -115,10 +115,11 @@ export async function POST(req: NextRequest) {
     // 7. Return public URL
     const publicUrl = `/uploads/${folder}/${uniqueName}`;
     return NextResponse.json({ url: publicUrl, fileName: uniqueName });
-  } catch (err: any) {
+  } catch (err) {
     console.error("[UPLOAD API ERROR]", err);
+    const message = err instanceof Error ? err.message : "Terjadi kesalahan saat mengupload file.";
     return NextResponse.json(
-      { error: err.message || "Terjadi kesalahan saat mengupload file." },
+      { error: message },
       { status: 500 }
     );
   }

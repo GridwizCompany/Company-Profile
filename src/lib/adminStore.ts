@@ -12,7 +12,7 @@ import { Partner, partners as seedPartners } from "./partnersData";
 const KEYS = {
   events: "admin_events",
   news: "admin_news",
-  partners: "admin_partners_v2",
+  partners: "admin_partners_v3",
   auth: "admin_logged_in",
 };
 

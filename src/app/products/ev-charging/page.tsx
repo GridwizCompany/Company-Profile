@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { ChevronDown, Check } from "lucide-react";
 import Footer from "../../../component/Footer";
 import AppCtaSection from "../../../component/AppCtaSection";
@@ -529,13 +528,15 @@ export default function EVChargingPage() {
 
             {/* Mid Col: mobile.png */}
             <div className="evc-connected-mid">
-              <Image
-                src="/video/products/echarging/echarging.gif"
-                alt="E-Charging Tutorial"
-                width={300}
-                height={550}
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
                 className="evc-connected-phone"
-              />
+              >
+                <source src="/video/products/echarging/e-charging.mp4" type="video/mp4" />
+              </video>
             </div>
 
             {/* Right Col: Features & Store Badges */}
@@ -626,7 +627,7 @@ export default function EVChargingPage() {
                 {isId ? "TARIF PENGISIAN RESMI" : "OFFICIAL CHARGING RATE"}
               </span>
               <div className="evc-pricing-amount">
-                Rp 5.000 <span className="evc-pricing-unit">/ 1000 Wh</span>
+                Rp 5.000 <span className="evc-pricing-unit">/ 1000Wh</span>
               </div>
               <p className="evc-pricing-note">
                 {isId

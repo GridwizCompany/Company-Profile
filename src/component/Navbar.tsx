@@ -93,12 +93,12 @@ export default function Navbar() {
         <ul className="navbar-menu">
           {/* Home */}
           <li>
-            <a
+            <Link
               href="/#home"
               className={pathname === "/" ? "active" : ""}
             >
               {isId ? "Beranda" : "Home"}
-            </a>
+            </Link>
           </li>
 
           {/* Products Dropdown */}
@@ -161,12 +161,12 @@ export default function Navbar() {
             const isActive = pathname === item.href;
             return (
               <li key={idx}>
-                <a
+                <Link
                   href={item.href}
                   className={isActive ? "active" : ""}
                 >
                   {item.label}
-                </a>
+                </Link>
               </li>
             );
           })}
@@ -193,9 +193,9 @@ export default function Navbar() {
           </button>
 
           {/* Tombol CTA Desktop */}
-          <a href="/#contact" className="navbar-cta navbar-cta-desktop">
+          <Link href="/#contact" className="navbar-cta navbar-cta-desktop">
             {isId ? "Hubungi Kami" : "Contact Us"}
-          </a>
+          </Link>
 
           {/* Hamburger Button (Mobile Only) */}
           <button
@@ -212,13 +212,13 @@ export default function Navbar() {
       {isMobileOpen && (
         <ul className="navbar-mobile-menu">
           <li>
-            <a
+            <Link
               href="/#home"
               onClick={() => setIsMobileOpen(false)}
               className={pathname === "/" ? "active" : ""}
             >
               {isId ? "Beranda" : "Home"}
-            </a>
+            </Link>
           </li>
 
           {/* Mobile Products Accordion */}
@@ -271,27 +271,27 @@ export default function Navbar() {
             const isActive = pathname === item.href;
             return (
               <li key={idx}>
-                <a
+                <Link
                   href={item.href}
                   onClick={() => setIsMobileOpen(false)}
                   className={isActive ? "active" : ""}
                 >
                   {item.label}
-                </a>
+                </Link>
               </li>
             );
           })}
 
           {/* Tombol CTA di Mobile Drawer */}
           <li style={{ paddingTop: "0.5rem" }}>
-            <a
+            <Link
               href="/#contact"
               className="navbar-cta"
               style={{ width: "100%", textAlign: "center" }}
               onClick={() => setIsMobileOpen(false)}
             >
               {isId ? "Hubungi Kami" : "Contact Us"}
-            </a>
+            </Link>
           </li>
         </ul>
       )}

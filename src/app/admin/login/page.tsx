@@ -1,17 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { adminLogin } from "../../../lib/adminStore";
 import "../admin.css";
 
 export default function AdminLoginPage() {
-  const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError]       = useState("");
-  const [loading, setLoading]   = useState(false);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -45,7 +43,7 @@ export default function AdminLoginPage() {
               />
             </div>
           </div>
-          <p>Admin Panel — Masuk untuk mengelola konten</p>
+          <p>Admin Panel <br /> Masuk untuk mengelola konten</p>
         </div>
 
         <form className="admin-login-form" onSubmit={handleSubmit}>

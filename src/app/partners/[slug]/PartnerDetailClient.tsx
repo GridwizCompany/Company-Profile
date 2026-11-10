@@ -13,12 +13,11 @@ import {
   Bike,
   Zap,
   BatteryCharging,
-  Leaf,
 } from "lucide-react";
 import Footer from "../../../component/Footer";
 import { useLanguage } from "../../../lib/useLanguage";
 import "../partners.css";
-import { getPartnersByCategory, Partner } from "../../../lib/partnersData";
+import { Partner } from "../../../lib/partnersData";
 import { useAdminData } from "../../../context/AdminDataContext";
 
 function RelatedCard({ partner, isId }: { partner: Partner; isId: boolean }) {
@@ -66,10 +65,10 @@ export default function PartnerDetailClient({
   }, [partners, slug, initialPartner]);
 
   const related = useMemo(() => {
-    const list = partners.length > 0 ? partners : getPartnersByCategory(partner.category);
-    return list
-      .filter((p) => p.category === partner.category && p.slug !== partner.slug)
-      .slice(0, 3);
+    const list = partners.length > 0 ? partners : [];
+    const sameCat = list.filter((p) => p.category === partner.category && p.slug !== partner.slug);
+    if (sameCat.length > 0) return sameCat.slice(0, 3);
+    return list.filter((p) => p.slug !== partner.slug).slice(0, 3);
   }, [partners, partner.category, partner.slug]);
 
   const benefits = (isId ? partner.benefits_id : partner.benefits_en) || [];
@@ -114,12 +113,18 @@ export default function PartnerDetailClient({
 
             {/* Category Badge */}
             <div
-              className={`pt-partner-card-badge ${partner.category === "cafe" ? "badge-cafe" : "badge-hotel"}`}
+              className={`pt-partner-card-badge badge-${partner.category}`}
               style={{ position: "relative", inset: "auto", marginBottom: "1rem" }}
             >
               {partner.category === "cafe"
-                ? isId ? "Kafe & Restoran" : "Café & Restaurant"
-                : isId ? "Hotel & Resort" : "Hotel & Resort"}
+                ? (isId ? "Kafe & Restoran" : "Café & Restaurant")
+                : partner.category === "hotel"
+                ? (isId ? "Hotel & Resort" : "Hotel & Resort")
+                : partner.category === "campus"
+                ? (isId ? "Kampus" : "Campus")
+                : partner.category === "gili"
+                ? "Gili"
+                : (isId ? "Lainnya" : "Others")}
             </div>
 
             <h1 className="pt-detail-hero-title">{partner.name}</h1>

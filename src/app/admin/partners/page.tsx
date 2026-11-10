@@ -3,14 +3,15 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Plus, Edit2, Trash2, MapPin, Coffee, Building2, Bike } from "lucide-react";
+import { Plus, Edit2, Trash2, MapPin, Coffee, Building2, Bike, GraduationCap, Palmtree, MoreHorizontal } from "lucide-react";
 import { useAdminData } from "../../../context/AdminDataContext";
+import { PartnerCategory } from "../../../lib/partnersData";
 import "../admin.css";
 
 export default function AdminPartnersPage() {
   const { partners, removePartner } = useAdminData();
   const [deleteTarget, setDeleteTarget] = useState<string | null>(null);
-  const [filter, setFilter] = useState<"all" | "cafe" | "hotel">("all");
+  const [filter, setFilter] = useState<"all" | PartnerCategory>("all");
   const [toast, setToast] = useState<{ msg: string; type: "success" | "error" } | null>(null);
 
   const showToast = (msg: string, type: "success" | "error" = "success") => {
@@ -41,14 +42,26 @@ export default function AdminPartnersPage() {
       </div>
 
       {/* Filter Tabs */}
-      <div style={{ display: "flex", gap: 8, marginBottom: 20 }}>
-        {(["all", "cafe", "hotel"] as const).map((cat) => (
+      <div style={{ display: "flex", gap: 8, marginBottom: 20, flexWrap: "wrap" }}>
+        {(["all", "campus", "cafe", "hotel", "gili", "lainnya"] as const).map((cat) => (
           <button
             key={cat}
             className={`admin-btn admin-btn-sm ${filter === cat ? "admin-btn-primary" : "admin-btn-secondary"}`}
             onClick={() => setFilter(cat)}
           >
-            {cat === "all" ? "Semua" : cat === "cafe" ? <><Coffee size={14} /> Café</> : <><Building2 size={14} /> Hotel</>}
+            {cat === "all" ? (
+              "Semua"
+            ) : cat === "campus" ? (
+              <><GraduationCap size={14} /> Kampus</>
+            ) : cat === "cafe" ? (
+              <><Coffee size={14} /> Café</>
+            ) : cat === "hotel" ? (
+              <><Building2 size={14} /> Hotel</>
+            ) : cat === "gili" ? (
+              <><Palmtree size={14} /> Gili</>
+            ) : (
+              <><MoreHorizontal size={14} /> Lainnya</>
+            )}
           </button>
         ))}
       </div>
@@ -85,7 +98,15 @@ export default function AdminPartnersPage() {
                   </td>
                   <td>
                     <span className={`admin-badge ${p.category}`}>
-                      {p.category === "cafe" ? "Café & Restoran" : "Hotel & Resort"}
+                      {p.category === "cafe"
+                        ? "Café & Restoran"
+                        : p.category === "hotel"
+                        ? "Hotel & Resort"
+                        : p.category === "campus"
+                        ? "Kampus"
+                        : p.category === "gili"
+                        ? "Gili"
+                        : "Lainnya"}
                     </span>
                   </td>
                   <td>
@@ -144,7 +165,7 @@ export default function AdminPartnersPage() {
           <div className="admin-modal" onClick={(e) => e.stopPropagation()}>
             <h3>🗑️ Hapus Partner?</h3>
             <p>
-              Partner "<strong>{partners.find((p) => p.slug === deleteTarget)?.name}</strong>" akan dihapus secara permanen.
+              Partner &quot;<strong>{partners.find((p) => p.slug === deleteTarget)?.name}</strong>&quot; akan dihapus secara permanen.
             </p>
             <div className="admin-modal-actions">
               <button className="admin-btn admin-btn-secondary" onClick={() => setDeleteTarget(null)}>Batal</button>

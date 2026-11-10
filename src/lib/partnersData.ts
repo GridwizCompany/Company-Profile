@@ -1,9 +1,11 @@
 // Data mitra Gridwiz Re:Flow — Cafe & Restaurant dan Hotel & Resort
 // Digunakan bersama oleh halaman /partners dan /partners/[slug]
 
+export type PartnerCategory = "campus" | "cafe" | "hotel" | "gili" | "lainnya";
+
 export type Partner = {
   slug: string;
-  category: "cafe" | "hotel";
+  category: PartnerCategory;
   name: string;
   tagline_id: string;
   tagline_en: string;
@@ -214,42 +216,34 @@ export const partners: Partner[] = [
     about_en: "About Esda"
   },
   {
-    slug: "gili1",
-    category: "cafe",
-    name: "Gili1",
-    tagline_id: "Mitra Gridwiz - Gili1",
-    tagline_en: "Gridwiz Partner - Gili1",
-    desc_id: "Gili1 adalah mitra Gridwiz.",
-    desc_en: "Gili1 is a Gridwiz partner.",
-    logo: "/images/partners/logo/gili1.svg",
-    coverImage: "/images/partners/space/gili1.svg",
-    location: "Nusa Tenggara Barat",
+    slug: "gili",
+    category: "gili",
+    name: "Gili",
+    tagline_id: "Mitra Mobilitas Berkelanjutan di Kawasan Gili",
+    tagline_en: "Sustainable Mobility Partner in Gili Islands",
+    desc_id: "Kemitraan strategis Re:Flow di kawasan Gili untuk menghadirkan ekosistem transportasi ramah lingkungan tanpa emisi.",
+    desc_en: "Re:Flow strategic partnership in the Gili region to deliver an eco-friendly, zero-emission transportation ecosystem.",
+    logo: "/images/partners/gili/gili2.jpeg",
+    coverImage: "/images/partners/gili/gili1.jpeg",
+    location: "Kepulauan Gili, Lombok, Nusa Tenggara Barat",
+    ebikeCount: "12",
     stats: [
-      { label_id: "Armada", label_en: "Fleet", value: "TBA" }
+      { label_id: "Armada E-Bike", label_en: "E-Bike Fleet", value: "12" },
+      { label_id: "Wilayah Operasional", label_en: "Operational Area", value: "Gili Islands" },
+      { label_id: "Bebas Emisi", label_en: "Zero Emission", value: "100%" }
     ],
-    benefits_id: ["Benefit 1"],
-    benefits_en: ["Benefit 1"],
-    about_id: "Tentang Gili1",
-    about_en: "About Gili1"
-  },
-  {
-    slug: "gili2",
-    category: "cafe",
-    name: "Gili2",
-    tagline_id: "Mitra Gridwiz - Gili2",
-    tagline_en: "Gridwiz Partner - Gili2",
-    desc_id: "Gili2 adalah mitra Gridwiz.",
-    desc_en: "Gili2 is a Gridwiz partner.",
-    logo: "/images/partners/logo/gili2.svg",
-    coverImage: "/images/partners/space/gili2.svg",
-    location: "Nusa Tenggara Barat",
-    stats: [
-      { label_id: "Armada", label_en: "Fleet", value: "TBA" }
+    benefits_id: [
+      "Transportasi ramah lingkungan tanpa emisi di kawasan pulau",
+      "Akses mudah dengan aplikasi Re:Flow untuk wisatawan",
+      "Dukungan pariwisata berkelanjutan dan pelestarian alam Gili"
     ],
-    benefits_id: ["Benefit 1"],
-    benefits_en: ["Benefit 1"],
-    about_id: "Tentang Gili2",
-    about_en: "About Gili2"
+    benefits_en: [
+      "Eco-friendly zero-emission transportation across the island",
+      "Easy access via Re:Flow app for tourists",
+      "Supporting sustainable tourism and Gili environmental conservation"
+    ],
+    about_id: "Kawasan Kepulauan Gili dikenal dengan komitmen bebas kendaraan bermotor berbahan bakar fosil. Melalui kemitraan dengan Re:Flow, dihadirkan armada kendaraan listrik cerdas yang mempermudah mobilitas wisatawan maupun masyarakat lokal sambil menjaga keasrian pulau.",
+    about_en: "The Gili Islands are known for their commitment to being free of fossil-fuel vehicles. Through partnership with Re:Flow, smart electric vehicle fleets are deployed to ease mobility for tourists and locals while preserving the island's natural pristine beauty."
   },
   {
     slug: "hayafarama",
@@ -329,7 +323,7 @@ export const partners: Partner[] = [
   },
   {
     slug: "poltekpar",
-    category: "cafe",
+    category: "campus",
     name: "Poltekpar",
     tagline_id: "Mitra Gridwiz - Poltekpar",
     tagline_en: "Gridwiz Partner - Poltekpar",
@@ -367,7 +361,7 @@ export const partners: Partner[] = [
   },
   {
     slug: "uin",
-    category: "cafe",
+    category: "campus",
     name: "Uin",
     tagline_id: "Mitra Gridwiz - Uin",
     tagline_en: "Gridwiz Partner - Uin",
@@ -386,7 +380,7 @@ export const partners: Partner[] = [
   },
   {
     slug: "ummat",
-    category: "cafe",
+    category: "campus",
     name: "Ummat",
     tagline_id: "Mitra Gridwiz - Ummat",
     tagline_en: "Gridwiz Partner - Ummat",
@@ -462,7 +456,7 @@ export const partners: Partner[] = [
   },
   {
     slug: "golkar",
-    category: "cafe",
+    category: "lainnya",
     name: "Golkar",
     tagline_id: "Mitra Gridwiz - Golkar",
     tagline_en: "Gridwiz Partner - Golkar",
@@ -519,7 +513,7 @@ export const partners: Partner[] = [
   },
   {
     slug: "unram",
-    category: "cafe",
+    category: "campus",
     name: "Unram",
     tagline_id: "Mitra Gridwiz - Unram",
     tagline_en: "Gridwiz Partner - Unram",
@@ -543,6 +537,6 @@ export function getPartnerBySlug(slug: string): Partner | undefined {
   return partners.find((p) => p.slug === slug);
 }
 
-export function getPartnersByCategory(category: "cafe" | "hotel"): Partner[] {
+export function getPartnersByCategory(category: PartnerCategory): Partner[] {
   return partners.filter((p) => p.category === category);
 }

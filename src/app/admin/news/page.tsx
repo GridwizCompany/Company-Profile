@@ -93,7 +93,7 @@ export default function AdminNewsPage() {
                   <td colSpan={6}>
                     <div className="admin-empty">
                       <Tag size={40} />
-                      <p>Belum ada berita. Klik "Tambah Berita" untuk mulai.</p>
+                      <p>Belum ada berita. Klik &quot;Tambah Berita&quot; untuk mulai.</p>
                     </div>
                   </td>
                 </tr>
@@ -109,7 +109,7 @@ export default function AdminNewsPage() {
           <div className="admin-modal" onClick={(e) => e.stopPropagation()}>
             <h3>🗑️ Hapus Berita?</h3>
             <p>
-              Berita "<strong>{news.find((n) => n.id === deleteTarget)?.title}</strong>" akan dihapus secara permanen.
+              Berita &quot;<strong>{news.find((n) => n.id === deleteTarget)?.title}</strong>&quot; akan dihapus secara permanen.
             </p>
             <div className="admin-modal-actions">
               <button className="admin-btn admin-btn-secondary" onClick={() => setDeleteTarget(null)}>Batal</button>

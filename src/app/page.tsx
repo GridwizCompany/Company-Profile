@@ -4,11 +4,10 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "../lib/useLanguage";
-import { BatteryCharging, Bike, Zap, ShieldCheck, Leaf, ArrowRight, Mail, Phone, MapPin, Calendar, Fuel, Wallet, Sparkles, Minus, Plus, Check } from "lucide-react";
+import { Zap, ArrowRight, Calendar, Fuel, Wallet, Sparkles, Minus, Plus, Check } from "lucide-react";
 import ProductRow from "../component/ProductRow";
 import CountUp from "../component/CountUp";
 import Footer from "../component/Footer";
-import AppCtaSection from "component/AppCtaSection";
 import { useAdminData } from "../context/AdminDataContext";
 
 function SavingsCalculator({ isId }: { isId: boolean }) {
@@ -597,53 +596,6 @@ export default function Home() {
   const isId = language === "id";
   const { news } = useAdminData();
   const recentNews = news.slice(0, 3); // Ambil 3 berita terbaru
-
-  // Data Produk
-  const products = [
-    {
-      icon: <Bike size={36} color="#1565C0" />,
-      title: isId ? "Gridwiz E-Bike" : "Gridwiz E-Bike",
-      desc: isId
-        ? "Sepeda listrik cerdas dengan efisiensi tinggi, nyaman untuk komuter harian dan gaya hidup ramah lingkungan."
-        : "Smart electric bicycle with high efficiency, comfortable for daily commuting and eco-friendly lifestyle.",
-      tag: isId ? "Mobilitas Urban" : "Urban Mobility",
-    },
-    {
-      icon: <Zap size={36} color="#00ADB5" />,
-      title: isId ? "Gridwiz E-Motor" : "Gridwiz E-Motor",
-      desc: isId
-        ? "Motor listrik bertenaga dengan teknologi baterai mutakhir dan jarak tempuh optimal di perkotaan."
-        : "Powerful electric motorcycle with advanced battery technology and optimal range in urban areas.",
-      tag: isId ? "Performa Tinggi" : "High Performance",
-    },
-    {
-      icon: <BatteryCharging size={36} color="#2E7D32" />,
-      title: isId ? "Gridwiz E-Charging" : "Gridwiz E-Charging",
-      desc: isId
-        ? "Infrastruktur stasiun pengisian daya cepat dan swap baterai yang tersebar strategis."
-        : "Fast charging stations and strategic battery swap infrastructure network.",
-      tag: isId ? "Infrastruktur Pintar" : "Smart Infrastructure",
-    },
-  ];
-
-  // Keunggulan
-  const features = [
-    {
-      icon: <Leaf size={28} color="#2E7D32" />,
-      title: isId ? "100% Bebas Emisi" : "100% Zero Emission",
-      desc: isId ? "Mendukung transisi energi bersih demi masa depan udara yang lebih sehat." : "Supporting clean energy transition for a healthier future atmosphere.",
-    },
-    {
-      icon: <Zap size={28} color="#1565C0" />,
-      title: isId ? "Teknologi Terintegrasi" : "Integrated Technology",
-      desc: isId ? "Terhubung langsung dengan ekosistem aplikasi cerdas Gridwiz." : "Directly connected with the smart Gridwiz mobile application ecosystem.",
-    },
-    {
-      icon: <ShieldCheck size={28} color="#00ADB5" />,
-      title: isId ? "Aman & Terpercaya" : "Safe & Reliable",
-      desc: isId ? "Baterai bersertifikasi standar keamanan tinggi dan garansi resmi." : "High safety-certified batteries with official warranty support.",
-    },
-  ];
 
   return (
     <main style={{ paddingTop: "72px" }}>

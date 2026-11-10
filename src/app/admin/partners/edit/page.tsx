@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Save, Plus, X } from "lucide-react";
 import { useAdminData } from "../../../../context/AdminDataContext";
-import { Partner } from "../../../../lib/partnersData";
+import { Partner, PartnerCategory } from "../../../../lib/partnersData";
 import ImageUploader from "../../../../component/ImageUploader";
 import "../../admin.css";
 
@@ -128,9 +128,12 @@ function AdminPartnerFormContent() {
               </div>
               <div className="admin-form-group">
                 <label className="admin-form-label">Kategori</label>
-                <select className="admin-form-select" value={form.category} onChange={(e) => set("category", e.target.value as "cafe" | "hotel")}>
+                <select className="admin-form-select" value={form.category} onChange={(e) => set("category", e.target.value as PartnerCategory)}>
+                  <option value="campus">Campus / Kampus</option>
                   <option value="cafe">Café & Restoran</option>
                   <option value="hotel">Hotel & Resort</option>
+                  <option value="gili">Gili</option>
+                  <option value="lainnya">Lainnya</option>
                 </select>
               </div>
               <div className="admin-form-group">

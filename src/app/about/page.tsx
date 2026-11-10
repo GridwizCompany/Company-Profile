@@ -9,7 +9,6 @@ import "./about.css";
 import {
   Smartphone,
   Leaf,
-  Users,
   CheckCircle2,
   Bike,
   Zap,

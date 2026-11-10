@@ -50,7 +50,7 @@ export default function AdminDashboardPage() {
 
       {/* Stat Cards */}
       <div className="admin-stats-grid">
-        {stats.map(({ label, value, icon: Icon, color, href }) => (
+        {stats.map(({ label, value, icon: Icon, color }) => (
           <div key={label} className="admin-stat-card">
             <div className={`admin-stat-icon ${color}`}>
               <Icon size={24} />

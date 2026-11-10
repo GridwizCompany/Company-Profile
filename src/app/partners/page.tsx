@@ -1,20 +1,15 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Users,
   Building2,
   Coffee,
-  ChevronDown,
+  GraduationCap,
+  Palmtree,
+  MoreHorizontal,
   ArrowRight,
-  CheckCircle2,
-  Leaf,
-  Smartphone,
-  Gift,
-  Bike,
-  Download,
   FileText,
   MapPin,
   ShieldCheck,
@@ -31,7 +26,7 @@ import { useAdminData } from "../../context/AdminDataContext";
 
 const ITEMS_PER_PAGE = 6;
 
-const whyCards = (isId: boolean) => [
+const whyCards = () => [
   {
     icon: "/images/partners/caffe/fluent_guest-12-filled.png",
     title_id: "Guest Experience",
@@ -59,37 +54,6 @@ const whyCards = (isId: boolean) => [
     title_en: "Tech-Enabled Mobility",
     desc_id: "Terhubung dengan ekosistem aplikasi cerdas Re:Flow.",
     desc_en: "Connected to Re:Flow's intelligent app ecosystem.",
-  },
-];
-
-const howItWorks = (isId: boolean) => [
-  {
-    num: "1",
-    title_id: "Gridwiz menyediakan armada",
-    title_en: "Gridwiz provides mobility",
-    desc_id: "Armada e-bike & e-motor premium siap ditempatkan di lokasi Anda.",
-    desc_en: "Premium e-bike & e-motor fleet ready to deploy at your location.",
-  },
-  {
-    num: "2",
-    title_id: "Ditempatkan di properti mitra",
-    title_en: "Placed at partner property",
-    desc_id: "Stasiun Re:Flow dipasang langsung di area strategis properti Anda.",
-    desc_en: "Re:Flow stations installed directly at strategic areas of your property.",
-  },
-  {
-    num: "3",
-    title_id: "Tamu mengakses Re:Flow",
-    title_en: "Guests access Re:Flow",
-    desc_id: "Tamu menyewa dan mengakses kendaraan melalui aplikasi Re:Flow.",
-    desc_en: "Guests rent and access vehicles through the Re:Flow app.",
-  },
-  {
-    num: "4",
-    title_id: "Operasi dikelola secara digital",
-    title_en: "Operations managed digitally",
-    desc_id: "Semua operasi dikelola secara digital, mulai dari pemeliharaan hingga laporan.",
-    desc_en: "All operations managed digitally, from maintenance to reporting.",
   },
 ];
 
@@ -140,10 +104,16 @@ function PartnerCard({ partner, isId }: { partner: Partner; isId: boolean }) {
           />
         </div>
         {/* Category Badge */}
-        <div className={`pt-partner-card-badge ${partner.category === "cafe" ? "badge-cafe" : "badge-hotel"}`}>
+        <div className={`pt-partner-card-badge badge-${partner.category}`}>
           {partner.category === "cafe"
             ? (isId ? "Kafe & Restoran" : "Café & Restaurant")
-            : (isId ? "Hotel & Resort" : "Hotel & Resort")}
+            : partner.category === "hotel"
+            ? (isId ? "Hotel & Resort" : "Hotel & Resort")
+            : partner.category === "campus"
+            ? (isId ? "Kampus" : "Campus")
+            : partner.category === "gili"
+            ? "Gili"
+            : (isId ? "Lainnya" : "Others")}
         </div>
       </div>
 
@@ -169,12 +139,14 @@ function PartnerCard({ partner, isId }: { partner: Partner; isId: boolean }) {
   );
 }
 
+export type FilterCategory = "all" | "campus" | "cafe" | "hotel" | "gili" | "lainnya";
+
 export default function PartnersPage() {
   const { language } = useLanguage();
   const isId = language === "id";
   const { partners } = useAdminData();
 
-  const [activeCategory, setActiveCategory] = useState<"all" | "cafe" | "hotel">("all");
+  const [activeCategory, setActiveCategory] = useState<FilterCategory>("all");
   const [currentPage, setCurrentPage] = useState(1);
 
   const filteredPartners = activeCategory === "all"
@@ -185,7 +157,7 @@ export default function PartnersPage() {
   const startIdx = (currentPage - 1) * ITEMS_PER_PAGE;
   const visiblePartners = filteredPartners.slice(startIdx, startIdx + ITEMS_PER_PAGE);
 
-  const handleCategoryChange = (cat: "all" | "cafe" | "hotel") => {
+  const handleCategoryChange = (cat: FilterCategory) => {
     setActiveCategory(cat);
     setCurrentPage(1);
   };
@@ -294,7 +266,7 @@ export default function PartnersPage() {
           </div>
 
           <div className="pt-why-grid">
-            {whyCards(isId).map((card, i) => (
+            {whyCards().map((card, i) => (
               <div key={i} className="pt-why-card">
                 <div className="pt-why-icon-box">
                   <Image src={card.icon} alt={card.title_en} width={52} height={52} className="pt-why-icon-img" />
@@ -549,6 +521,13 @@ export default function PartnersPage() {
                 {isId ? "Semua" : "All"}
               </button>
               <button
+                className={`pt-filter-tab ${activeCategory === "campus" ? "active" : ""}`}
+                onClick={() => handleCategoryChange("campus")}
+              >
+                <GraduationCap size={14} />
+                {isId ? "Kampus" : "Campus"}
+              </button>
+              <button
                 className={`pt-filter-tab ${activeCategory === "cafe" ? "active" : ""}`}
                 onClick={() => handleCategoryChange("cafe")}
               >
@@ -561,6 +540,20 @@ export default function PartnersPage() {
               >
                 <Building2 size={14} />
                 {isId ? "Hotel & Resort" : "Hotel & Resort"}
+              </button>
+              <button
+                className={`pt-filter-tab ${activeCategory === "gili" ? "active" : ""}`}
+                onClick={() => handleCategoryChange("gili")}
+              >
+                <Palmtree size={14} />
+                Gili
+              </button>
+              <button
+                className={`pt-filter-tab ${activeCategory === "lainnya" ? "active" : ""}`}
+                onClick={() => handleCategoryChange("lainnya")}
+              >
+                <MoreHorizontal size={14} />
+                {isId ? "Lainnya" : "Others"}
               </button>
             </div>
           </div>

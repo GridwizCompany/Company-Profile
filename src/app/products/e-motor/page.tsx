@@ -2,8 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { ChevronLeft, ChevronRight, ChevronDown, Check, Smartphone, UserCheck, Bike, KeyRound } from "lucide-react";
+import { ChevronLeft, ChevronRight, ChevronDown, Check, Smartphone, UserCheck, Bike, KeyRound, Download, FileText, ExternalLink } from "lucide-react";
 import Footer from "../../../component/Footer";
 import AppCtaSection from "../../../component/AppCtaSection";
 import { useLanguage } from "../../../lib/useLanguage";
@@ -92,8 +91,8 @@ const rentalOptions = (isId: boolean) => ({
     { period: isId ? "Bulanan E1" : "Monthly E1", note: isId ? "Min. 30 Hari" : "Min. 30 Days", price: "Rp 930.000", deposit: "Rp 300.000" },
     { period: isId ? "Tahunan E1" : "Yearly E1", note: isId ? "365 Hari" : "365 Days", price: isId ? "Rp 825.000 per bulan" : "Rp 825.000 per month", deposit: "1.000.000" },],
   e2: [
-    { period: isId ? "Harian E2" : "Daily E2", note: isId ? "24 Jam" : "24 Hours", price: "Rp 40.000", deposit: "100.000" },
-    { period: isId ? "Mingguan E2" : "Weekly E2", note: isId ? "7 Hari" : "7 Days", price: "Rp 266.000", deposit: "200.000" },
+    { period: isId ? "Harian E2" : "Daily E2", note: isId ? "24 Jam" : "24 Hours", price: "Rp 40.000", deposit: "300.000" },
+    { period: isId ? "Mingguan E2" : "Weekly E2", note: isId ? "7 Hari" : "7 Days", price: "Rp 266.000", deposit: "300.000" },
     { period: isId ? "Bulanan E2" : "Monthly E2", note: isId ? "30 Hari" : "30 Days", price: "Rp 750.000", deposit: "Rp 300.000" },
     { period: isId ? "Tahunan E2" : "Yearly E2", note: isId ? "365 Hari" : "365 Days", price: isId ? "Rp 660.000 per bulan" : "Rp 660.000 per month", deposit: "1.000.000" },
 
@@ -113,13 +112,19 @@ const e2OwnScheme = (isId: boolean) => [
   { period: isId ? "36 Bulan" : "36 Month", bookingFee: "Rp 1.000.000", period1: isId ? "Bulanan" : "Monthly", monthly: "Rp 810.000", period2: isId ? "Mingguan" : "Weekly", weekly: "Rp 189.000", period3: isId ? "Harian" : "Daily", daily: "Rp 27.000" },
 ];
 
+type ColorVariant = {
+  color: string;
+  label: string;
+  image: string;
+};
+
 // ── Reusable: Color Picker Carousel ──
 function ColorCarousel({
   variants,
   modelName,
   specs,
 }: {
-  variants: any[];
+  variants: ColorVariant[];
   modelName: string;
   specs: { voltage: string; range: string; MaxSpeed: string };
 }) {
@@ -254,17 +259,14 @@ function RideTodaySection() {
 
   return (
     <section className="em-ride-section" ref={sectionRef}>
-      {/* Background gradient */}
-      <div className="em-ride-bg" />
-
       <div className="em-ride-container">
         {/* Top badge */}
-        <div className="em-ride-badge"> {isId ? "Sewa Sekarang · Miliki Nanti" : "Ride Today · Own it Later"}</div>
+        <div className="em-ride-badge">{isId ? "Program Eksklusif" : "Exclusive Program"}</div>
 
         {/* Main heading */}
         <h2 className="em-ride-heading">
-          {isId ? "Sewa Sekarang," : "Rent Now,"}<br />
-          <span className="em-ride-heading-accent">{isId ? "Miliki Nanti" : "Own it Later"}</span>
+          {isId ? "Sewa Hari Ini," : "Ride Today,"}<br />
+          <span className="em-ride-heading-accent">{isId ? "Miliki Besok" : "Own it Later"}</span>
         </h2>
         <p className="em-ride-sub">
           {isId
@@ -272,17 +274,18 @@ function RideTodaySection() {
             : <>Start your journey today with affordable daily rentals,<br />and turn it into full ownership anytime.</>}
         </p>
 
-        {/* Center line reveal animation */}
+        {/* Reveal animation */}
         <div className="em-ride-reveal-wrap">
-          {/* Left content: RENT WITH 0 DOWN */}
+          {/* Left: SVG */}
           <div className={`em-ride-left ${visible ? "reveal-left" : ""}`}>
             <Image
-              src="/images/products/emotor/rent0down.svg"
+              src="/images/products/emotor/rent0down.png"
               alt="Rent with 0 Down"
               width={320}
               height={320}
               className="em-ride-rent-img"
-              style={{ width: '100%', maxWidth: 320, height: 'auto' }}
+              style={{ width: "100%", maxWidth: 320, height: "auto" }}
+              unoptimized
             />
           </div>
 
@@ -292,7 +295,7 @@ function RideTodaySection() {
             <div className="em-ride-center-dot bottom" />
           </div>
 
-          {/* Right content: Motor image */}
+          {/* Right: Motor image */}
           <div className={`em-ride-right ${visible ? "reveal-right" : ""}`}>
             <div className="em-ride-img-wrap">
               <Image
@@ -310,15 +313,12 @@ function RideTodaySection() {
   );
 }
 
-// ═══════════════════════════════════════════════════════
 //   MAIN PAGE
-// ═══════════════════════════════════════════════════════
 export default function EMotorPage() {
   const { language } = useLanguage();
   const isId = language === "id";
 
   const [activeModel, setActiveModel] = useState<"E1" | "E2">("E1");
-  const [openFaqs, setOpenFaqs] = useState<boolean[]>(faqs(isId).map(() => false));
 
   // Stats counter animation
   const statsRef = useRef<HTMLElement>(null);
@@ -336,10 +336,6 @@ export default function EMotorPage() {
   const count381 = useCountUp(381, 1800, statsVisible);   // represents 38.1 (×10)
   const count6712 = useCountUp(6712, 1800, statsVisible);
   const count83 = useCountUp(83, 1600, statsVisible);
-
-  const toggleFaq = (i: number) => {
-    setOpenFaqs((prev) => prev.map((v, idx) => (idx === i ? !v : v)));
-  };
 
   const currentFaqs = faqs(isId);
   const currentRentalOptions = rentalOptions(isId);
@@ -438,7 +434,7 @@ export default function EMotorPage() {
         </div>
       </section>
 
-      {/* ─────────────── WHY REFLOW SECTION ─────────────── */}
+      {/* WHY REFLOW SECTION */}
       <section className="em-why-section">
         <div className="em-container">
           <div className="em-section-header">
@@ -481,7 +477,7 @@ export default function EMotorPage() {
         </div>
       </section>
 
-      {/* ─────────────── STATS ─────────────── */}
+      {/* STATS */}
       <section className="em-stats-section" ref={statsRef}>
         <div className="em-container">
           <div className="em-stats-grid">
@@ -506,7 +502,7 @@ export default function EMotorPage() {
         </div>
       </section>
 
-      {/* ─────────────── CHOOSE YOUR RIDE (INTERACTIVE) ─────────────── */}
+      {/* CHOOSE YOUR RIDE (INTERACTIVE) */}
       <section id="choose-ride" className="em-choose-section">
         <div className="em-container">
           <div className="em-section-header">
@@ -556,7 +552,6 @@ export default function EMotorPage() {
                   <h3 className="em-model-name">Reflow E1</h3>
                   <p className="em-model-desc">
                     {isId ? "Performa lebih tinggi untuk jiwa yang suka tantangan. E1 hadir dengan torsi lebih bertenaga, desain sporty, dan 6 warna berani yang mencerminkan karakter kuat." : "Higher performance for adventurous souls. E1 comes with more powerful torque, a sporty design, and 6 bold colors that reflect a strong character."}
-                    {/* {isId ? "Dirancang untuk perjalanan harian yang efisien dan nyaman. Motor listrik E1 hadir dengan desain elegan, jangkauan baterai optimal, dan pilihan 6 varian warna eksklusif." : "Designed for efficient and comfortable daily commuting. The E1 electric motor comes with an elegant design, optimal battery range, and 6 exclusive color variants."} */}
                   </p>
                   <ul className="em-model-features">
                     <li><Check size={14} /> {isId ? "Kapasitas Baterai 72V" : "72V Battery Capacity"}</li>
@@ -573,8 +568,6 @@ export default function EMotorPage() {
                   <h3 className="em-model-name">Reflow E2</h3>
                   <p className="em-model-desc">
                     {isId ? "Dirancang untuk perjalanan harian yang efisien dan nyaman. Motor listrik E2 hadir dengan desain elegan, jangkauan baterai optimal, dan pilihan 6 varian warna eksklusif." : "Designed for efficient and comfortable daily commuting. The E2 electric motor comes with an elegant design, optimal battery range, and 6 exclusive color variants."}
-
-                    {/* {isId ? "Performa lebih tinggi untuk jiwa yang suka tantangan. E2 hadir dengan torsi lebih bertenaga, desain sporty, dan 6 warna berani yang mencerminkan karakter kuat." : "Higher performance for adventurous souls. E2 comes with more powerful torque, a sporty design, and 6 bold colors that reflect a strong character."} */}
                   </p>
                   <ul className="em-model-features">
                     <li><Check size={14} /> {isId ? "Kapasitas Baterai 72V Tinggi" : "High 72V Battery Capacity"}</li>
@@ -591,117 +584,89 @@ export default function EMotorPage() {
         </div>
       </section>
 
-      {/* ─────────────── RENTAL SECTION ─────────────── */}
+      {/* RENTAL SECTION */}
       <section id="rental" className="em-rental-section">
         <div className="em-container">
-          <div className="em-section-header">
-            <h2 className="em-section-title" style={{ color: "#fff" }}>{isId ? "Pilihan Sewa" : "Rental Options"}</h2>
-            <p className="em-section-sub" style={{ color: "rgba(255,255,255,0.75)" }}>
-              {isId ? "Paket fleksibel untuk setiap kebutuhan dan anggaran" : "Flexible plans for every need and budget"}
+
+          {/* Section header */}
+          <div className="em-rental-header-row">
+            <div className="em-rental-eyebrow">{isId ? "Paket Sewa" : "Rental Plans"}</div>
+            <h2 className="em-rental-main-title">{isId ? "Pilihan Sewa Fleksibel" : "Flexible Rental Options"}</h2>
+            <p className="em-rental-main-sub">
+              {isId
+                ? "Tersedia untuk model E1 & E2 — dari harian, mingguan, bulanan, hingga tahunan."
+                : "Available for E1 & E2 — daily, weekly, monthly, or yearly plans."}
             </p>
           </div>
 
-          {/* Rental Requirements Cards */}
-          <div className="em-rental-req-section">
-            <div className="em-rental-req-header">
-              <span className="em-rental-req-pill">{isId ? "Persyaratan Sewa" : "Rental Requirements"}</span>
-              <h3 className="em-rental-req-title">{isId ? "Dokumen Yang Diperlukan" : "Required Documents"}</h3>
-              <p className="em-rental-req-subtitle">
-                {isId
-                  ? "Siapkan 2 dokumen resmi berikut untuk proses verifikasi sewa yang cepat & mudah:"
-                  : "Please prepare the following 2 official documents for a quick & easy rental verification:"}
-              </p>
-            </div>
-
-            <div className="em-rental-req-grid">
-              {/* ID Card Card */}
-              <div className="em-rental-req-card">
-                <div className="em-rental-req-icon-box">
-                  <Image
-                    src="/images/products/emotor/icon/idcard.png"
-                    alt="ID Card"
-                    width={40}
-                    height={40}
-                    className="em-rental-req-img"
-                  />
-                </div>
-                <div className="em-rental-req-card-content">
-                  <div className="em-rental-req-card-badge">{isId ? "Identitas Resmi" : "Official ID"}</div>
-                  <h4 className="em-rental-req-card-title">{isId ? "KTP / Paspor" : "ID Card / Passport"}</h4>
-                  <p className="em-rental-req-card-desc">
-                    {isId
-                      ? "Identitas resmi WNI (KTP asli) atau WNA (Paspor) yang masih aktif dan sah."
-                      : "Original and valid government-issued national ID card or passport."}
-                  </p>
+          {/* Requirements strip */}
+          <div className="em-req-strip">
+            <div className="em-req-strip-label">{isId ? "Persyaratan" : "Requirements"}</div>
+            <div className="em-req-strip-items">
+              <div className="em-req-strip-item">
+                <Image src="/images/products/emotor/icon/idcard.png" alt="ID" width={28} height={28} unoptimized />
+                <div>
+                  <span className="em-req-strip-name">{isId ? "KTP / Paspor" : "ID / Passport"}</span>
+                  <span className="em-req-strip-desc">{isId ? "Identitas resmi yang masih berlaku" : "Valid government-issued ID"}</span>
                 </div>
               </div>
-
-              {/* Driving License Card */}
-              <div className="em-rental-req-card">
-                <div className="em-rental-req-icon-box">
-                  <Image
-                    src="/images/products/emotor/icon/driving.png"
-                    alt="Driver License"
-                    width={40}
-                    height={40}
-                    className="em-rental-req-img"
-                  />
-                </div>
-                <div className="em-rental-req-card-content">
-                  <div className="em-rental-req-card-badge">{isId ? "Izin Berkendara" : "Driver License"}</div>
-                  <h4 className="em-rental-req-card-title">{isId ? "SIM C Aktif" : "Driver License (SIM C)"}</h4>
-                  <p className="em-rental-req-card-desc">
-                    {isId
-                      ? "Surat Izin Mengemudi (SIM C) khusus sepeda motor yang masih berlaku."
-                      : "Valid and active motorcycle driver license (SIM C or international)."}
-                  </p>
+              <div className="em-req-strip-divider" />
+              <div className="em-req-strip-item">
+                <Image src="/images/products/emotor/icon/driving.png" alt="SIM C" width={28} height={28} unoptimized />
+                <div>
+                  <span className="em-req-strip-name">{isId ? "SIM C Aktif" : "SIM C License"}</span>
+                  <span className="em-req-strip-desc">{isId ? "Izin mengemudi motor yang sah" : "Valid motorcycle driver license"}</span>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Pricing Cards */}
-          <div className="em-rental-groups">
-            {/* E1 Rental Group */}
-            <div className="em-rental-group">
-              <div className="em-rental-group-header">
-                <span className="em-rental-model-badge">E1</span>
+          {/* Pricing tables — E1 & E2 side by side */}
+          <div className="em-rental-tables">
+            {/* E1 */}
+            <div className="em-rental-table-block">
+              <div className="em-rental-table-head">
+                <span className="em-rtb-badge">E1</span>
                 <div>
-                  <h3 className="em-rental-group-title">{isId ? "Paket Sewa Reflow E1" : "Reflow E1 Rental Plans"}</h3>
-                  <p className="em-rental-group-sub">{isId ? "Pilihan durasi fleksibel dari harian hingga tahunan" : "Flexible duration options from daily to yearly"}</p>
+                  <div className="em-rtb-title">Reflow E1</div>
+                  <div className="em-rtb-sub">{isId ? "Motor urban entry-level" : "Urban entry-level scooter"}</div>
                 </div>
               </div>
-              <div className="em-rental-cards">
+              <div className="em-rental-table-rows">
                 {currentRentalOptions.e1.map((r, i) => (
-                  <div key={i} className="em-rental-card">
-                    <div className="em-rental-card-period">{r.period}</div>
-                    <div className="em-rental-card-note">{r.note}</div>
-                    <div className="em-rental-card-price">{r.price}</div>
-                    <div className="em-rental-card-deposit">
-                      {isId ? "Deposit:" : "Deposit:"} <span>{r.deposit}</span>
+                  <div key={i} className="em-rental-row">
+                    <div className="em-rental-row-left">
+                      <span className="em-rental-row-period">{r.note}</span>
+                      <span className="em-rental-row-label">{r.period}</span>
+                    </div>
+                    <div className="em-rental-row-right">
+                      <span className="em-rental-row-price">{r.price}</span>
+                      <span className="em-rental-row-deposit">{isId ? "Deposit" : "Deposit"} {r.deposit}</span>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* E2 Rental Group */}
-            <div className="em-rental-group">
-              <div className="em-rental-group-header">
-                <span className="em-rental-model-badge em-rental-model-badge-e2">E2</span>
+            {/* E2 */}
+            <div className="em-rental-table-block em-rental-table-block-e2">
+              <div className="em-rental-table-head">
+                <span className="em-rtb-badge em-rtb-badge-e2">E2</span>
                 <div>
-                  <h3 className="em-rental-group-title">{isId ? "Paket Sewa Reflow E2" : "Reflow E2 Rental Plans"}</h3>
-                  <p className="em-rental-group-sub">{isId ? "Pilihan durasi fleksibel dari harian hingga tahunan" : "Flexible duration options from daily to yearly"}</p>
+                  <div className="em-rtb-title">Reflow E2</div>
+                  <div className="em-rtb-sub">{isId ? "Motor touring bertenaga" : "Touring powerhouse"}</div>
                 </div>
               </div>
-              <div className="em-rental-cards">
+              <div className="em-rental-table-rows">
                 {currentRentalOptions.e2.map((r, i) => (
-                  <div key={i} className="em-rental-card">
-                    <div className="em-rental-card-period">{r.period}</div>
-                    <div className="em-rental-card-note">{r.note}</div>
-                    <div className="em-rental-card-price">{r.price}</div>
-                    <div className="em-rental-card-deposit">
-                      {isId ? "Deposit:" : "Deposit:"} <span>{r.deposit}</span>
+                  <div key={i} className="em-rental-row">
+                    <div className="em-rental-row-left">
+                      <span className="em-rental-row-period">{r.note}</span>
+                      <span className="em-rental-row-label">{r.period}</span>
+                    </div>
+                    <div className="em-rental-row-right">
+                      <span className="em-rental-row-price">{r.price}</span>
+                      <span className="em-rental-row-deposit">{isId ? "Deposit" : "Deposit"} {r.deposit}</span>
                     </div>
                   </div>
                 ))}
@@ -715,10 +680,10 @@ export default function EMotorPage() {
         </div>
       </section>
 
-      {/* ─────────────── RIDE TODAY OWN IT LATER ─────────────── */}
+      {/* RIDE TODAY OWN IT LATER */}
       <RideTodaySection />
 
-      {/* ─────────────── OWN SCHEME TABLES ─────────────── */}
+      {/* OWN SCHEME TABLES */}
       <section className="em-own-section">
         <div className="em-container">
           <div className="em-section-header">
@@ -808,6 +773,125 @@ export default function EMotorPage() {
         </div>
       </section>
 
+      {/* ─────────────── BROCHURE DOWNLOAD SECTION ─────────────── */}
+      <section className="em-brochure-section">
+        <div className="em-container">
+          <div className="em-section-header">
+            <span className="em-rental-eyebrow" style={{ color: "#1565C0" }}>
+              {isId ? "Katalog & Brosur" : "Catalog & Brochure"}
+            </span>
+            <h2 className="em-section-title">
+              {isId ? "Unduh Brosur Harga Lengkap" : "Download Complete Price Brochure"}
+            </h2>
+            <p className="em-section-sub">
+              {isId
+                ? "Dapatkan informasi rincian tarif sewa reguler dan skema sewa-milik resmi dalam format digital."
+                : "Get official detailed rates for regular rental and rent-to-own schemes in digital format."}
+            </p>
+          </div>
+
+          <div className="em-brochure-grid">
+            {/* Brosur 1: Rental Biasa */}
+            <div className="em-brochure-card">
+              <div className="em-brochure-preview">
+                <Image
+                  src="/images/products/emotor/rent.png"
+                  alt={isId ? "Brosur Sewa E-Motor" : "E-Motor Rental Brochure"}
+                  width={600}
+                  height={800}
+                  className="em-brochure-img"
+                  unoptimized
+                />
+                <div className="em-brochure-overlay">
+                  <a
+                    href="/images/products/emotor/rent.png"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="em-brochure-view-btn"
+                  >
+                    <ExternalLink size={16} />
+                    {isId ? "Lihat Gambar" : "View Image"}
+                  </a>
+                </div>
+              </div>
+              <div className="em-brochure-content">
+                <div className="em-brochure-tag">
+                  <FileText size={14} />
+                  <span>{isId ? "Brosur Tarif Sewa" : "Rental Rate Brochure"}</span>
+                </div>
+                <h3 className="em-brochure-title">
+                  {isId ? "Daftar Harga Sewa E-Motor" : "E-Motor Rental Price List"}
+                </h3>
+                <p className="em-brochure-desc">
+                  {isId
+                    ? "Rincian lengkap paket sewa harian, mingguan, bulanan, hingga tahunan untuk tipe E1 & E2 beserta ketentuan deposit."
+                    : "Complete breakdown of daily, weekly, monthly, and yearly rental packages for E1 & E2 including deposit terms."}
+                </p>
+                <div className="em-brochure-actions">
+                  <a
+                    href="/images/products/emotor/rent.png"
+                    download="Gridwiz-Emotor-Rental-Brochure.png"
+                    className="em-brochure-btn"
+                  >
+                    <Download size={18} />
+                    <span>{isId ? "Unduh Brosur Sewa" : "Download Rental Brochure"}</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Brosur 2: Rent to Own */}
+            <div className="em-brochure-card">
+              <div className="em-brochure-preview">
+                <Image
+                  src="/images/products/emotor/renttoown.png"
+                  alt={isId ? "Brosur Sewa Milik E-Motor" : "Rent to Own Brochure"}
+                  width={600}
+                  height={800}
+                  className="em-brochure-img"
+                  unoptimized
+                />
+                <div className="em-brochure-overlay">
+                  <a
+                    href="/images/products/emotor/renttoown.png"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="em-brochure-view-btn"
+                  >
+                    <ExternalLink size={16} />
+                    {isId ? "Lihat Gambar" : "View Image"}
+                  </a>
+                </div>
+              </div>
+              <div className="em-brochure-content">
+                <div className="em-brochure-tag em-brochure-tag-own">
+                  <FileText size={14} />
+                  <span>{isId ? "Brosur Sewa-Milik" : "Rent-To-Own Brochure"}</span>
+                </div>
+                <h3 className="em-brochure-title">
+                  {isId ? "Skema Cicilan & Hak Milik" : "Installment & Ownership Scheme"}
+                </h3>
+                <p className="em-brochure-desc">
+                  {isId
+                    ? "Tabel cicilan kepemilikan motor listrik tenor 12, 24, & 36 bulan dengan pilihan pembayaran harian, mingguan, atau bulanan."
+                    : "Ownership installment table with 12, 24, & 36-month terms featuring daily, weekly, or monthly payment options."}
+                </p>
+                <div className="em-brochure-actions">
+                  <a
+                    href="/images/products/emotor/renttoown.png"
+                    download="Gridwiz-Emotor-RentToOwn-Brochure.png"
+                    className="em-brochure-btn em-brochure-btn-own"
+                  >
+                    <Download size={18} />
+                    <span>{isId ? "Unduh Brosur Sewa-Milik" : "Download Rent to Own Brochure"}</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ─────────────── HOW TO RENT ─────────────── */}
       <section className="em-howto-section">
         <div className="em-container">
@@ -866,7 +950,7 @@ export default function EMotorPage() {
         </div>
       </section>
 
-      {/* ─────────────── INTERACTIVE EXPERIENCE ─────────────── */}
+      {/* INTERACTIVE EXPERIENCE */}
       <section className="em-interactive-section">
         <div className="em-container">
           <div className="em-interactive-grid">
@@ -889,13 +973,16 @@ export default function EMotorPage() {
 
             {/* Mid Col: GIF */}
             <div className="em-interactive-mid">
-              <img
+              <Image
                 src="/video/products/emotor/emotor.gif"
                 alt="E-Motor Interactive Experience"
+                width={500}
+                height={500}
+                unoptimized
                 style={{
                   maxWidth: "500px",
                   width: "100%",
-                  height: "100%",
+                  height: "auto",
                   borderRadius: "2rem",
                   boxShadow: "0 24px 60px rgba(0, 0, 0, 0)",
                   display: "block",
@@ -961,7 +1048,7 @@ export default function EMotorPage() {
         </div>
       </section>
 
-      {/* ─────────────── FAQ ─────────────── */}
+      {/* FAQ */}
       <section className="em-faq-section">
         <div className="em-container" style={{ maxWidth: "760px" }}>
           <div className="em-section-header">
@@ -977,10 +1064,10 @@ export default function EMotorPage() {
         </div>
       </section>
 
-      {/* ================= APP CTA ================= */}
+      {/* APP CTA */}
       <AppCtaSection />
 
-      {/* ================= FOOTER ================= */}
+      {/* FOOTER */}
       <Footer />
     </main>
   );

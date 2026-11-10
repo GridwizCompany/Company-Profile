@@ -2,9 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import {
-  Download,
   MapPin,
   Check,
   ArrowRight,
@@ -388,9 +386,12 @@ export default function EBikePage() {
 
               {/* Mid Col: GIF */}
               <div className="ebike-interactive-mid">
-                <img
+                <Image
                   src="/video/products/ebike/ebike.gif"
                   alt="E-Bike Interactive Experience"
+                  width={340}
+                  height={500}
+                  unoptimized
                   style={{
                     maxWidth: "340px",
                     width: "100%",

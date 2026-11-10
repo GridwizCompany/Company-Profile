@@ -12,20 +12,20 @@ import "../admin/admin.css";
 
 const NAV_ITEMS = [
   { href: "/admin/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/admin/events",    label: "Events",    icon: Calendar },
-  { href: "/admin/news",      label: "News",      icon: Newspaper },
-  { href: "/admin/partners",  label: "Partners",  icon: Handshake },
+  { href: "/admin/events", label: "Events", icon: Calendar },
+  { href: "/admin/news", label: "News", icon: Newspaper },
+  { href: "/admin/partners", label: "Partners", icon: Handshake },
 ];
 
 const PAGE_TITLES: Record<string, string> = {
   "/admin/dashboard": "Dashboard",
-  "/admin/events":    "Manage Events",
-  "/admin/news":      "Manage News",
-  "/admin/partners":  "Manage Partners",
+  "/admin/events": "Manage Events",
+  "/admin/news": "Manage News",
+  "/admin/partners": "Manage Partners",
 };
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  const router   = useRouter();
+  const router = useRouter();
   const pathname = usePathname();
   const [checked, setChecked] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -119,7 +119,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <span className="admin-topbar-title">{title}</span>
           </div>
           <div className="admin-topbar-right">
-            <div className="admin-topbar-logo-badge">
+            {/* <div className="admin-topbar-logo-badge">
               <Image
                 src="/images/logo/LOGO-GWE&M.png"
                 alt="Gridwiz Logo"
@@ -128,13 +128,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 priority
                 style={{ objectFit: "contain", height: "26px", width: "auto" }}
               />
-            </div>
+            </div> */}
             <div className="admin-user-info">
               <div className="admin-user-name">Admin</div>
             </div>
           </div>
         </header>
-
         {/* Page content */}
         <main className="admin-content">{children}</main>
       </div>
